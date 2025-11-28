@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
+import { Link } from "react-router-dom";
 
 // --- CONFIGURATION ---
 const SLIDES = [
@@ -16,7 +17,7 @@ const SLIDES = [
   },
   {
     id: 3,
-    url: "/assets/images/vdn3.jpg", 
+    url: "/assets/images/vdn5.png", 
     alt: "Evening Ambience"
   }
 ];
@@ -33,10 +34,16 @@ const HeroSection = () => {
   }, []);
 
   return (
-    // Changed h-screen to h-[100dvh] for better mobile browser support (addresses address bar resizing)
-    // Added min-h to prevent squashing on landscape mobile
-    <section className="relative h-[100dvh] min-h-[500px] w-full overflow-hidden bg-black">
+    <section className="relative h-[100dvh] min-h-[600px] w-full overflow-hidden bg-black font-sans">
       
+      {/* --- FONT LOADING & UTILITIES --- */}
+      <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap');
+        
+        .font-oswald { font-family: 'Oswald', sans-serif; }
+        .font-playfair { font-family: 'Playfair Display', serif; }
+      `}</style>
+
       {/* --- IMAGE STACK --- */}
       {SLIDES.map((slide, index) => (
         <motion.div
@@ -53,74 +60,85 @@ const HeroSection = () => {
           <img 
             src={slide.url} 
             alt={slide.alt}
-            className="w-full h-full object-cover opacity-80 dark:opacity-50" 
+            className="w-full h-full object-cover opacity-60" 
           />
         </motion.div>
       ))}
 
-      {/* Gradient Overlay */}
-      <div className="absolute inset-0 z-20 bg-gradient-to-b from-black/40 via-transparent to-black/80 pointer-events-none" />
+      {/* Gradient Overlay for better text readability */}
+      <div className="absolute inset-0 z-20 bg-gradient-to-b from-black/30 via-transparent to-black/90 pointer-events-none" />
 
       {/* --- HERO CONTENT --- */}
-      <div className="relative z-30 h-full flex flex-col justify-center items-center text-center px-6 max-w-5xl mx-auto">
+      <div className="relative z-30 h-full flex flex-col justify-center items-center text-center px-4 sm:px-6 max-w-7xl mx-auto">
         
         {/* 1. MAIN HEADING (Oswald) */}
-        {/* Adjusted text sizes: text-5xl on mobile -> text-9xl on desktop */}
+        {/* Responsive sizing: Starts large on mobile, scales up massively on desktop */}
         <motion.h1 
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3 }}
-          className="font-oswald text-5xl sm:text-7xl md:text-8xl lg:text-9xl text-white tracking-widest uppercase drop-shadow-2xl font-bold leading-tight"
+          className="font-oswald text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-white uppercase font-bold tracking-widest drop-shadow-2xl leading-none"
         >
           Treasure
         </motion.h1>
         
         {/* 2. SUBHEADING (Playfair Display) */}
-        {/* Adjusted text sizes and margin for mobile */}
         <motion.h2 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6, duration: 0.8 }}
-          className="font-playfair text-xl sm:text-2xl md:text-4xl text-white/90 mt-2 sm:mt-4 mb-4 sm:mb-6 italic font-light tracking-wide px-2"
+          className="font-playfair text-lg sm:text-xl md:text-2xl lg:text-3xl text-gray-100 mt-4 mb-6 italic font-normal tracking-wide max-w-4xl"
         >
-          Build to Last, Design to Inspire
+          Built to Last, Designed to Inspire
         </motion.h2>
 
-        {/* 3. BODY TEXT (Playfair/Sans Mix) */}
+        {/* 3. BODY TEXT (Playfair Display) */}
         <motion.p 
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.9, duration: 0.8 }}
-          className="font-playfair text-sm sm:text-base md:text-lg text-gray-200 max-w-xs sm:max-w-2xl leading-relaxed opacity-90"
+          className="font-playfair text-xs sm:text-sm md:text-base text-gray-300 max-w-xs sm:max-w-xl md:max-w-2xl leading-relaxed opacity-90 mx-auto"
         >
           Discover premium residences designed for those who desire superior architecture, 
-          timeless elegance, and sophisticated living spaces.
+          timeless elegance, and sophisticated living spaces in the heart of the city.
         </motion.p>
         
-        {/* 4. ABOUT US BUTTON (Oswald) */}
-        {/* Adjusted padding and font size for mobile touch targets */}
-        <motion.a 
-          href="/about" 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.1 }}
-          className="group mt-8 sm:mt-10 border border-white/30 bg-white/5 hover:bg-white text-white hover:text-black px-8 py-3 sm:px-10 sm:py-4 flex items-center gap-3 transition-all duration-300 uppercase font-oswald text-xs sm:text-sm tracking-[0.2em] backdrop-blur-sm cursor-pointer"
-        >
-          About Us 
-          <ArrowRight size={16} className="transition-transform duration-300 group-hover:translate-x-1 sm:w-[18px] sm:h-[18px]" />
-        </motion.a>
+        {/* 4. CTA BUTTON (Oswald) */}
+        
+<motion.div
+  initial={{ opacity: 0, y: 20 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ delay: 1.1 }}
+>
+  <Link
+    to="/about"
+    className="group mt-10 sm:mt-12 relative overflow-hidden 
+               bg-transparent text-white border border-white 
+               px-8 py-3 sm:px-10 sm:py-4 
+               flex items-center gap-3 
+               transition-all duration-300 uppercase font-playfair 
+               text-xs sm:text-sm tracking-[0.2em] font-medium
+               hover: hover:text-white cursor-pointer"
+  >
+    <span className="relative z-10">About us</span>
+    <ArrowRight
+      size={16}
+      className="relative z-10 transition-transform duration-300 group-hover:translate-x-1"
+    />
+  </Link>
+</motion.div>
       </div>
 
       {/* --- INDICATOR DOTS --- */}
-      {/* Mobile: Centered at bottom | Desktop: Bottom Right */}
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 md:translate-x-0 md:left-auto md:bottom-10 md:right-10 z-30 flex gap-3">
+      <div className="absolute bottom-8 left-0 right-0 z-30 flex justify-center gap-4 md:right-10 md:left-auto md:justify-end md:px-10">
         {SLIDES.map((_, idx) => (
           <button 
             key={idx}
             onClick={() => setCurrentIndex(idx)}
             aria-label={`Go to slide ${idx + 1}`}
-            className={`h-[3px] md:h-[2px] transition-all duration-500 ease-out rounded-full md:rounded-none
-              ${idx === currentIndex ? 'w-8 md:w-10 bg-white' : 'w-4 md:w-5 bg-white/40 hover:bg-white/70'}`}
+            className={`transition-all duration-500 ease-out 
+              ${idx === currentIndex ? 'w-12 bg-white opacity-100' : 'w-6 bg-white opacity-40 hover:opacity-70'}
+              h-[2px]`}
           />
         ))}
       </div>

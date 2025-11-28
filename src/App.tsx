@@ -12,12 +12,13 @@ import ContactPage from './components/ContactPage';
 import Layout from './components/Layout';
 import Projects from './components/Projects';
 import WhatsAppButton from "./components/WhatsAppButton";
+import ScrollToTop from "./components/ScrollToTop";
 
 const App = () => {
   return (
     <ThemeProvider>
       <Router>
-        
+        <ScrollToTop />  
         {/* ROUTES */}
         <Routes>
           <Route element={<Layout />}>

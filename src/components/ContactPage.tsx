@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { 
-  ChevronLeft, Mail, MapPin, Menu, X, Sun, Moon, Home, 
-  Facebook, Twitter, Linkedin, Youtube, ArrowRight, Phone, User, Settings, PenTool 
+  Mail, MapPin, Menu, X, Sun, Moon, 
+  Facebook, Twitter, Linkedin, Youtube, ArrowRight, Phone 
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTheme } from './ThemeContext';
@@ -43,18 +43,16 @@ const NavigationSidebar = React.memo(({ isOpen, onClose }: { isOpen: boolean; on
             animate={{ x: 0 }} 
             exit={{ x: '-100%' }} 
             transition={{ type: 'tween', duration: 0.5 }} 
-            // Width adjustment: w-[85%] mobile, md:w-1/4 desktop
             className={`fixed top-0 left-0 h-full w-[85%] md:w-1/4 z-[70] shadow-2xl flex flex-col border-r backdrop-blur-md transition-colors duration-500 ${
               isDark ? 'bg-[#2A0A0A]/95 border-[#4A2521]' : 'bg-[#F9F9F7]/95 border-stone-200'
             }`}
           >
             <div className={`flex justify-between items-center p-6 md:p-8 border-b ${isDark ? 'border-[#4A2521]' : 'border-stone-200'}`}>
                 <div className="flex flex-col">
-                    {/* Changed gold to white */}
-                    <span className={`text-2xl md:text-3xl font-serif font-bold tracking-widest ${isDark ? 'text-white' : 'text-stone-800'}`}>TREASURE</span>
-                    <span className={`text-[10px] tracking-[0.3em] uppercase ${isDark ? 'text-white/60' : 'text-stone-500'}`}>Menu</span>
+                    {/* Changed to font-oswald */}
+                    <span className={`text-2xl md:text-3xl font-oswald font-bold tracking-widest ${isDark ? 'text-white' : 'text-stone-800'}`}>TREASURE</span>
+                    <span className={`text-[10px] tracking-[0.3em] uppercase font-oswald ${isDark ? 'text-white/60' : 'text-stone-500'}`}>Menu</span>
                 </div>
-                {/* Updated close button to white */}
                 <button 
                   onClick={onClose} 
                   className={`p-2 rounded-full border transition-colors group ${isDark ? 'border-white/30 hover:bg-white/10 text-white' : 'border-stone-300 hover:bg-stone-200 text-stone-800'}`}
@@ -69,11 +67,10 @@ const NavigationSidebar = React.memo(({ isOpen, onClose }: { isOpen: boolean; on
                       key={item.label} 
                       to={item.href} 
                       onClick={onClose} 
-                      // Updated link hover colors to white
-                      className={`group flex items-center justify-between text-xl md:text-3xl font-serif transition-colors ${isDark ? 'text-[#EBEBE6]/60 hover:text-white' : 'text-stone-400 hover:text-stone-800'}`}
+                      // Changed to font-oswald
+                      className={`group flex items-center justify-between text-xl md:text-3xl font-oswald transition-colors ${isDark ? 'text-[#EBEBE6]/60 hover:text-white' : 'text-stone-400 hover:text-stone-800'}`}
                     >
                         {item.label} 
-                        {/* Updated arrow color to white */}
                         <ArrowRight className={`opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-500 ${isDark ? 'text-white' : 'text-[#D4AF37]'}`} size={20} />
                     </Link>
                 ))}
@@ -85,13 +82,11 @@ const NavigationSidebar = React.memo(({ isOpen, onClose }: { isOpen: boolean; on
   );
 });
 
-// Added 'hidden md:flex' to hide sidebar on mobile
 const FixedSidebar = ({ isDark, onOpenMenu }: { isDark: boolean, onOpenMenu: () => void }) => {
   return (
     <aside className={`hidden md:flex fixed top-0 left-0 h-screen w-24 z-50 flex-col justify-between items-center border-r shadow-sm transition-colors duration-500 ${
       isDark ? 'bg-[#2A0A0A] border-white/10' : 'bg-white border-gray-100'
     }`}>
-      {/* Top: Hamburger & Main Logo */}
       <div className="flex flex-col items-center w-full pt-8 gap-12">
         <button onClick={onOpenMenu} aria-label="Open Menu" className="group p-2">
           <div className="space-y-1.5">
@@ -109,15 +104,11 @@ const FixedSidebar = ({ isDark, onOpenMenu }: { isDark: boolean, onOpenMenu: () 
         </Link>
       </div>
 
-      {/* Bottom: Secondary Logo & Enquiry Link */}
       <div className="w-full flex flex-col items-center">
-          
-          {/* --- NEW LOGO ABOVE ENQUIRY (Increased Size) --- */}
           <div className="mb-6 opacity-80 hover:opacity-100 transition-opacity">
             <img 
               src="/assets/images/katewa-logo.png" 
               alt="Secondary Logo" 
-              // Changed w-8 to w-10 for increased size
               className={`w-12 h-auto object-contain ${isDark ? 'brightness-0 invert' : ''}`} 
             />
           </div>
@@ -126,7 +117,8 @@ const FixedSidebar = ({ isDark, onOpenMenu }: { isDark: boolean, onOpenMenu: () 
             to="/contact" 
             className="w-full h-48 bg-[#3E2723] text-white flex items-center justify-center hover:bg-[#2C1A16] transition-colors"
           >
-              <span className="text-xs font-bold tracking-[0.25em] uppercase [writing-mode:vertical-lr] rotate-180">
+              {/* Changed to font-oswald */}
+              <span className="text-xs font-bold font-oswald tracking-[0.25em] uppercase [writing-mode:vertical-lr] rotate-180">
                 Make an Enquiry
               </span>
           </Link>
@@ -145,7 +137,6 @@ const Footer = () => {
   return (
     <footer className="w-full bg-[#2C1A16] text-[#EBEBE6] relative font-sans border-t border-white/10">
       
-      {/* --- BACKGROUND PATTERN --- */}
       <div className="absolute inset-0 z-0 opacity-5 pointer-events-none">
         <img 
           src="/assets/images/dpattern.jpg" 
@@ -156,22 +147,24 @@ const Footer = () => {
       
       <div className="absolute inset-0 bg-gradient-to-b from-[#2C1A16]/95 to-[#1A0B09]/98 z-0" />
 
-      {/* --- MAIN CONTENT --- */}
       <div className="relative z-10 max-w-7xl mx-auto px-6 py-10 lg:py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10">
           
           {/* COLUMN 1: ABOUT */}
           <div className="space-y-4">
             <h3 className="text-base font-bold uppercase tracking-widest font-oswald text-white">About</h3>
-            <p className="text-sm text-[#EBEBE6]/60 leading-relaxed font-light max-w-xs">
-              Treasure provides superior architecture and sophisticated living. Built to provide a trouble-free experience.
+            {/* Added font-playfair */}
+            <p className="text-sm text-[#EBEBE6]/60 leading-relaxed font-playfair max-w-xs">
+              This is property showcase done in a clean and
+contemporary manner. We built Treasure to provide you with a trouble-free website setup and managing, and to let you have fun along the way.
             </p>
           </div>
 
           {/* COLUMN 2: CONTACT */}
           <div className="space-y-4">
             <h3 className="text-base font-bold uppercase tracking-widest font-oswald text-white">Contact</h3>
-            <ul className="space-y-2 text-sm text-[#EBEBE6]/60 font-light">
+            {/* Added font-playfair */}
+            <ul className="space-y-2 text-sm text-[#EBEBE6]/60 font-playfair">
               <li className="flex items-center gap-3">
                 <Phone size={14} className="text-white/40" />
                 <span>+91 73782 55255</span>
@@ -190,7 +183,8 @@ const Footer = () => {
           {/* COLUMN 3: USEFUL LINKS */}
           <div className="space-y-4">
             <h3 className="text-base font-bold uppercase tracking-widest font-oswald text-white">Links</h3>
-            <ul className="space-y-2 text-sm text-[#EBEBE6]/60 font-light">
+            {/* Added font-playfair */}
+            <ul className="space-y-2 text-sm text-[#EBEBE6]/60 font-playfair">
               <li>
                 <Link to="/about" className="flex items-center gap-2 hover:text-white transition-colors group">
                   <span className="w-1 h-1 bg-white/40 rounded-full group-hover:bg-white transition-colors" />
@@ -219,10 +213,11 @@ const Footer = () => {
             <div className="space-y-3">
               <div className="relative border-b border-[#EBEBE6]/20">
                 <Mail size={14} className="absolute left-0 top-2.5 text-white/40" />
+                {/* Added font-playfair */}
                 <input 
                   type="email" 
                   placeholder="Email Address" 
-                  className="w-full bg-transparent py-2 pl-6 text-sm focus:outline-none placeholder:text-[#EBEBE6]/30 text-white"
+                  className="w-full bg-transparent py-2 pl-6 text-sm focus:outline-none placeholder:text-[#EBEBE6]/30 text-white font-playfair"
                 />
               </div>
               <button className="w-full py-2 border border-[#EBEBE6]/20 text-xs uppercase tracking-widest hover:bg-[#EBEBE6] hover:text-[#2C1A16] transition-colors font-oswald">
@@ -241,7 +236,6 @@ const Footer = () => {
         </div>
       </div>
 
-      {/* --- BOTTOM BAR --- */}
       <div className="bg-[#1A0B09] py-4 border-t border-[#EBEBE6]/5 relative z-10">
         <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4">
           
@@ -251,10 +245,10 @@ const Footer = () => {
                alt="Treasure" 
                className="h-6 w-auto object-contain brightness-0 invert opacity-70" 
              />
-             <span className="text-xs text-[#EBEBE6]/30 uppercase tracking-wider">© 2025 Treasure</span>
+             <span className="text-xs text-[#EBEBE6]/30 uppercase tracking-wider font-oswald">© 2025 Treasure</span>
           </div>
 
-          <div className="flex gap-6 text-xs text-[#EBEBE6]/40">
+          <div className="flex gap-6 text-xs text-[#EBEBE6]/40 font-oswald">
              <Link to="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>
              <Link to="/terms" className="hover:text-white transition-colors">Terms of Use</Link>
           </div>
@@ -291,27 +285,23 @@ const ContactPage = () => {
   };
 
   return (
-    // Updated Main Theme color (Gold to White)
     <div className={`min-h-screen w-full font-sans overflow-x-hidden relative transition-colors duration-700 ease-in-out ${
       isDark ? 'bg-[#2A0A0A] text-white' : 'bg-[#EEF2F3] text-[#4A3B32]'
     }`}>
       
       <NavigationSidebar isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
-      <FixedSidebar onOpenMenu={() => setIsMenuOpen(true)} />
+      <FixedSidebar isDark={isDark} onOpenMenu={() => setIsMenuOpen(true)} />
 
-      {/* Main Wrapper (pl-0 for mobile, pl-24 for desktop) */}
       <main className="relative w-full pl-0 md:pl-24">
         
-        {/* --- MOBILE HEADER (Only visible on mobile) --- */}
+        {/* --- MOBILE HEADER --- */}
         <div className="md:hidden flex justify-between items-center px-6 py-4 border-b border-gray-200 dark:border-white/10 relative z-30">
              <div className="flex items-center gap-4">
-                 {/* Mobile Menu Icon */}
                  <button onClick={() => setIsMenuOpen(true)} className={`p-1 ${isDark ? 'text-white' : 'text-gray-800'}`}>
                     <Menu size={24} />
                  </button>
                  <img src={LOCAL_ASSETS.logo} alt="Logo" className="h-8 w-auto object-contain" />
              </div>
-             {/* Mobile Theme Toggle */}
              <button 
                 onClick={toggleTheme} 
                 className={`p-2 rounded-full border transition-all duration-300 ${
@@ -322,7 +312,7 @@ const ContactPage = () => {
              </button>
         </div>
 
-        {/* --- DESKTOP HEADER (Theme Toggle Only) --- */}
+        {/* --- DESKTOP HEADER --- */}
         <header className="hidden md:flex absolute top-0 left-0 w-full z-20 pl-36 pr-12 py-6 justify-end items-center pointer-events-none">
           <button 
             onClick={toggleTheme} 
@@ -340,17 +330,16 @@ const ContactPage = () => {
         {/* --- Header & Map Section --- */}
         <section className="relative w-full flex flex-col">
             
-            {/* Title Section */}
             <div className={`px-8 pt-6 pb-8 md:px-16 flex justify-between items-end transition-colors duration-500 ${
                 isDark ? 'bg-[#2A0A0A]' : 'bg-[#EEF2F3]'
             }`}>
                 <div>
-                    {/* Updated subtitle color */}
-                    <h2 className={`text-sm font-medium uppercase tracking-wide mb-1 opacity-80 ${
+                    {/* Changed to font-oswald */}
+                    <h2 className={`text-sm font-oswald font-medium uppercase tracking-wide mb-1 opacity-80 ${
                         isDark ? 'text-white/80' : 'text-[#4A3B32]/80'
                     }`}>Contact form</h2>
-                    {/* Updated title color */}
-                    <h1 className={`text-3xl md:text-5xl font-serif font-bold tracking-tight ${
+                    {/* Changed to font-oswald */}
+                    <h1 className={`text-3xl md:text-5xl font-oswald font-bold tracking-tight ${
                         isDark ? 'text-white' : 'text-[#4A3B32]'
                     }`}>
                         GET IN TOUCH
@@ -380,13 +369,11 @@ const ContactPage = () => {
             </div>
         </section>
 
-        {/* --- Split Content Section (Contact Form) --- */}
+        {/* --- Split Content Section --- */}
         <section className="w-full max-w-7xl mx-auto px-6 md:px-12 py-16 md:py-24">
             <div className="flex flex-col lg:flex-row gap-12 lg:gap-24 items-start">
             
-            {/* Left: Building Image */}
             <div className="w-full lg:w-1/2">
-                {/* Updated border color */}
                 <div className={`border p-2 inline-block w-full transition-colors duration-500 ${
                     isDark ? 'border-white' : 'border-[#4A3B32]'
                 }`}>
@@ -398,13 +385,11 @@ const ContactPage = () => {
                 </div>
             </div>
 
-            {/* Right: Form Section */}
             <div className="w-full lg:w-1/2 relative pt-8 lg:pt-0">
                 
-                {/* Background Watermark */}
                 <div className="absolute -top-10 right-0 select-none pointer-events-none overflow-hidden z-0">
-                {/* Updated watermark color */}
-                <span className={`text-[100px] md:text-[180px] font-serif leading-none transition-opacity duration-500 ${
+                {/* Changed to font-playfair (elegant backdrop) */}
+                <span className={`text-[100px] md:text-[180px] font-playfair leading-none transition-opacity duration-500 ${
                     isDark ? 'text-white opacity-10' : 'text-[#E3E8EA] opacity-60'
                 }`}>
                     hello
@@ -412,19 +397,19 @@ const ContactPage = () => {
                 </div>
 
                 <div className="relative z-10">
-                {/* Updated form title color */}
-                <h2 className={`text-2xl md:text-4xl font-serif font-bold mb-6 tracking-tight transition-colors duration-500 ${
+                {/* Changed to font-oswald */}
+                <h2 className={`text-2xl md:text-4xl font-oswald font-bold mb-6 tracking-tight transition-colors duration-500 ${
                     isDark ? 'text-white' : 'text-[#4A3B32]'
                 }`}>
                     GET IN TOUCH
                 </h2>
                 
-                {/* Updated divider line color */}
                 <div className={`w-12 h-0.5 mb-6 transition-colors duration-500 ${
                     isDark ? 'bg-white' : 'bg-[#4A3B32]'
                 }`}></div>
 
-                <p className={`mb-12 max-w-md leading-relaxed transition-colors duration-500 ${
+                {/* Changed to font-playfair */}
+                <p className={`mb-12 max-w-md leading-relaxed font-playfair transition-colors duration-500 ${
                     isDark ? 'text-[#EBEBE6]/70' : 'text-gray-600'
                 }`}>
                     Share a few details about your project, and our team will get back to you shortly.
@@ -433,12 +418,13 @@ const ContactPage = () => {
                 <form onSubmit={handleSubmit} className="space-y-10 max-w-md">
                     
                     <div className="group">
-                    {/* Updated label color */}
-                    <label htmlFor="email" className={`block text-sm font-semibold mb-1 transition-colors duration-500 ${
+                    {/* Changed to font-oswald (mini heading) */}
+                    <label htmlFor="email" className={`block text-sm font-oswald font-semibold mb-1 transition-colors duration-500 ${
                         isDark ? 'text-white' : 'text-[#4A3B32]'
                     }`}>
                         Email*
                     </label>
+                    {/* Changed to font-playfair (user text) */}
                     <input
                         type="email"
                         id="email"
@@ -446,7 +432,7 @@ const ContactPage = () => {
                         required
                         value={formData.email}
                         onChange={handleChange}
-                        className={`w-full bg-transparent border-b py-2 outline-none transition-colors duration-300 ${
+                        className={`w-full bg-transparent border-b py-2 outline-none font-playfair transition-colors duration-300 ${
                             isDark 
                                 ? 'border-[#4A2521] focus:border-white text-[#EBEBE6]' 
                                 : 'border-gray-300 focus:border-[#4A3B32] text-[#4A3B32]'
@@ -455,11 +441,13 @@ const ContactPage = () => {
                     </div>
 
                     <div className="group">
-                    <label htmlFor="phone" className={`block text-sm font-semibold mb-1 transition-colors duration-500 ${
+                    {/* Changed to font-oswald */}
+                    <label htmlFor="phone" className={`block text-sm font-oswald font-semibold mb-1 transition-colors duration-500 ${
                         isDark ? 'text-white' : 'text-[#4A3B32]'
                     }`}>
                         Phone*
                     </label>
+                    {/* Changed to font-playfair */}
                     <input
                         type="tel"
                         id="phone"
@@ -467,7 +455,7 @@ const ContactPage = () => {
                         required
                         value={formData.phone}
                         onChange={handleChange}
-                        className={`w-full bg-transparent border-b py-2 outline-none transition-colors duration-300 ${
+                        className={`w-full bg-transparent border-b py-2 outline-none font-playfair transition-colors duration-300 ${
                             isDark 
                                 ? 'border-[#4A2521] focus:border-white text-[#EBEBE6]' 
                                 : 'border-gray-300 focus:border-[#4A3B32] text-[#4A3B32]'
@@ -476,18 +464,20 @@ const ContactPage = () => {
                     </div>
 
                     <div className="group">
-                    <label htmlFor="message" className={`block text-sm font-semibold mb-1 transition-colors duration-500 ${
+                    {/* Changed to font-oswald */}
+                    <label htmlFor="message" className={`block text-sm font-oswald font-semibold mb-1 transition-colors duration-500 ${
                         isDark ? 'text-white' : 'text-[#4A3B32]'
                     }`}>
                         Message
                     </label>
+                    {/* Changed to font-playfair */}
                     <textarea
                         id="message"
                         name="message"
                         rows={1}
                         value={formData.message}
                         onChange={handleChange}
-                        className={`w-full bg-transparent border-b py-2 outline-none resize-none transition-colors duration-300 min-h-[40px] ${
+                        className={`w-full bg-transparent border-b py-2 outline-none resize-none font-playfair transition-colors duration-300 min-h-[40px] ${
                             isDark 
                                 ? 'border-[#4A2521] focus:border-white text-[#EBEBE6]' 
                                 : 'border-gray-300 focus:border-[#4A3B32] text-[#4A3B32]'
@@ -495,9 +485,10 @@ const ContactPage = () => {
                     />
                     </div>
 
+                    {/* Changed to font-oswald */}
                     <button 
                     type="submit" 
-                    className={`mt-8 flex items-center justify-center px-8 py-4 border text-sm font-medium transition-all duration-300 shadow-sm ${
+                    className={`mt-8 flex items-center justify-center px-8 py-4 border text-sm font-oswald font-medium transition-all duration-300 shadow-sm ${
                         isDark 
                             ? 'bg-[#4A2521] border-white/30 hover:bg-white hover:text-[#2A0A0A] text-[#EBEBE6]' 
                             : 'bg-[#F5F7F8] border-gray-200 hover:border-[#4A3B32] hover:bg-white text-[#4A3B32]'

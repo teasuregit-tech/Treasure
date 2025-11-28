@@ -157,7 +157,8 @@ const Footer = () => {
           <div className="space-y-4">
             <h3 className="text-base font-bold uppercase tracking-widest font-oswald text-white">About</h3>
             <p className="text-sm text-[#EBEBE6]/60 leading-relaxed font-light max-w-xs">
-              Treasure provides superior architecture and sophisticated living. Built to provide a trouble-free experience.
+              This is property showcase done in a clean and
+contemporary manner. We built Treasure to provide you with a trouble-free website setup and managing, and to let you have fun along the way.
             </p>
           </div>
 

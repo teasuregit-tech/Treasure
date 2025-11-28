@@ -268,104 +268,116 @@ const StatsSection = ({ isDark }: { isDark: boolean }) => {
   );
 };
 
-type GalleryItem = {
-  id: number;
-  src: string;
-  title: string;
-  category: string;
-  height: string;
-};
+// 
+// 
+// 
+// 
 
 const GALLERY_ITEMS = [
   {
     id: 1,
-    src: "/assets/images/masterbed.jpg" ,
-    title: "Master Suite",
-    category: "Bedroom",
-    height: "flex-1" 
+    src: "/assets/images/masterbed2.jpg",
+    title: "Sample Flat Master Bedroom",
+    category: "Private Quarters",
+    colSpan: "md:col-span-5" // Narrow (Left Top)
   },
   {
     id: 2,
-    src: "/assets/images/guestbedroom.jpg" ,
-    title: "Guest Room",
-    category: "Bedroom",
-    height: "h-64 md:h-1/3" 
+    src: "/assets/images/guestbedroom.jpg",
+    title: "Guest Bedroom",
+    category: "Private Quarters",
+    colSpan: "md:col-span-7" // Wide (Right Top)
   },
   {
     id: 3,
-    src: "/assets/images/living4.jpg" ,
-    title: "Living & Dining",
-    category: "Living Area",
-    height: "h-64 md:h-full" 
+    src: "/assets/images/living4.jpg",
+    title: "Living Dining",
+    category: "Social Spaces",
+    colSpan: "md:col-span-7" // Wide (Left Bottom)
   },
   {
     id: 4,
-    src: "/assets/images/living.jpg" ,
-    title: "Living & Dining",
-    category: "Living Area",
-    height: "h-64 md:h-1/2" 
-  },
-  {
-    id: 5,
-    src: "/assets/images/living3.jpg" ,
-    title: "Hall",
-    category: "Living Area",
-    height: "flex-1" 
-  },
+    src: "/assets/images/living.jpg",
+    title: "Living Dining",
+    category: "Social Spaces",
+    colSpan: "md:col-span-5" // Narrow (Right Bottom)
+  }
 ];
 
-const GalleryCard = ({ item, className }: { item: GalleryItem, className?: string }) => (
-  <div className={`relative group overflow-hidden bg-stone-200 cursor-pointer ${item.height} ${className}`}>
+const GalleryCard = ({ item }) => (
+  <div className={`relative group overflow-hidden bg-stone-200 cursor-pointer ${item.colSpan} h-[300px] md:h-[400px]`}>
+    {/* Image with Zoom Effect */}
     <img 
       src={item.src} 
       alt={item.title}
       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" 
     />
+    
+    {/* Dark Overlay on Hover */}
     <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-500" />
+    
+    {/* Slide-up Content Panel */}
     <div className="absolute bottom-0 left-0 w-full bg-black p-4 md:p-6 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-in-out">
-      <p className="text-[10px] text-white/70 uppercase tracking-widest mb-1 font-sans">
+      {/* Category: Playfair (Text) */}
+      <p className="text-[10px] text-white/70 uppercase tracking-widest mb-1 font-playfair italic">
         {item.category}
       </p>
-      <h4 className="text-white font-playfair text-lg md:text-xl uppercase tracking-wide">
+      {/* Title: Oswald (Heading) */}
+      <h4 className="text-white font-oswald text-lg md:text-xl uppercase tracking-wide">
         {item.title}
       </h4>
     </div>
   </div>
 );
 
-const GallerySection = () => (
-  <section className="relative py-24 pb-32 px-6 bg-white dark:bg-[#2A0A0A] transition-colors duration-700">
-    <div className="absolute top-0 left-1/2 -translate-x-1/2 text-[4rem] sm:text-[6rem] md:text-[10rem] xl:text-[12rem] opacity-5 pointer-events-none font-playfair font-bold whitespace-nowrap dark:text-white dark:opacity-[0.05]">
-      Gallery
-    </div>
-    
-    <div className="text-center mb-16 relative z-10">
-       <h2 className="font-playfair text-2xl md:text-3xl uppercase tracking-widest mb-2 dark:text-white">Visualize Your Future Home</h2>
-       <p className="text-stone-500 dark:text-white/60 italic text-sm">A collection of renders showcasing the architectural brilliance of Treasure.</p>
-    </div>
+const GallerySection = () => {
+  return (
+    <section className="relative py-24 px-4 sm:px-6 bg-white dark:bg-[#1a1a1a] transition-colors duration-700">
+      
+      {/* Font Imports */}
+      <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap');
+        .font-oswald { font-family: 'Oswald', sans-serif; }
+        .font-playfair { font-family: 'Playfair Display', serif; }
+      `}</style>
 
-    {/* Responsive Grid: Stacks on mobile, columns on desktop */}
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-[1600px] mx-auto md:h-[600px] mb-16">
-       <div className="md:col-span-1 h-[400px] md:h-full flex flex-col gap-4">
-          <GalleryCard item={GALLERY_ITEMS[0]} />
-          <GalleryCard item={GALLERY_ITEMS[1]} />
-       </div>
-       <div className="md:col-span-1 h-[300px] md:h-full">
-          <GalleryCard item={GALLERY_ITEMS[2]} />
-       </div>
-       <div className="md:col-span-1 h-[400px] md:h-full flex flex-col gap-4">
-          <GalleryCard item={GALLERY_ITEMS[3]} />
-          <GalleryCard item={GALLERY_ITEMS[4]} />
-       </div>
-    </div>
-  </section>
-);
+      {/* Decorative Background Text */}
+      <div className="absolute top-10 left-1/4 -translate-x-1/2 text-[15vw] leading-none opacity-[0.03] pointer-events-none font-playfair font-bold whitespace-nowrap dark:text-white select-none">
+        Gallery
+      </div>
+      
+      {/* Section Header */}
+      <div className="text-center mb-16 relative z-10 max-w-3xl mx-auto">
+         {/* Main Heading: Oswald */}
+         <h2 className="font-oswald text-3xl md:text-4xl lg:text-5xl uppercase tracking-widest mb-4 text-black dark:text-white">
+           Visualize Your Future Home
+         </h2>
+         <div className="w-24 h-[1px] bg-stone-400 mx-auto mb-6"></div>
+         {/* Body Text: Playfair */}
+         <p className="font-playfair text-stone-600 dark:text-stone-300 italic text-base md:text-lg">
+           A curated collection of renders showcasing the architectural brilliance of Treasure.
+         </p>
+      </div>
+
+      {/* Grid Layout - Responsive Asymmetrical Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-3 max-w-[1600px] mx-auto">
+         {GALLERY_ITEMS.map((item) => (
+           <GalleryCard key={item.id} item={item} />
+         ))}
+      </div>
+
+      {/* Footer CTA */}
+      
+
+    </section>
+  );
+};
 
 const BlogSection = () => {
   const posts = [
-    { id: 1, category: "Design", date: "June 10, 2024", title: "WARM LUXURY", image: "/assets/images/living5.jpg", excerpt: "Exploring the nuances of warm tones in modern interiors." },
-    { id: 2, category: "Lifestyle", date: "June 9, 2024", title: "A GUIDE TO ELEGANCE", image: "/assets/images/17-2.jpg", excerpt: "How to curate a lifestyle that reflects architectural beauty." },
-    { id: 3, category: "Architecture", date: "June 8, 2024", title: "A CALM AFTERNOON", image: "/assets/images/daughtersroom1.jpg", excerpt: "The importance of natural light in creating calming spaces." },
+    { id: 1, category: "Design", date: "June 10, 2024", title: "WARM LUXURY", image: "/assets/images/masterbed2.jpg", excerpt: "Exploring the nuances of warm tones in modern interiors." },
+    { id: 2, category: "Lifestyle", date: "June 9, 2024", title: "A GUIDE TO ELEGANCE", image: "/assets/images/living4.jpg", excerpt: "How to curate a lifestyle that reflects architectural beauty." },
+    { id: 3, category: "Architecture", date: "June 8, 2024", title: "A CALM AFTERNOON", image: "/assets/images/image2.png", excerpt: "The importance of natural light in creating calming spaces." },
   ];
 
   return (
@@ -535,7 +547,8 @@ const Footer = () => {
           <div className="space-y-4">
             <h3 className="text-base font-bold uppercase tracking-widest font-oswald text-white">About</h3>
             <p className="text-sm text-[#EBEBE6]/60 leading-relaxed font-light max-w-xs">
-              Treasure provides superior architecture and sophisticated living. Built to provide a trouble-free experience.
+              This is property showcase done in a clean and
+contemporary manner. We built Treasure to provide you with a trouble-free website setup and managing, and to let you have fun along the way.
             </p>
           </div>
 

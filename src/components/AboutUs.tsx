@@ -55,13 +55,12 @@ const NavigationSidebar = React.memo(({ isOpen, onClose }: { isOpen: boolean; on
               isDark ? 'bg-[#2A0A0A]/95 border-[#4A2521]' : 'bg-[#F9F9F7]/95 border-stone-200'
             }`}
           >
+            {/* HEADER */}
             <div className={`flex justify-between items-center p-6 md:p-8 border-b ${isDark ? 'border-[#4A2521]' : 'border-stone-200'}`}>
                 <div className="flex flex-col">
-                    {/* Changed text-[#D4AF37] to text-white */}
                     <span className={`text-2xl md:text-3xl font-serif font-bold tracking-widest ${isDark ? 'text-white' : 'text-stone-800'}`}>TREASURE</span>
                     <span className={`text-[10px] tracking-[0.3em] uppercase ${isDark ? 'text-white/60' : 'text-stone-500'}`}>Menu</span>
                 </div>
-                {/* Changed border/text colors to white in dark mode */}
                 <button 
                   onClick={onClose} 
                   className={`p-2 rounded-full border transition-colors group ${isDark ? 'border-white/30 hover:bg-white/10 text-white' : 'border-stone-300 hover:bg-stone-200 text-stone-800'}`}
@@ -70,21 +69,30 @@ const NavigationSidebar = React.memo(({ isOpen, onClose }: { isOpen: boolean; on
                 </button>
             </div>
             
+            {/* LINKS */}
             <div className="flex-1 flex flex-col justify-center px-8 md:px-12 space-y-6">
                 {MENU_ITEMS.map(item => (
                     <Link 
                       key={item.label} 
                       to={item.href} 
                       onClick={onClose} 
-                      // Changed text colors to white and hover:text-white
                       className={`group flex items-center justify-between text-xl md:text-3xl font-serif transition-colors ${isDark ? 'text-white/60 hover:text-white' : 'text-stone-400 hover:text-stone-800'}`}
                     >
                         {item.label} 
-                        {/* Arrow remains gold as an accent, or can be white. Keeping gold as subtle accent, or change to white if preferred. Changed to white for consistency with prompt. */}
                         <ArrowRight className={`opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-500 ${isDark ? 'text-white' : 'text-[#D4AF37]'}`} size={20} />
                     </Link>
                 ))}
             </div>
+
+            {/* MOBILE FOOTER (Added Secondary Logo Here) */}
+            <div className={`p-8 border-t ${isDark ? 'border-[#4A2521]' : 'border-stone-200'}`}>
+                <img 
+                  src="/assets/images/katewa-logo.png" 
+                  alt="Katewa Group" 
+                  className={`w-12 h-auto object-contain opacity-80 ${isDark ? 'brightness-0 invert' : ''}`} 
+                />
+            </div>
+
           </motion.div>
         </>
       )}
@@ -101,7 +109,6 @@ const FixedSidebar = React.memo(({ onOpenMenu }: { onOpenMenu: () => void }) => 
       <div className="flex flex-col items-center w-full pt-8 gap-10">
         <button onClick={onOpenMenu} aria-label="Open Menu" className="group p-2">
             <div className="space-y-1.5">
-                {/* Changed bg-[#D4AF37] to bg-white for menu lines */}
                 <span className={`block w-8 h-0.5 group-hover:w-6 transition-all duration-300 ${isDark ? 'bg-white' : 'bg-gray-800'}`}></span>
                 <span className={`block w-5 h-0.5 group-hover:w-8 transition-all duration-300 ${isDark ? 'bg-white' : 'bg-gray-800'}`}></span>
             </div>
@@ -117,11 +124,11 @@ const FixedSidebar = React.memo(({ onOpenMenu }: { onOpenMenu: () => void }) => 
       </div>
 
       <div className="w-full flex flex-col items-center">
+        {/* DESKTOP Secondary Logo */}
         <div className="mb-6 opacity-80 hover:opacity-100 transition-opacity">
             <img 
               src="/assets/images/katewa-logo.png" 
-              alt="Secondary Logo" 
-              // Changed w-8 to w-10 for increased size
+              alt="Katewa Group" 
               className={`w-12 h-auto object-contain ${isDark ? 'brightness-0 invert' : ''}`} 
             />
           </div>
@@ -164,8 +171,9 @@ const Footer = () => {
           {/* COLUMN 1 */}
           <div className="space-y-4">
             <h3 className="text-base font-bold uppercase tracking-widest font-oswald text-white">About</h3>
-            <p className="text-sm text-[#EBEBE6]/60 leading-relaxed font-light max-w-xs">
-              Treasure provides superior architecture and sophisticated living. Built to provide a trouble-free experience.
+            <p className="text-sm text-[#EBEBE6]/60 leading-relaxed font-light max-w-xs ">
+              This is property showcase done in a clean and
+contemporary manner. We built Treasure to provide you with a trouble-free website setup and managing, and to let you have fun along the way.
             </p>
           </div>
 
@@ -474,15 +482,39 @@ const AboutUsPage: React.FC = () => {
         </section>
 
         {/* VALUES SECTION */}
-        <section className={`w-full py-16 md:py-24 relative overflow-hidden transition-colors duration-700 ${isDark ? 'bg-black' : 'bg-[#2C1A16]'}`}>
+        <section className="w-full py-16 md:py-24 relative overflow-hidden group">
+          
+          {/* --- BACKGROUND IMAGE START --- */}
+          <img 
+            src="/assets/images/dpattern.jpg"  // <--- PUT YOUR IMAGE PATH HERE
+            alt="Background" 
+            className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+          />
+          
+          {/* Dark Overlay (adjust opacity 'bg-black/80' if image is too bright) */}
+          <div className="absolute inset-0 bg-black/10 z-0" />
+          {/* --- BACKGROUND IMAGE END --- */}
+
           <div className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-12 relative z-10">
             {values.map((item) => (
               <div key={item.id} className="relative flex flex-col items-center text-center group">
-                <span className="absolute -top-10 left-1/2 -translate-x-1/2 text-8xl md:text-9xl font-serif text-white/5 font-bold select-none pointer-events-none">{item.id}</span>
-                <h3 className="text-white text-xs font-bold tracking-[0.15em] uppercase mb-4 mt-8">{item.title}</h3>
-                {/* Keep divider gold as accent? Changed to white/50 based on "remove gold" instruction. */}
+                {/* Number */}
+                <span className="absolute -top-10 left-1/2 -translate-x-1/2 text-8xl md:text-9xl font-playfair text-white/10 font-bold select-none pointer-events-none">
+                  {item.id}
+                </span>
+                
+                {/* Title (moved down with mt-16 as requested) */}
+                <h3 className="text-white text-xs font-bold tracking-[0.15em] uppercase mb-4 mt-16">
+                  {item.title}
+                </h3>
+                
+                {/* Divider */}
                 <div className="w-8 h-px bg-white/50 mb-4" />
-                <p className="text-gray-400 text-xs leading-6 max-w-[250px] font-light">{item.desc}</p>
+                
+                {/* Description */}
+                <p className="text-gray-400 text-xs leading-6 max-w-[250px] font-playfair">
+                  {item.desc}
+                </p>
               </div>
             ))}
           </div>

@@ -28,8 +28,8 @@ const services = [
 
 const galleryImages = [
   { src: "/assets/images/daughtersroom1.jpg", alt: "Modern Interior Kitchen Detail" },
-  { src: "/assets/images/17-2.jpg", alt: "Unique Architectural Balconies" },
-  { src: "/assets/images/21-2.jpg", alt: "Textured Interior Wall Feature" },
+  { src: "/assets/images/living3.jpg", alt: "Unique Architectural Balconies" },
+  { src: "/assets/images/image2.png", alt: "Textured Interior Wall Feature" },
   { src: "/assets/images/living.jpg", alt: "Exterior Apartment Building at Dusk" }
 ];
 
@@ -206,7 +206,8 @@ const Footer = () => {
           <div className="space-y-4">
             <h3 className="text-base font-bold uppercase tracking-widest font-oswald text-white">About</h3>
             <p className="text-sm text-[#EBEBE6]/60 leading-relaxed font-light max-w-xs">
-              Treasure provides superior architecture and sophisticated living. Built to provide a trouble-free experience.
+             This is property showcase done in a clean and
+contemporary manner. We built Treasure to provide you with a trouble-free website setup and managing, and to let you have fun along the way.
             </p>
           </div>
 
@@ -476,9 +477,9 @@ const OurServicesPage = () => {
             decoding="async" 
           />
           <div className="absolute inset-0 bg-black/20 flex flex-col justify-end items-start text-left text-white px-6 md:px-16 pb-12 md:pb-16">
-            <h2 className="font-serif text-4xl md:text-6xl mb-4">Our Services</h2>
+            <h2 className="font-oswald text-4xl md:text-6xl mb-4">Our Services</h2>
             <div className="w-12 h-[1px] bg-white/80 mb-6"></div>
-            <p className="max-w-lg text-base md:text-xl font-light leading-relaxed tracking-wide text-white/90">
+            <p className="max-w-lg text-base md:text-xl font-playfair leading-relaxed tracking-wide text-white/90">
                 Crafted solutions shaped by precision and purpose.
             </p>
           </div>
@@ -493,10 +494,10 @@ const OurServicesPage = () => {
                             {/* Changed background number color */}
                             <span className={`font-serif text-[100px] md:text-[120px] leading-none opacity-60 transition-colors duration-500 ${isDark ? 'text-white/10' : 'text-[#DCCFC5]'}`}>{service.id}</span>
                         </div>
-                        <div className="relative z-10 pt-12 pl-4">
+                        <div className="relative z-10 pt-20 pl-4">
                             {/* Updated service title color */}
-                            <h3 className={`font-bold tracking-[0.15em] uppercase text-sm md:text-base mb-6 leading-relaxed max-w-[80%] transition-colors duration-500 ${isDark ? 'text-white' : 'text-[#5D4037]'}`}>{service.title}</h3>
-                            <p className={`text-sm leading-relaxed font-light max-w-xs transition-colors duration-500 ${isDark ? 'text-[#EBEBE6]/70' : 'text-gray-600'}`}>{service.description}</p>
+                            <h3 className={`font-bold font-oswald tracking-[0.15em] uppercase text-sm md:text-base mb-6 leading-relaxed max-w-[80%] transition-colors duration-500 ${isDark ? 'text-white' : 'text-[#5D4037]'}`}>{service.title}</h3>
+                            <p className={`text-sm leading-relaxed font-playfair max-w-xs transition-colors duration-500 ${isDark ? 'text-[#EBEBE6]/70' : 'text-gray-600'}`}>{service.description}</p>
                         </div>
                     </div>
                 ))}
@@ -517,10 +518,12 @@ const OurServicesPage = () => {
                 </div>
                 <div className="flex flex-col justify-center pl-2 md:pl-8">
                     {/* Updated section title color */}
-                    <h2 className={`text-2xl md:text-4xl font-semibold tracking-widest uppercase mb-6 leading-tight transition-colors duration-500 ${isDark ? 'text-white' : 'text-[#5D4037]'}`}>Material & Vendor <br /> Coordination</h2>
+                    <h2 className={`text-2xl md:text-4xl font-semibold font-oswald tracking-widest uppercase mb-6 leading-tight transition-colors duration-500 ${isDark ? 'text-white' : 'text-[#5D4037]'}`}>Material & Brands <br /> </h2>
                     {/* Updated divider line color */}
                     <div className={`w-12 h-[2px] mb-8 transition-colors duration-500 ${isDark ? 'bg-white/50' : 'bg-[#DCCFC5]'}`}></div>
-                    <p className={`text-base md:text-lg font-light leading-relaxed mb-10 max-w-md transition-colors duration-500 ${isDark ? 'text-[#EBEBE6]/80' : 'text-gray-600'}`}>Premium write-up about curated selections, sourcing, supplier communication ensuring the highest quality standards are met for every project.</p>
+                    <p className={`text-base md:text-lg font-playfair leading-relaxed mb-10 max-w-md transition-colors duration-500 ${isDark ? 'text-[#EBEBE6]/80' : 'text-gray-600'}`}>Materials shape a home’s soul. We choose them the way curators choose art, for truth, texture, and reliability.
+From Jaquar and Kohler fittings to Kajaria stone, Saint-Gobain glass, Asian Paints, Havells, and UltraTech, each brand reflects our commitment to quality.
+Every surface tells a story of intention.Every choice is made to ensure that your home feels as good as it looks, years after it is built.</p>
                     <div>
                     {/* Updated CTA Button styles */}
                     <button className={`group flex items-center gap-4 px-8 py-4 border bg-transparent transition-all duration-300 ${isDark ? 'border-white/50 hover:border-white hover:bg-white/10' : 'border-gray-300 hover:border-[#5D4037] hover:bg-white'}`}>
