@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { 
   ChevronLeft, X, Sun, Moon, Phone, MapPin, User, Settings, PenTool, 
-  ArrowRight, Mail, Facebook, Twitter, Linkedin, Youtube, Play 
-} from 'lucide-react';
+  ArrowRight, Mail, Facebook, Twitter, Linkedin, Youtube, Play, Menu 
+} from 'lucide-react'; 
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { useTheme } from './ThemeContext';
@@ -37,23 +37,23 @@ const testimonials = [
   {
     id: 1,
     quote: "Working with the team was seamless from day one. Their clarity, precision, and refined design approach elevated our entire project.",
-    author: "REBECCA BONFAAR",
+    author: "Aarti Sharma",
     role: "CEO",
-    image: "/images/testimonials/rebecca.jpg"
+    image: "/assets/images/person2.png"
   },
   {
     id: 2,
     quote: "They transformed our vision into a reality that exceeded our expectations. The attention to material detail was unparalleled.",
-    author: "JAMES CALDWELL",
+    author: "Sanjay Mehta",
     role: "Property Developer",
-    image: "/images/testimonials/james.jpg"
+    image: "/assets/images/person.png"
   },
   {
     id: 3,
     quote: "The project management was flawless. They coordinated complex vendor schedules perfectly, delivering on time without compromising quality.",
-    author: "ELARA VANCE",
+    author: "Rukmani Sinha",
     role: "Managing Director, Horizon Stay",
-    image: "/images/testimonials/elara.jpg"
+    image: "/assets/images/person3.png"
   }
 ];
 
@@ -86,20 +86,22 @@ const NavigationSidebar = React.memo(({ isOpen, onClose }: { isOpen: boolean; on
             animate={{ x: 0 }} 
             exit={{ x: '-100%' }} 
             transition={{ type: 'tween', duration: 0.5 }} 
-            className={`fixed top-0 left-0 h-full w-full md:w-1/4 z-[70] shadow-2xl flex flex-col border-r backdrop-blur-md transition-colors duration-500 ${
+            className={`fixed top-0 left-0 h-full w-[85%] md:w-1/4 z-[70] shadow-2xl flex flex-col border-r backdrop-blur-md transition-colors duration-500 ${
               isDark ? 'bg-[#2A0A0A]/95 border-[#4A2521]' : 'bg-[#F9F9F7]/95 border-stone-200'
             }`}
           >
-            <div className={`flex justify-between items-center p-8 border-b ${isDark ? 'border-[#4A2521]' : 'border-stone-200'}`}>
+            <div className={`flex justify-between items-center p-6 md:p-8 border-b ${isDark ? 'border-[#4A2521]' : 'border-stone-200'}`}>
                 <div className="flex flex-col">
-                    <span className={`text-3xl font-serif font-bold tracking-widest ${isDark ? 'text-[#D4AF37]' : 'text-stone-800'}`}>TREASURE</span>
-                    <span className={`text-[10px] tracking-[0.3em] uppercase ${isDark ? 'text-[#D4AF37]/60' : 'text-stone-500'}`}>Menu</span>
+                    {/* Changed gold to white */}
+                    <span className={`text-2xl md:text-3xl font-serif font-bold tracking-widest ${isDark ? 'text-white' : 'text-stone-800'}`}>TREASURE</span>
+                    <span className={`text-[10px] tracking-[0.3em] uppercase ${isDark ? 'text-white/60' : 'text-stone-500'}`}>Menu</span>
                 </div>
+                {/* Updated close button colors */}
                 <button 
                   onClick={onClose} 
-                  className={`p-2 rounded-full border transition-colors group ${isDark ? 'border-[#D4AF37]/30 hover:bg-[#D4AF37]/10 text-[#D4AF37]' : 'border-stone-300 hover:bg-stone-200 text-stone-800'}`}
+                  className={`p-2 rounded-full border transition-colors group ${isDark ? 'border-white/30 hover:bg-white/10 text-white' : 'border-stone-300 hover:bg-stone-200 text-stone-800'}`}
                 >
-                    <X size={24} className="group-hover:rotate-90 transition-transform duration-300" />
+                    <X size={20} className="group-hover:rotate-90 transition-transform duration-300" />
                 </button>
             </div>
             
@@ -109,10 +111,12 @@ const NavigationSidebar = React.memo(({ isOpen, onClose }: { isOpen: boolean; on
                       key={item.label} 
                       to={item.href} 
                       onClick={onClose} 
-                      className={`group flex items-center justify-between text-2xl md:text-3xl font-serif transition-colors ${isDark ? 'text-[#EBEBE6]/60 hover:text-[#D4AF37]' : 'text-stone-400 hover:text-stone-800'}`}
+                      // Updated link text colors and hover states
+                      className={`group flex items-center justify-between text-xl md:text-3xl font-serif transition-colors ${isDark ? 'text-[#EBEBE6]/60 hover:text-white' : 'text-stone-400 hover:text-stone-800'}`}
                     >
                         {item.label} 
-                        <ArrowRight className="opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-500 text-[#D4AF37]" size={24} />
+                        {/* Updated Arrow icon color */}
+                        <ArrowRight className={`opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-500 ${isDark ? 'text-white' : 'text-[#D4AF37]'}`} size={20} />
                     </Link>
                 ))}
             </div>
@@ -126,26 +130,20 @@ const NavigationSidebar = React.memo(({ isOpen, onClose }: { isOpen: boolean; on
 const FixedSidebar = React.memo(({ onOpenMenu }: { onOpenMenu: () => void }) => {
   const { isDark, toggleTheme } = useTheme();
   return (
-    <aside className={`fixed top-0 left-0 h-screen w-24 z-50 flex flex-col justify-between items-center border-r shadow-sm transition-colors duration-500 ${isDark ? 'bg-[#2A0A0A] border-[#4A2521]' : 'bg-white border-gray-100'}`}>
+    <aside className={`hidden md:flex fixed top-0 left-0 h-screen w-24 z-50 flex-col justify-between items-center border-r shadow-sm transition-colors duration-500 ${isDark ? 'bg-[#2A0A0A] border-[#4A2521]' : 'bg-white border-gray-100'}`}>
       
       {/* Top: Menu & Theme Toggle */}
       <div className="flex flex-col items-center w-full pt-8 gap-10">
         <button onClick={onOpenMenu} aria-label="Open Menu" className="group p-2">
             <div className="space-y-1.5">
-                <span className={`block w-8 h-0.5 group-hover:w-6 transition-all duration-300 ${isDark ? 'bg-[#D4AF37]' : 'bg-gray-800'}`}></span>
-                <span className={`block w-5 h-0.5 group-hover:w-8 transition-all duration-300 ${isDark ? 'bg-[#D4AF37]' : 'bg-gray-800'}`}></span>
+                {/* Updated menu icon lines to white */}
+                <span className={`block w-8 h-0.5 group-hover:w-6 transition-all duration-300 ${isDark ? 'bg-white' : 'bg-gray-800'}`}></span>
+                <span className={`block w-5 h-0.5 group-hover:w-8 transition-all duration-300 ${isDark ? 'bg-white' : 'bg-gray-800'}`}></span>
             </div>
         </button>
         
-        <button 
-          onClick={toggleTheme} 
-          aria-label="Toggle Dark Mode" 
-          className={`p-3 rounded-full transition-all duration-300 ${
-            isDark ? 'bg-white/10 text-[#D4AF37] hover:bg-white/20' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-          }`}
-        >
-          {isDark ? <Sun size={20} /> : <Moon size={20} />}
-        </button>
+        {/* Updated toggle button colors */}
+        
 
         <Link to="/" className="opacity-90 hover:opacity-100 transition-opacity">
             <img 
@@ -155,8 +153,16 @@ const FixedSidebar = React.memo(({ onOpenMenu }: { onOpenMenu: () => void }) => 
             />
         </Link>
       </div>
-
+      
       <div className="w-full flex flex-col items-center">
+        <div className="mb-6 opacity-80 hover:opacity-100 transition-opacity">
+            <img 
+              src="/assets/images/katewa-logo.png" 
+              alt="Secondary Logo" 
+              // Changed w-8 to w-10 for increased size
+              className={`w-12 h-auto object-contain ${isDark ? 'brightness-0 invert' : ''}`} 
+            />
+          </div>
           <Link 
             to="/contact" 
             className="w-full h-48 bg-[#3E2723] text-white flex items-center justify-center hover:bg-[#2C1A16] transition-colors"
@@ -193,7 +199,6 @@ const Footer = () => {
       <div className="absolute inset-0 bg-gradient-to-b from-[#2C1A16]/95 to-[#1A0B09]/98 z-0" />
 
       {/* --- MAIN CONTENT --- */}
-      {/* Reduced py-20 to py-10 */}
       <div className="relative z-10 max-w-7xl mx-auto px-6 py-10 lg:py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10">
           
@@ -215,7 +220,7 @@ const Footer = () => {
               </li>
               <li className="flex items-center gap-3">
                 <Mail size={14} className="text-white/40" />
-                <span>katewacompanies@gmail.com</span>
+                <span className="break-all">katewacompanies@gmail.com</span>
               </li>
               <li className="flex items-start gap-3">
                 <MapPin size={14} className="text-white/40 mt-1" />
@@ -256,7 +261,6 @@ const Footer = () => {
             <div className="space-y-3">
               <div className="relative border-b border-[#EBEBE6]/20">
                 <Mail size={14} className="absolute left-0 top-2.5 text-white/40" />
-                {/* Reduced padding */}
                 <input 
                   type="email" 
                   placeholder="Email Address" 
@@ -280,7 +284,6 @@ const Footer = () => {
       </div>
 
       {/* --- BOTTOM BAR --- */}
-      {/* Reduced height and removed redundant info */}
       <div className="bg-[#1A0B09] py-4 border-t border-[#EBEBE6]/5 relative z-10">
         <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4">
           
@@ -293,7 +296,6 @@ const Footer = () => {
              <span className="text-xs text-[#EBEBE6]/30 uppercase tracking-wider">© 2025 Treasure</span>
           </div>
 
-          {/* Simple footer links */}
           <div className="flex gap-6 text-xs text-[#EBEBE6]/40">
              <Link to="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>
              <Link to="/terms" className="hover:text-white transition-colors">Terms of Use</Link>
@@ -319,7 +321,8 @@ const TestimonialsSlider = () => {
   const currentTestimonial = testimonials[activeTestimonialIndex];
 
   return (
-    <div className={`mt-16 relative py-12 border-t min-h-[400px] transition-colors duration-500 ${isDark ? 'border-[#D4AF37]/20' : 'border-gray-200/50'}`}>
+    // Updated border colors
+    <div className={`mt-16 relative py-12 border-t min-h-[400px] transition-colors duration-500 ${isDark ? 'border-white/20' : 'border-gray-200/50'}`}>
       <div className="flex flex-col md:flex-row items-center md:items-start justify-between gap-8 md:gap-16">
           <div className="flex-1 relative w-full">
               <AnimatePresence mode='wait'>
@@ -341,9 +344,10 @@ const TestimonialsSlider = () => {
                         />
                       </div>
                       <div className="max-w-2xl text-center md:text-left z-10">
+                          {/* Updated text colors */}
                           <p className={`font-serif text-xl md:text-3xl leading-tight mb-8 transition-colors duration-500 ${isDark ? 'text-[#EBEBE6]' : 'text-[#4A3B32]'}`}>"{currentTestimonial.quote}"</p>
                           <div>
-                          <h4 className={`font-bold tracking-[0.15em] uppercase text-sm transition-colors duration-500 ${isDark ? 'text-[#D4AF37]' : 'text-[#5D4037]'}`}>{currentTestimonial.author}</h4>
+                          <h4 className={`font-bold tracking-[0.15em] uppercase text-sm transition-colors duration-500 ${isDark ? 'text-white' : 'text-[#5D4037]'}`}>{currentTestimonial.author}</h4>
                           <p className={`text-xs tracking-wider uppercase mt-1 transition-colors duration-500 ${isDark ? 'text-[#EBEBE6]/60' : 'text-gray-500'}`}>{currentTestimonial.role}</p>
                           </div>
                       </div>
@@ -351,10 +355,12 @@ const TestimonialsSlider = () => {
               </AnimatePresence>
           </div>
           <div className="hidden md:flex gap-4 h-full pt-4">
-               <div className={`w-[1px] h-32 transition-colors duration-500 ${isDark ? 'bg-[#D4AF37]/30' : 'bg-[#DCCFC5]'}`}></div>
-                <div className={`flex flex-col gap-2 font-serif text-sm leading-none transition-colors duration-500 ${isDark ? 'text-[#D4AF37]/30' : 'text-[#DCCFC5]'}`}>
+               {/* Updated vertical line color */}
+               <div className={`w-[1px] h-32 transition-colors duration-500 ${isDark ? 'bg-white/30' : 'bg-[#DCCFC5]'}`}></div>
+                <div className={`flex flex-col gap-2 font-serif text-sm leading-none transition-colors duration-500 ${isDark ? 'text-white/30' : 'text-[#DCCFC5]'}`}>
                     {testimonials.map((_, index) => (
-                        <span key={index} className={`transition-colors duration-500 ${index === activeTestimonialIndex ? (isDark ? 'text-[#D4AF37] font-bold' : 'text-[#5D4037] font-bold') : ''}`}>0{index + 1}</span>
+                        // Updated active state color
+                        <span key={index} className={`transition-colors duration-500 ${index === activeTestimonialIndex ? (isDark ? 'text-white font-bold' : 'text-[#5D4037] font-bold') : ''}`}>0{index + 1}</span>
                     ))}
                 </div>
           </div>
@@ -363,13 +369,12 @@ const TestimonialsSlider = () => {
   );
 };
 
-// UPDATED: GalleryItem with click handler
 const GalleryItem = React.memo(({ image, isDark, onClick }: { image: any, isDark: boolean, onClick: () => void }) => (
   <div className="h-full w-full cursor-pointer group overflow-hidden" onClick={onClick}>
       <img 
         src={image.src} 
         alt={image.alt} 
-        className="w-full h-[350px] md:h-[450px] object-cover block transition-transform duration-700 group-hover:scale-105" 
+        className="w-full h-[300px] md:h-[450px] object-cover block transition-transform duration-700 group-hover:scale-105" 
         loading="lazy" 
         decoding="async"
         style={{ contentVisibility: 'auto' }} 
@@ -387,7 +392,8 @@ const OurServicesPage = () => {
   const bgShapeClass = `absolute bottom-0 left-0 w-[40%] h-[40%] transform -skew-x-12 -translate-x-20 translate-y-20 z-0 pointer-events-none transition-colors duration-700 will-change-transform ${isDark ? 'bg-[#4A2521] opacity-10' : 'bg-white opacity-50'}`;
 
   return (
-    <div className={`min-h-screen w-full font-sans relative transition-colors duration-700 ease-in-out ${isDark ? 'bg-[#2A0A0A] text-[#D4AF37]' : 'bg-[#F9F9F7] text-[#4A3B32]'}`}>
+    // Updated Main Theme color
+    <div className={`min-h-screen w-full font-sans relative transition-colors duration-700 ease-in-out ${isDark ? 'bg-[#2A0A0A] text-white' : 'bg-[#F9F9F7] text-[#4A3B32]'}`}>
       <NavigationSidebar isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
       <FixedSidebar onOpenMenu={() => setIsMenuOpen(true)} />
 
@@ -422,16 +428,38 @@ const OurServicesPage = () => {
         )}
       </AnimatePresence>
 
-      <main className="relative w-full pl-24 overflow-hidden">
+      <main className="relative w-full pl-0 md:pl-24 overflow-hidden">
         <div className={bgShapeClass} />
         
-        <header className="absolute top-0 left-0 w-full z-20 pl-36 pr-12 py-6 flex justify-end items-center">
+        {/* --- MOBILE HEADER --- */}
+        <div className="md:hidden flex justify-between items-center px-6 py-4 border-b border-gray-200 dark:border-white/10 z-50 relative">
+             <div className="flex items-center gap-4">
+                 {/* Updated menu button color */}
+                 <button onClick={() => setIsMenuOpen(true)} className={`p-1 ${isDark ? 'text-white' : 'text-gray-800'}`}>
+                    <Menu size={24} />
+                 </button>
+                 <img src="/assets/images/logo.png" alt="Logo" className="h-8 w-auto object-contain" />
+             </div>
+             {/* Updated mobile theme toggle */}
+             <button 
+                onClick={toggleTheme} 
+                className={`p-2 rounded-full border transition-all duration-300 ${
+                    isDark ? 'border-white text-white' : 'border-gray-300 text-gray-600'
+                }`}
+             >
+                {isDark ? <Sun size={18} /> : <Moon size={18} />}
+             </button>
+        </div>
+
+        {/* --- DESKTOP HEADER (Theme Toggle Only) --- */}
+        <header className="hidden md:flex absolute top-0 left-0 w-full z-20 pl-36 pr-12 py-6 justify-end items-center">
+          {/* Updated desktop theme toggle to be white in dark mode */}
           <button 
             onClick={toggleTheme} 
             aria-label="Toggle Dark Mode" 
             className={`p-3 rounded-full border transition-all duration-300 backdrop-blur-md shadow-sm ${
               isDark 
-                ? 'bg-black/40 border-[#D4AF37] text-[#D4AF37] hover:bg-[#D4AF37]/20' 
+                ? 'bg-black/40 border-white text-white hover:bg-white/20' 
                 : 'bg-white/20 border-white text-white hover:bg-white/30'
             }`}
           >
@@ -440,32 +468,34 @@ const OurServicesPage = () => {
         </header>
 
         {/* Hero Section */}
-        <div className="relative w-full h-[60vh] md:h-[500px] overflow-hidden group mb-12">
+        <div className="relative w-full h-[50vh] md:h-[500px] overflow-hidden group mb-12">
           <img 
             src="/assets/images/vdn.jpg" 
             alt="Services" 
             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 brightness-75 will-change-transform" 
             decoding="async" 
           />
-          <div className="absolute inset-0 bg-black/20 flex flex-col justify-end items-start text-left text-white px-6 md:px-16 pb-16">
-  <h2 className="font-serif text-5xl md:text-6xl mb-4">Our Services</h2>
-  <div className="w-12 h-[1px] bg-white/80 mb-6"></div>
-  <p className="max-w-lg text-lg md:text-xl font-light leading-relaxed tracking-wide text-white/90">
-    Crafted solutions shaped by precision and purpose.
-  </p>
-</div>
+          <div className="absolute inset-0 bg-black/20 flex flex-col justify-end items-start text-left text-white px-6 md:px-16 pb-12 md:pb-16">
+            <h2 className="font-serif text-4xl md:text-6xl mb-4">Our Services</h2>
+            <div className="w-12 h-[1px] bg-white/80 mb-6"></div>
+            <p className="max-w-lg text-base md:text-xl font-light leading-relaxed tracking-wide text-white/90">
+                Crafted solutions shaped by precision and purpose.
+            </p>
+          </div>
         </div>
 
         {/* Top Content Container */}
         <div className="relative z-10 px-6 md:px-12 max-w-7xl mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8 pb-24">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8 pb-16 md:pb-24">
                 {services.map(service => (
                     <div key={service.id} className="relative mt-10 md:mt-0 group">
                         <div className="absolute -top-14 -left-2 select-none z-0 pointer-events-none will-change-transform">
-                            <span className={`font-serif text-[120px] leading-none opacity-60 transition-colors duration-500 ${isDark ? 'text-[#D4AF37]/10' : 'text-[#DCCFC5]'}`}>{service.id}</span>
+                            {/* Changed background number color */}
+                            <span className={`font-serif text-[100px] md:text-[120px] leading-none opacity-60 transition-colors duration-500 ${isDark ? 'text-white/10' : 'text-[#DCCFC5]'}`}>{service.id}</span>
                         </div>
                         <div className="relative z-10 pt-12 pl-4">
-                            <h3 className={`font-bold tracking-[0.15em] uppercase text-sm md:text-base mb-6 leading-relaxed max-w-[80%] transition-colors duration-500 ${isDark ? 'text-[#D4AF37]' : 'text-[#5D4037]'}`}>{service.title}</h3>
+                            {/* Updated service title color */}
+                            <h3 className={`font-bold tracking-[0.15em] uppercase text-sm md:text-base mb-6 leading-relaxed max-w-[80%] transition-colors duration-500 ${isDark ? 'text-white' : 'text-[#5D4037]'}`}>{service.title}</h3>
                             <p className={`text-sm leading-relaxed font-light max-w-xs transition-colors duration-500 ${isDark ? 'text-[#EBEBE6]/70' : 'text-gray-600'}`}>{service.description}</p>
                         </div>
                     </div>
@@ -474,24 +504,28 @@ const OurServicesPage = () => {
 
             <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-center pb-24">
                 <div className="relative">
-                    <div className={`border p-1 transition-colors duration-500 ${isDark ? 'border-[#D4AF37]' : 'border-[#5D4037]'}`}>
+                    {/* Updated image border */}
+                    <div className={`border p-1 transition-colors duration-500 ${isDark ? 'border-white' : 'border-[#5D4037]'}`}>
                     <img 
                         src="/assets/images/living3.jpg"
                         alt="Interior" 
-                        className="w-full h-[400px] md:h-[500px] object-cover" 
+                        className="w-full h-[300px] md:h-[500px] object-cover" 
                         loading="lazy" 
                         decoding="async" 
                     />
                     </div>
                 </div>
                 <div className="flex flex-col justify-center pl-2 md:pl-8">
-                    <h2 className={`text-3xl md:text-4xl font-semibold tracking-widest uppercase mb-6 leading-tight transition-colors duration-500 ${isDark ? 'text-[#D4AF37]' : 'text-[#5D4037]'}`}>Material & Vendor <br /> Coordination</h2>
-                    <div className={`w-12 h-[2px] mb-8 transition-colors duration-500 ${isDark ? 'bg-[#D4AF37]/50' : 'bg-[#DCCFC5]'}`}></div>
+                    {/* Updated section title color */}
+                    <h2 className={`text-2xl md:text-4xl font-semibold tracking-widest uppercase mb-6 leading-tight transition-colors duration-500 ${isDark ? 'text-white' : 'text-[#5D4037]'}`}>Material & Vendor <br /> Coordination</h2>
+                    {/* Updated divider line color */}
+                    <div className={`w-12 h-[2px] mb-8 transition-colors duration-500 ${isDark ? 'bg-white/50' : 'bg-[#DCCFC5]'}`}></div>
                     <p className={`text-base md:text-lg font-light leading-relaxed mb-10 max-w-md transition-colors duration-500 ${isDark ? 'text-[#EBEBE6]/80' : 'text-gray-600'}`}>Premium write-up about curated selections, sourcing, supplier communication ensuring the highest quality standards are met for every project.</p>
                     <div>
-                    <button className={`group flex items-center gap-4 px-8 py-4 border bg-transparent transition-all duration-300 ${isDark ? 'border-[#D4AF37]/50 hover:border-[#D4AF37] hover:bg-[#D4AF37]/10' : 'border-gray-300 hover:border-[#5D4037] hover:bg-white'}`}>
-                        <span className={`font-serif italic text-lg transition-colors duration-300 ${isDark ? 'text-[#EBEBE6]/60 group-hover:text-[#D4AF37]' : 'text-gray-400 group-hover:text-[#5D4037]'}`}>i</span>
-                        <span className={`uppercase tracking-widest text-xs font-medium transition-colors duration-300 ${isDark ? 'text-[#EBEBE6] group-hover:text-[#D4AF37]' : 'text-gray-600 group-hover:text-[#5D4037]'}`}>Send Us a Message</span>
+                    {/* Updated CTA Button styles */}
+                    <button className={`group flex items-center gap-4 px-8 py-4 border bg-transparent transition-all duration-300 ${isDark ? 'border-white/50 hover:border-white hover:bg-white/10' : 'border-gray-300 hover:border-[#5D4037] hover:bg-white'}`}>
+                        <span className={`font-serif italic text-lg transition-colors duration-300 ${isDark ? 'text-[#EBEBE6]/60 group-hover:text-white' : 'text-gray-400 group-hover:text-[#5D4037]'}`}>i</span>
+                        <span className={`uppercase tracking-widest text-xs font-medium transition-colors duration-300 ${isDark ? 'text-[#EBEBE6] group-hover:text-white' : 'text-gray-600 group-hover:text-[#5D4037]'}`}>Send Us a Message</span>
                     </button>
                     </div>
                 </div>
@@ -499,7 +533,6 @@ const OurServicesPage = () => {
         </div>
 
         {/* FULL WIDTH GALLERY SECTION */}
-        {/* Removed max-w restriction for full width effect, and reduced bottom padding */}
         <div className="w-full mt-0 pb-12">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
                 {galleryImages.map((image, index) => (

@@ -43,20 +43,23 @@ const NavigationSidebar = React.memo(({ isOpen, onClose }: { isOpen: boolean; on
             animate={{ x: 0 }} 
             exit={{ x: '-100%' }} 
             transition={{ type: 'tween', duration: 0.5 }} 
-            className={`fixed top-0 left-0 h-full w-full md:w-1/4 z-[70] shadow-2xl flex flex-col border-r backdrop-blur-md transition-colors duration-500 ${
+            // Width adjustment: w-[85%] mobile, md:w-1/4 desktop
+            className={`fixed top-0 left-0 h-full w-[85%] md:w-1/4 z-[70] shadow-2xl flex flex-col border-r backdrop-blur-md transition-colors duration-500 ${
               isDark ? 'bg-[#2A0A0A]/95 border-[#4A2521]' : 'bg-[#F9F9F7]/95 border-stone-200'
             }`}
           >
-            <div className={`flex justify-between items-center p-8 border-b ${isDark ? 'border-[#4A2521]' : 'border-stone-200'}`}>
+            <div className={`flex justify-between items-center p-6 md:p-8 border-b ${isDark ? 'border-[#4A2521]' : 'border-stone-200'}`}>
                 <div className="flex flex-col">
-                    <span className={`text-3xl font-serif font-bold tracking-widest ${isDark ? 'text-[#D4AF37]' : 'text-stone-800'}`}>TREASURE</span>
-                    <span className={`text-[10px] tracking-[0.3em] uppercase ${isDark ? 'text-[#D4AF37]/60' : 'text-stone-500'}`}>Menu</span>
+                    {/* Changed gold to white */}
+                    <span className={`text-2xl md:text-3xl font-serif font-bold tracking-widest ${isDark ? 'text-white' : 'text-stone-800'}`}>TREASURE</span>
+                    <span className={`text-[10px] tracking-[0.3em] uppercase ${isDark ? 'text-white/60' : 'text-stone-500'}`}>Menu</span>
                 </div>
+                {/* Updated close button to white */}
                 <button 
                   onClick={onClose} 
-                  className={`p-2 rounded-full border transition-colors group ${isDark ? 'border-[#D4AF37]/30 hover:bg-[#D4AF37]/10 text-[#D4AF37]' : 'border-stone-300 hover:bg-stone-200 text-stone-800'}`}
+                  className={`p-2 rounded-full border transition-colors group ${isDark ? 'border-white/30 hover:bg-white/10 text-white' : 'border-stone-300 hover:bg-stone-200 text-stone-800'}`}
                 >
-                    <X size={24} className="group-hover:rotate-90 transition-transform duration-300" />
+                    <X size={20} className="group-hover:rotate-90 transition-transform duration-300" />
                 </button>
             </div>
             
@@ -66,10 +69,12 @@ const NavigationSidebar = React.memo(({ isOpen, onClose }: { isOpen: boolean; on
                       key={item.label} 
                       to={item.href} 
                       onClick={onClose} 
-                      className={`group flex items-center justify-between text-2xl md:text-3xl font-serif transition-colors ${isDark ? 'text-[#EBEBE6]/60 hover:text-[#D4AF37]' : 'text-stone-400 hover:text-stone-800'}`}
+                      // Updated link hover colors to white
+                      className={`group flex items-center justify-between text-xl md:text-3xl font-serif transition-colors ${isDark ? 'text-[#EBEBE6]/60 hover:text-white' : 'text-stone-400 hover:text-stone-800'}`}
                     >
                         {item.label} 
-                        <ArrowRight className="opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-500 text-[#D4AF37]" size={24} />
+                        {/* Updated arrow color to white */}
+                        <ArrowRight className={`opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-500 ${isDark ? 'text-white' : 'text-[#D4AF37]'}`} size={20} />
                     </Link>
                 ))}
             </div>
@@ -80,43 +85,55 @@ const NavigationSidebar = React.memo(({ isOpen, onClose }: { isOpen: boolean; on
   );
 });
 
-const FixedSidebar = React.memo(({ onOpenMenu }: { onOpenMenu: () => void }) => {
-  const { isDark, toggleTheme } = useTheme();
+// Added 'hidden md:flex' to hide sidebar on mobile
+const FixedSidebar = ({ isDark, onOpenMenu }: { isDark: boolean, onOpenMenu: () => void }) => {
   return (
-    <aside className={`fixed top-0 left-0 h-screen w-24 z-50 flex flex-col justify-between items-center border-r shadow-sm transition-colors duration-500 ${isDark ? 'bg-[#2A0A0A] border-[#4A2521]' : 'bg-white border-gray-100'}`}>
-      
-      {/* Top: Menu, Toggle, Logo */}
-      <div className="flex flex-col items-center w-full pt-8 gap-10">
+    <aside className={`hidden md:flex fixed top-0 left-0 h-screen w-24 z-50 flex-col justify-between items-center border-r shadow-sm transition-colors duration-500 ${
+      isDark ? 'bg-[#2A0A0A] border-white/10' : 'bg-white border-gray-100'
+    }`}>
+      {/* Top: Hamburger & Main Logo */}
+      <div className="flex flex-col items-center w-full pt-8 gap-12">
         <button onClick={onOpenMenu} aria-label="Open Menu" className="group p-2">
-            <div className="space-y-1.5">
-                <span className={`block w-8 h-0.5 group-hover:w-6 transition-all duration-300 ${isDark ? 'bg-[#D4AF37]' : 'bg-gray-800'}`}></span>
-                <span className={`block w-5 h-0.5 group-hover:w-8 transition-all duration-300 ${isDark ? 'bg-[#D4AF37]' : 'bg-gray-800'}`}></span>
-            </div>
+          <div className="space-y-1.5">
+            <span className={`block w-8 h-0.5 group-hover:w-6 transition-all duration-300 ${isDark ? 'bg-white' : 'bg-stone-800'}`}></span>
+            <span className={`block w-5 h-0.5 group-hover:w-8 transition-all duration-300 ${isDark ? 'bg-white' : 'bg-stone-800'}`}></span>
+          </div>
         </button>
         
-        
-
-        <Link to="/" className="opacity-90 hover:opacity-100 transition-opacity">
-            <img 
-              src={LOCAL_ASSETS.logo} 
-              alt="Treasure Logo" 
-              className="w-12 h-auto object-contain" 
-            />
+        <Link to="/" className="group hover:opacity-80 transition-opacity">
+          <img 
+            src="/assets/images/logo.png" 
+            alt="Treasure Logo" 
+            className="w-12 h-auto object-contain"
+          />
         </Link>
       </div>
 
-      {/* Bottom: Enquiry */}
+      {/* Bottom: Secondary Logo & Enquiry Link */}
       <div className="w-full flex flex-col items-center">
+          
+          {/* --- NEW LOGO ABOVE ENQUIRY (Increased Size) --- */}
+          <div className="mb-6 opacity-80 hover:opacity-100 transition-opacity">
+            <img 
+              src="/assets/images/katewa-logo.png" 
+              alt="Secondary Logo" 
+              // Changed w-8 to w-10 for increased size
+              className={`w-12 h-auto object-contain ${isDark ? 'brightness-0 invert' : ''}`} 
+            />
+          </div>
+
           <Link 
             to="/contact" 
             className="w-full h-48 bg-[#3E2723] text-white flex items-center justify-center hover:bg-[#2C1A16] transition-colors"
           >
-              <span className="text-xs font-bold tracking-[0.25em] uppercase [writing-mode:vertical-lr] rotate-180">Make an Enquiry</span>
+              <span className="text-xs font-bold tracking-[0.25em] uppercase [writing-mode:vertical-lr] rotate-180">
+                Make an Enquiry
+              </span>
           </Link>
       </div>
     </aside>
   );
-});
+};
 
 const SocialIcon = ({ icon }: { icon: React.ReactNode }) => (
   <a href="#" className="w-10 h-10 rounded-full bg-[#1A0B09] flex items-center justify-center text-white/70 hover:bg-white hover:text-[#4A2521] transition-all duration-300">
@@ -137,11 +154,9 @@ const Footer = () => {
         />
       </div>
       
-      {/* Darker Overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-[#2C1A16]/95 to-[#1A0B09]/98 z-0" />
 
       {/* --- MAIN CONTENT --- */}
-      {/* Reduced py-20 to py-10 */}
       <div className="relative z-10 max-w-7xl mx-auto px-6 py-10 lg:py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10">
           
@@ -163,7 +178,7 @@ const Footer = () => {
               </li>
               <li className="flex items-center gap-3">
                 <Mail size={14} className="text-white/40" />
-                <span>katewacompanies@gmail.com</span>
+                <span className="break-all">katewacompanies@gmail.com</span>
               </li>
               <li className="flex items-start gap-3">
                 <MapPin size={14} className="text-white/40 mt-1" />
@@ -204,7 +219,6 @@ const Footer = () => {
             <div className="space-y-3">
               <div className="relative border-b border-[#EBEBE6]/20">
                 <Mail size={14} className="absolute left-0 top-2.5 text-white/40" />
-                {/* Reduced padding */}
                 <input 
                   type="email" 
                   placeholder="Email Address" 
@@ -228,7 +242,6 @@ const Footer = () => {
       </div>
 
       {/* --- BOTTOM BAR --- */}
-      {/* Reduced height and removed redundant info */}
       <div className="bg-[#1A0B09] py-4 border-t border-[#EBEBE6]/5 relative z-10">
         <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4">
           
@@ -241,7 +254,6 @@ const Footer = () => {
              <span className="text-xs text-[#EBEBE6]/30 uppercase tracking-wider">© 2025 Treasure</span>
           </div>
 
-          {/* Simple footer links */}
           <div className="flex gap-6 text-xs text-[#EBEBE6]/40">
              <Link to="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>
              <Link to="/terms" className="hover:text-white transition-colors">Terms of Use</Link>
@@ -263,7 +275,7 @@ const ContactPage = () => {
   });
   
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { isDark, toggleTheme } = useTheme(); // Destructure toggleTheme
+  const { isDark, toggleTheme } = useTheme();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -279,25 +291,45 @@ const ContactPage = () => {
   };
 
   return (
+    // Updated Main Theme color (Gold to White)
     <div className={`min-h-screen w-full font-sans overflow-x-hidden relative transition-colors duration-700 ease-in-out ${
-      isDark ? 'bg-[#2A0A0A] text-[#D4AF37]' : 'bg-[#EEF2F3] text-[#4A3B32]'
+      isDark ? 'bg-[#2A0A0A] text-white' : 'bg-[#EEF2F3] text-[#4A3B32]'
     }`}>
       
       <NavigationSidebar isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
       <FixedSidebar onOpenMenu={() => setIsMenuOpen(true)} />
 
-      {/* Main Wrapper (pl-24 for sidebar) */}
-      <main className="relative w-full pl-24">
+      {/* Main Wrapper (pl-0 for mobile, pl-24 for desktop) */}
+      <main className="relative w-full pl-0 md:pl-24">
         
-        {/* --- UPDATED HEADER --- */}
-        {/* Replaced Back Link with Theme Toggle */}
-        <header className="absolute top-0 left-0 w-full z-20 pl-36 pr-12 py-6 flex justify-end items-center pointer-events-none">
+        {/* --- MOBILE HEADER (Only visible on mobile) --- */}
+        <div className="md:hidden flex justify-between items-center px-6 py-4 border-b border-gray-200 dark:border-white/10 relative z-30">
+             <div className="flex items-center gap-4">
+                 {/* Mobile Menu Icon */}
+                 <button onClick={() => setIsMenuOpen(true)} className={`p-1 ${isDark ? 'text-white' : 'text-gray-800'}`}>
+                    <Menu size={24} />
+                 </button>
+                 <img src={LOCAL_ASSETS.logo} alt="Logo" className="h-8 w-auto object-contain" />
+             </div>
+             {/* Mobile Theme Toggle */}
+             <button 
+                onClick={toggleTheme} 
+                className={`p-2 rounded-full border transition-all duration-300 ${
+                    isDark ? 'border-white text-white' : 'border-gray-300 text-gray-600'
+                }`}
+             >
+                {isDark ? <Sun size={18} /> : <Moon size={18} />}
+             </button>
+        </div>
+
+        {/* --- DESKTOP HEADER (Theme Toggle Only) --- */}
+        <header className="hidden md:flex absolute top-0 left-0 w-full z-20 pl-36 pr-12 py-6 justify-end items-center pointer-events-none">
           <button 
             onClick={toggleTheme} 
             aria-label="Toggle Dark Mode" 
             className={`pointer-events-auto p-3 rounded-full border transition-all duration-300 backdrop-blur-md shadow-sm ${
               isDark 
-                ? 'bg-black/40 border-[#D4AF37] text-[#D4AF37] hover:bg-[#D4AF37]/20' 
+                ? 'bg-black/40 border-white text-white hover:bg-white/20' 
                 : 'bg-white border-gray-300 text-[#4A3B32] hover:bg-white/30'
             }`}
           >
@@ -313,11 +345,13 @@ const ContactPage = () => {
                 isDark ? 'bg-[#2A0A0A]' : 'bg-[#EEF2F3]'
             }`}>
                 <div>
+                    {/* Updated subtitle color */}
                     <h2 className={`text-sm font-medium uppercase tracking-wide mb-1 opacity-80 ${
-                        isDark ? 'text-[#D4AF37]/80' : 'text-[#4A3B32]/80'
+                        isDark ? 'text-white/80' : 'text-[#4A3B32]/80'
                     }`}>Contact form</h2>
-                    <h1 className={`text-4xl md:text-5xl font-serif font-bold tracking-tight ${
-                        isDark ? 'text-[#D4AF37]' : 'text-[#4A3B32]'
+                    {/* Updated title color */}
+                    <h1 className={`text-3xl md:text-5xl font-serif font-bold tracking-tight ${
+                        isDark ? 'text-white' : 'text-[#4A3B32]'
                     }`}>
                         GET IN TOUCH
                     </h1>
@@ -325,7 +359,7 @@ const ContactPage = () => {
             </div>
 
             {/* Map Container */}
-            <div className="w-full h-[400px] md:h-[500px] relative bg-gray-200 overflow-hidden group border-y border-white/10">
+            <div className="w-full h-[300px] md:h-[500px] relative bg-gray-200 overflow-hidden group border-y border-white/10">
             <iframe 
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d227748.3825624477!2d75.65046970685324!3d26.88544791796718!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396c4adf4c57e281%3A0xce1c63a0cf22e09!2sJaipur%2C%20Rajasthan!5e0!3m2!1sen!2sin!4v1684489245621!5m2!1sen!2sin" 
                 width="100%" 
@@ -347,18 +381,19 @@ const ContactPage = () => {
         </section>
 
         {/* --- Split Content Section (Contact Form) --- */}
-        <section className="w-full max-w-7xl mx-auto px-4 py-16 md:py-24">
+        <section className="w-full max-w-7xl mx-auto px-6 md:px-12 py-16 md:py-24">
             <div className="flex flex-col lg:flex-row gap-12 lg:gap-24 items-start">
             
             {/* Left: Building Image */}
             <div className="w-full lg:w-1/2">
+                {/* Updated border color */}
                 <div className={`border p-2 inline-block w-full transition-colors duration-500 ${
-                    isDark ? 'border-[#D4AF37]' : 'border-[#4A3B32]'
+                    isDark ? 'border-white' : 'border-[#4A3B32]'
                 }`}>
                 <img 
                     src={LOCAL_ASSETS.building}
                     alt="Modern Apartment Building" 
-                    className="w-full h-[400px] md:h-[600px] object-cover shadow-lg filter sepia-[0.2]"
+                    className="w-full h-[300px] md:h-[600px] object-cover shadow-lg filter sepia-[0.2]"
                 />
                 </div>
             </div>
@@ -368,22 +403,25 @@ const ContactPage = () => {
                 
                 {/* Background Watermark */}
                 <div className="absolute -top-10 right-0 select-none pointer-events-none overflow-hidden z-0">
-                <span className={`text-[120px] md:text-[180px] font-serif leading-none transition-opacity duration-500 ${
-                    isDark ? 'text-[#D4AF37] opacity-10' : 'text-[#E3E8EA] opacity-60'
+                {/* Updated watermark color */}
+                <span className={`text-[100px] md:text-[180px] font-serif leading-none transition-opacity duration-500 ${
+                    isDark ? 'text-white opacity-10' : 'text-[#E3E8EA] opacity-60'
                 }`}>
                     hello
                 </span>
                 </div>
 
                 <div className="relative z-10">
-                <h2 className={`text-3xl md:text-4xl font-serif font-bold mb-6 tracking-tight transition-colors duration-500 ${
-                    isDark ? 'text-[#D4AF37]' : 'text-[#4A3B32]'
+                {/* Updated form title color */}
+                <h2 className={`text-2xl md:text-4xl font-serif font-bold mb-6 tracking-tight transition-colors duration-500 ${
+                    isDark ? 'text-white' : 'text-[#4A3B32]'
                 }`}>
                     GET IN TOUCH
                 </h2>
                 
+                {/* Updated divider line color */}
                 <div className={`w-12 h-0.5 mb-6 transition-colors duration-500 ${
-                    isDark ? 'bg-[#D4AF37]' : 'bg-[#4A3B32]'
+                    isDark ? 'bg-white' : 'bg-[#4A3B32]'
                 }`}></div>
 
                 <p className={`mb-12 max-w-md leading-relaxed transition-colors duration-500 ${
@@ -395,8 +433,9 @@ const ContactPage = () => {
                 <form onSubmit={handleSubmit} className="space-y-10 max-w-md">
                     
                     <div className="group">
+                    {/* Updated label color */}
                     <label htmlFor="email" className={`block text-sm font-semibold mb-1 transition-colors duration-500 ${
-                        isDark ? 'text-[#D4AF37]' : 'text-[#4A3B32]'
+                        isDark ? 'text-white' : 'text-[#4A3B32]'
                     }`}>
                         Email*
                     </label>
@@ -409,7 +448,7 @@ const ContactPage = () => {
                         onChange={handleChange}
                         className={`w-full bg-transparent border-b py-2 outline-none transition-colors duration-300 ${
                             isDark 
-                                ? 'border-[#4A2521] focus:border-[#D4AF37] text-[#EBEBE6]' 
+                                ? 'border-[#4A2521] focus:border-white text-[#EBEBE6]' 
                                 : 'border-gray-300 focus:border-[#4A3B32] text-[#4A3B32]'
                         }`}
                     />
@@ -417,7 +456,7 @@ const ContactPage = () => {
 
                     <div className="group">
                     <label htmlFor="phone" className={`block text-sm font-semibold mb-1 transition-colors duration-500 ${
-                        isDark ? 'text-[#D4AF37]' : 'text-[#4A3B32]'
+                        isDark ? 'text-white' : 'text-[#4A3B32]'
                     }`}>
                         Phone*
                     </label>
@@ -430,7 +469,7 @@ const ContactPage = () => {
                         onChange={handleChange}
                         className={`w-full bg-transparent border-b py-2 outline-none transition-colors duration-300 ${
                             isDark 
-                                ? 'border-[#4A2521] focus:border-[#D4AF37] text-[#EBEBE6]' 
+                                ? 'border-[#4A2521] focus:border-white text-[#EBEBE6]' 
                                 : 'border-gray-300 focus:border-[#4A3B32] text-[#4A3B32]'
                         }`}
                     />
@@ -438,7 +477,7 @@ const ContactPage = () => {
 
                     <div className="group">
                     <label htmlFor="message" className={`block text-sm font-semibold mb-1 transition-colors duration-500 ${
-                        isDark ? 'text-[#D4AF37]' : 'text-[#4A3B32]'
+                        isDark ? 'text-white' : 'text-[#4A3B32]'
                     }`}>
                         Message
                     </label>
@@ -450,7 +489,7 @@ const ContactPage = () => {
                         onChange={handleChange}
                         className={`w-full bg-transparent border-b py-2 outline-none resize-none transition-colors duration-300 min-h-[40px] ${
                             isDark 
-                                ? 'border-[#4A2521] focus:border-[#D4AF37] text-[#EBEBE6]' 
+                                ? 'border-[#4A2521] focus:border-white text-[#EBEBE6]' 
                                 : 'border-gray-300 focus:border-[#4A3B32] text-[#4A3B32]'
                         }`}
                     />
@@ -460,12 +499,12 @@ const ContactPage = () => {
                     type="submit" 
                     className={`mt-8 flex items-center justify-center px-8 py-4 border text-sm font-medium transition-all duration-300 shadow-sm ${
                         isDark 
-                            ? 'bg-[#4A2521] border-[#D4AF37]/30 hover:bg-[#D4AF37] hover:text-[#2A0A0A] text-[#EBEBE6]' 
+                            ? 'bg-[#4A2521] border-white/30 hover:bg-white hover:text-[#2A0A0A] text-[#EBEBE6]' 
                             : 'bg-[#F5F7F8] border-gray-200 hover:border-[#4A3B32] hover:bg-white text-[#4A3B32]'
                     }`}
                     >
                     <Mail className={`w-4 h-4 mr-3 ${
-                        isDark ? 'text-[#D4AF37]' : 'text-gray-400'
+                        isDark ? 'text-white' : 'text-gray-400'
                     }`} />
                     Send Us A Message
                     </button>

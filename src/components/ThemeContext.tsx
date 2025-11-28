@@ -8,28 +8,29 @@ type ThemeContextType = {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
-  // Initialize state based on localStorage or system preference
-  const [isDark, setIsDark] = useState(() => {
-    // Check if running in browser to avoid build errors if SSR
+  const [isDark, setIsDark] = useState(false); // default always light
+
+  // Load saved theme AFTER client-side hydration
+  useEffect(() => {
     if (typeof window !== 'undefined') {
-      const savedTheme = localStorage.getItem('theme');
-      // If user has a saved preference, use it
-      if (savedTheme) {
-        return savedTheme === 'dark';
+      const saved = localStorage.getItem('theme');
+
+      if (saved === 'dark') {
+        setIsDark(true);
+        document.documentElement.classList.add('dark');
+      } else {
+        setIsDark(false);
+        document.documentElement.classList.remove('dark');
       }
-      // Otherwise check system preference
-      return window.matchMedia('(prefers-color-scheme: dark)').matches;
     }
-    return false;
-  });
+  }, []);
 
   useEffect(() => {
-    const root = window.document.documentElement;
     if (isDark) {
-      root.classList.add('dark');
+      document.documentElement.classList.add('dark');
       localStorage.setItem('theme', 'dark');
     } else {
-      root.classList.remove('dark');
+      document.documentElement.classList.remove('dark');
       localStorage.setItem('theme', 'light');
     }
   }, [isDark]);
@@ -43,7 +44,6 @@ export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
   );
 };
 
-// Custom hook to use the theme in any component
 export const useTheme = () => {
   const context = useContext(ThemeContext);
   if (context === undefined) {
