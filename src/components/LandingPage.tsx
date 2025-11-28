@@ -277,7 +277,7 @@ const GALLERY_ITEMS = [
   {
     id: 1,
     src: "/assets/images/masterbed2.jpg",
-    title: "Sample Flat Master Bedroom",
+    title: " Master Bedroom",
     category: "Private Quarters",
     colSpan: "md:col-span-5" // Narrow (Left Top)
   },
