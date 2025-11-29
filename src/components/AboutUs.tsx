@@ -333,6 +333,7 @@ const StatsSection = () => {
 const AboutUsPage: React.FC = () => {
   const { isDark, toggleTheme } = useTheme();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(false);
 
   const values = [
     {
@@ -446,35 +447,72 @@ const AboutUsPage: React.FC = () => {
                     </h2>
                     
                     {/* SUBTEXT: Playfair */}
-                    <p className={`font-['Playfair_Display'] mb-8 text-sm md:text-lg leading-loose ${isDark ? 'text-[#EBEBE6]/80' : 'text-gray-600'}`}>
-                        This property showcase is designed in a refined, contemporary manner. We built Treasure to provide you with a trouble-free website setup and managing.
-                    </p>
+                    <div className={`font-['Playfair_Display'] text-sm md:text-lg leading-loose transition-colors duration-500 ${isDark ? 'text-[#EBEBE6]/80' : 'text-gray-600'}`}>
+                        <p className="mb-4">
+                            There is a rare honesty in homes built with intention.
+                            Treasure, the residential arm of Katewa Companies, celebrates this belief through architecture that feels personal, grounded, and quietly extraordinary.
+                        </p>
+
+                        <AnimatePresence>
+                            {isExpanded && (
+                            <motion.div
+                                initial={{ opacity: 0, height: 0 }}
+                                animate={{ opacity: 1, height: "auto" }}
+                                exit={{ opacity: 0, height: 0 }}
+                                transition={{ duration: 0.6, ease: "easeInOut" }}
+                                className="overflow-hidden"
+                            >
+                                <p className="mb-4">
+                                Every home is shaped by Jaipur’s design heritage, its courtyards, its measured proportions, its love for natural materials. But Treasure reinterprets that heritage with a modern calm: softer lines, warmer textures, and spaces that feel lived in from the moment you step inside.
+                                </p>
+                                <p className="mb-4">
+                                Here, design isn't a spectacle. It’s sincerity.
+                                Walls feel warm, rooms breathe easily, and materials carry the comfort of things made to last.
+                                </p>
+                                <p className="mb-4">
+                                Treasure is not built to impress the world, it is built to belong to you.
+                                A place where craftsmanship becomes emotion, and where home becomes a feeling you can return to, again and again.
+                                </p>
+                            </motion.div>
+                            )}
+                        </AnimatePresence>
+                    </div>
+
+                    {/* READ MORE TOGGLE */}
+                    <button
+                        onClick={() => setIsExpanded(!isExpanded)}
+                        className={`mb-8 text-xs font-['Oswald'] font-bold tracking-[0.15em] uppercase border-b pb-1 transition-all duration-300 ${
+                        isDark 
+                            ? 'border-white/30 text-white/70 hover:text-white hover:border-white' 
+                            : 'border-gray-400/30 text-gray-500 hover:text-gray-900 hover:border-gray-900'
+                        }`}
+                    >
+                        {isExpanded ? 'Read Less' : 'Read More'}
+                    </button>
                     
                     {/* BUTTON: Oswald */}
-                    <Link 
-                      to="/contact"
-                      className={`group inline-flex items-center text-xs font-['Oswald'] font-bold tracking-[0.15em] uppercase border px-6 py-3 transition-all duration-300 ${isDark ? 'border-white text-white hover:bg-white hover:text-[#2A0A0A]' : 'text-gray-800 border-gray-300 hover:bg-gray-800 hover:text-white'}`}
-                    >
-                        View Location <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
-                    </Link>
+                    <div className="block">
+                        <Link 
+                        to="/contact"
+                        className={`group inline-flex items-center text-xs font-['Oswald'] font-bold tracking-[0.15em] uppercase border px-6 py-3 transition-all duration-300 ${isDark ? 'border-white text-white hover:bg-white hover:text-[#2A0A0A]' : 'text-gray-800 border-gray-300 hover:bg-gray-800 hover:text-white'}`}
+                        >
+                            View Location <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
+                        </Link>
+                    </div>
                   </div>
 
                   {/* Overlapping Images Composition */}
                   <div className="lg:col-span-7 relative h-[400px] md:h-[600px] order-1 lg:order-2">
-                    
-                    {/* Top Left Image - Increased size for overlap */}
+                    {/* Top Left Image */}
                     <img 
                       src={LOCAL_ASSETS.aboutExterior} 
                       alt="Exterior"
-                      // Changed w-[45%] to w-[55%] for overlap
                       className="absolute left-0 top-0 w-[55%] md:w-[55%] aspect-[3/4] object-cover shadow-2xl z-10" 
                     />
-                    
-                    {/* Bottom Right Image - Increased size and adjusted position for overlap */}
+                    {/* Bottom Right Image */}
                     <img 
                       src={LOCAL_ASSETS.aboutInterior} 
                       alt="Interior"
-                      // Changed w-[45%] to w-[55%], bottom-0 to bottom-12, right-0 to right-8
                       className={`absolute right-8 bottom-12 w-[55%] md:w-[55%] aspect-[3/4] object-cover shadow-xl z-0 border-8 ${isDark ? 'border-[#2A0A0A]' : 'border-[#F9F9F7]'}`} 
                     />
                   </div>
