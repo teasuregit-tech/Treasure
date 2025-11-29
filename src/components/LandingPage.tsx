@@ -170,38 +170,49 @@ const UNIT_FEATURES = ['+ Premium Units', '+ Balconies with Plantation Areas', '
 
 const FeaturesSection = ({ isDark }: { isDark: boolean }) => (
   <section className="relative py-16 md:py-32 px-6 md:px-24 max-w-[1600px] mx-auto overflow-hidden">
-     <div className="absolute top-10 right-0 text-[6rem] md:text-[12rem] opacity-5 pointer-events-none font-playfair font-bold whitespace-nowrap dark:text-white dark:opacity-[0.05]">
+     {/* Watermark */}
+     <div className="absolute top-10 right-0 text-[6rem] md:text-[12rem] opacity-5 pointer-events-none font-['Playfair_Display'] font-bold whitespace-nowrap dark:text-white dark:opacity-[0.05]">
       Building
     </div>
 
     <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center relative z-10">
+       
+       {/* LEFT COLUMN: Images */}
        <div className="lg:col-span-7 relative h-[400px] md:h-[600px]">
+          {/* Top/Left Image - Reduced width to 55% */}
           <motion.img 
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             src="/assets/images/guestbedroom.jpg" 
-            className="absolute left-0 top-0 w-2/3 h-[80%] object-cover shadow-2xl z-10" 
+            className="absolute left-0 top-0 w-[55%] h-[80%] object-cover shadow-2xl z-10" 
           />
+          
+          {/* Bottom/Right Image - Reduced width to 55% */}
           <motion.img 
             initial={{ opacity: 0, y: -50 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             src="/assets/images/vdn4.jpg" 
-            className={`absolute right-0 bottom-0 w-3/5 h-[70%] object-cover shadow-xl z-0 border-8 ${isDark ? 'border-[#2A0A0A]' : 'border-[#F9F9F7]'}`} 
+            className={`absolute right-0 bottom-0 w-[55%] h-[75%] object-cover shadow-xl z-0 border-8 ${isDark ? 'border-[#2A0A0A]' : 'border-[#F9F9F7]'}`} 
           />
        </div>
 
+       {/* RIGHT COLUMN: Text */}
        <div className="lg:col-span-5 lg:pl-12 mt-4 lg:mt-0">
-          <h2 className="font-playfair text-3xl md:text-4xl mb-6 uppercase tracking-wide leading-tight dark:text-white">
+          {/* Switched to Oswald for Heading */}
+          <h2 className="font-['Oswald'] text-3xl md:text-4xl mb-6 uppercase tracking-wide leading-tight dark:text-white">
              Refined Residences <br/> Designed for your Comfort
           </h2>
-          <p className="text-stone-600 dark:text-white/80 mb-8 font-light leading-relaxed">
+          
+          {/* Playfair for Body Text */}
+          <p className="font-['Playfair_Display'] text-stone-600 dark:text-white/80 mb-8 font-light leading-relaxed text-lg">
              Treasure offers thoughtfully crafted apartment layouts, ensuring spacious interiors, cross ventilation, natural lighting, and luxury-grade detailing.
           </p>
+          
           <div className="grid grid-cols-1 gap-4 mb-8">
               {UNIT_FEATURES.map(item => (
-                 <div key={item} className="text-sm uppercase tracking-wider text-stone-500 dark:text-white/60">{item}</div>
+                 <div key={item} className="font-['Oswald'] text-sm uppercase tracking-wider text-stone-500 dark:text-white/60">{item}</div>
               ))}
           </div>
        </div>
@@ -209,11 +220,12 @@ const FeaturesSection = ({ isDark }: { isDark: boolean }) => (
   </section>
 );
 
+
 const STATS_DATA = [
   { val: '78%', label: 'Climate Responsive Architecture' },
   { val: '92%', label: 'Premium Material Selection' },
   { val: '88%', label: 'Optimal Layout Efficiency' },
-  { val: '81%', label: 'Green Living Design' },
+  { val: '0%', label: 'AQI' },
 ]; 
 
 const StatsSection = ({ isDark }: { isDark: boolean }) => {
@@ -382,23 +394,28 @@ const BlogSection = () => {
 
   return (
     <section className="relative py-24 bg-[#F5F5F0] dark:bg-[#2A0A0A] overflow-hidden transition-colors duration-700">
+      
+      {/* Watermark */}
       <div className="absolute top-[-20px] left-10 md:left-20 select-none pointer-events-none z-0">
-        <span className="text-[6rem] sm:text-[10rem] md:text-[14rem] font-playfair text-[#EBEBE6] dark:text-white/5 leading-none opacity-80">
+        <span className="text-[6rem] sm:text-[10rem] md:text-[14rem] font-['Playfair_Display'] text-[#EBEBE6] dark:text-white/5 leading-none opacity-80">
           Blog
         </span>
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-6">
+        {/* Section Header */}
         <div className="flex flex-col items-center mb-16">
-          <h2 className="text-xl md:text-2xl font-playfair tracking-widest text-[#8C7B6C] dark:text-white/70 uppercase mb-2">
+          <h2 className="text-xl md:text-2xl font-['Oswald'] tracking-widest text-[#8C7B6C] dark:text-white/70 uppercase mb-2">
             Hot off the Press
           </h2>
           <div className="w-12 h-px bg-[#8C7B6C] dark:bg-white/70" />
         </div>
 
+        {/* Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
           {posts.map((post) => (
             <div key={post.id} className="group cursor-pointer flex flex-col gap-6">
+              {/* Image Container */}
               <div className="overflow-hidden aspect-[3/4] w-full bg-stone-200 dark:bg-stone-800">
                 <img
                   src={post.image}
@@ -407,16 +424,19 @@ const BlogSection = () => {
                 />
               </div>
 
+              {/* Text Content */}
               <div className="space-y-3">
-                <div className="text-xs font-medium text-stone-500 dark:text-white/60 uppercase tracking-wider">
+                <div className="text-xs font-['Oswald'] font-medium text-stone-500 dark:text-white/60 uppercase tracking-wider">
                   {post.date} / <span className="text-stone-800 dark:text-white/90">{post.category}</span>
                 </div>
                 
-                <h3 className="text-2xl font-playfair text-stone-900 dark:text-white tracking-wide group-hover:text-[#8C7B6C] dark:group-hover:text-white/70 transition-colors">
+                <h3 className="text-2xl font-['Oswald'] text-stone-900 dark:text-white tracking-wide group-hover:text-[#8C7B6C] dark:group-hover:text-white/70 transition-colors">
                   {post.title}
                 </h3>
                 
-                <p className="text-sm text-stone-600 dark:text-white/80 leading-relaxed line-clamp-3 font-light">{post.excerpt}</p>
+                <p className="text-sm font-['Playfair_Display'] text-stone-600 dark:text-white/80 leading-relaxed line-clamp-3 font-light">
+                  {post.excerpt}
+                </p>
               </div>
             </div>
           ))}
@@ -436,6 +456,8 @@ const ContactHero = () => {
   return (
     <section className="relative w-full pt-16 md:pt-24 bg-[#F9F9F7] dark:bg-[#2A0A0A] transition-colors duration-700">
       <div className="max-w-7xl mx-auto">
+        
+        {/* Hero Image */}
         <div className="w-full h-[50vh] md:h-[90vh]">
           <img 
             src="/assets/images/living3.jpg"
@@ -444,15 +466,17 @@ const ContactHero = () => {
           />
         </div>
 
-        {/* Form Container - Adjusted Position for Mobile */}
+        {/* Floating Form Container */}
         <div className="relative md:absolute md:top-1/2 md:left-1/2 md:-translate-x-[130%] md:-translate-y-1/2 z-10 max-w-md w-full -mt-20 md:mt-0 mx-auto px-4 md:px-0 pb-12 md:pb-0">
           <div className="bg-[#4A2521] dark:bg-[#1a0505] text-[#EBEBE6] p-8 md:p-12 shadow-2xl relative overflow-hidden">
-              <div className="absolute -right-10 top-0 h-full w-32 opacity-5 pointer-events-none text-9xl font-playfair flex items-center text-white">
+              
+              {/* Decorative Character */}
+              <div className="absolute -right-10 top-0 h-full w-32 opacity-5 pointer-events-none text-9xl font-['Playfair_Display'] flex items-center text-white">
                   §
               </div>
 
-              <h2 className="font-playfair text-2xl md:text-3xl mb-8 leading-snug tracking-wide relative z-10 text-white">
-                SCHEDULE A VISIT OR REQUEST MORE DETAILS
+              <h2 className="font-['Oswald'] text-2xl md:text-3xl mb-8 leading-snug tracking-wide relative z-10 text-white uppercase">
+                Schedule a visit or<br/> request more details
               </h2>
 
               <form className="space-y-8 z-10 relative">
@@ -463,11 +487,11 @@ const ContactHero = () => {
                       id={name}
                       name={name}
                       placeholder={label}
-                      className="peer block w-full bg-transparent border-b border-white/30 py-2 text-white placeholder:text-transparent focus:outline-none focus:border-white transition-colors"
+                      className="peer block w-full bg-transparent border-b border-white/30 py-2 text-white placeholder:text-transparent focus:outline-none focus:border-white transition-colors font-['Playfair_Display']"
                     />
                     <label 
                       htmlFor={name}
-                      className="absolute left-0 -top-4 text-[10px] uppercase tracking-widest text-white/60
+                      className="absolute left-0 -top-4 text-[10px] uppercase tracking-widest text-white/60 font-['Oswald']
                         transition-all duration-300 
                         peer-placeholder-shown:top-2 peer-placeholder-shown:text-xs peer-placeholder-shown:text-white/60
                         peer-focus:-top-4 peer-focus:text-[10px] peer-focus:text-white"
@@ -479,7 +503,7 @@ const ContactHero = () => {
 
                 <button 
                   type="submit"
-                  className="group flex items-center justify-center gap-3 px-8 py-3 border border-white/50 hover:bg-[#EBEBE6] hover:text-[#4A2521] text-white transition-all duration-300 uppercase text-xs tracking-widest mt-4"
+                  className="group flex items-center justify-center gap-3 px-8 py-3 border border-white/50 hover:bg-[#EBEBE6] hover:text-[#4A2521] text-white transition-all duration-300 uppercase text-xs tracking-widest mt-4 font-['Oswald']"
                 >
                   <Mail size={14} />
                   Submit Inquiry
@@ -495,30 +519,37 @@ const ContactHero = () => {
 const LocationSection = () => {
   return (
     <section className="relative py-24 md:py-32 bg-[#F5F5F0] dark:bg-[#2A0A0A] overflow-hidden transition-colors duration-700">
+      
+      {/* Background Image with Gradient Mask */}
       <div className="absolute top-0 right-0 w-full md:w-[75%] h-full z-0 pointer-events-none overflow-hidden flex items-center justify-end">
         <img 
           src="/assets/images/bp.png"
           alt="Building Blueprint Sketch"
           className="w-full h-full object-contain object-right p-4 md:p-1 mix-blend-multiply dark:mix-blend-lighten opacity-60 dark:opacity-40"
         />
+        {/* Gradient fade to make text readable */}
         <div className="absolute inset-0 bg-gradient-to-r from-[#F5F5F0] via-[#F5F5F0]/80 to-transparent dark:from-[#2A0A0A] dark:via-[#2A0A0A]/80" />
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 h-full flex items-center">
         <div className="w-full md:w-1/2 pr-0 md:pr-12">
-          <h2 className="text-3xl md:text-4xl font-playfair text-[#4A2521] dark:text-white uppercase tracking-widest mb-8 leading-tight">
+          
+          {/* HEADING: Oswald */}
+          <h2 className="text-3xl md:text-4xl font-['Oswald'] text-[#4A2521] dark:text-white uppercase tracking-widest mb-8 leading-tight">
             Prime Location at <br/> Vidhyadhar Nagar, Jaipur
           </h2>
           
           <div className="w-12 h-px bg-[#4A2521]/40 dark:bg-white/40 mb-8" />
 
-          <p className="text-stone-600 dark:text-white/80 leading-relaxed mb-6 text-sm md:text-base font-light">
-            Perfectly situated in one of Jaipur’s most calm residential zones, nested near the Arvallis Treasure offers easy connectivity to schools, hospitals, markets, restaurants, and transport hubs.
+          {/* BODY: Playfair Display */}
+          <p className="font-['Playfair_Display'] text-stone-600 dark:text-white/80 leading-relaxed mb-8 text-lg lg:text-xl font-light">
+            Perfectly situated in one of Jaipur’s most calm residential zones, nested near the Aravallis. Treasure offers easy connectivity to schools, hospitals, markets, restaurants, and transport hubs.
           </p>
 
+          {/* BUTTON: Oswald */}
           <Link 
             to="/contact" 
-            className="inline-flex items-center gap-2 px-8 py-3 border border-stone-400 dark:border-white/50 text-stone-700 dark:text-white hover:bg-stone-800 hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors uppercase text-xs tracking-widest bg-white/50 dark:bg-black/50 backdrop-blur-sm"
+            className="inline-flex items-center gap-2 px-8 py-3 border border-stone-400 dark:border-white/50 text-stone-700 dark:text-white hover:bg-stone-800 hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors uppercase text-xs tracking-widest bg-white/50 dark:bg-black/50 backdrop-blur-sm font-['Oswald']"
           >
             <MapPin size={14} />
             View on map

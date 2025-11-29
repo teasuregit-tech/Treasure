@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { 
   Menu, ChevronLeft, ArrowRight, ArrowUpRight, Sun, Moon, X, 
   Mail, Facebook, Twitter, Linkedin, Youtube, Phone, MapPin 
-} from 'lucide-react'; // Added Menu to imports
+} from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { useTheme } from './ThemeContext';
@@ -45,15 +45,15 @@ const NavigationSidebar = React.memo(({ isOpen, onClose }: { isOpen: boolean; on
             animate={{ x: 0 }} 
             exit={{ x: '-100%' }} 
             transition={{ type: 'tween', duration: 0.5 }} 
-            // Adjusted width: w-[85%] on mobile, md:w-1/4 on desktop
             className={`fixed top-0 left-0 h-full w-[85%] md:w-1/4 z-[70] shadow-2xl flex flex-col border-r backdrop-blur-md transition-colors duration-500 ${
               isDark ? 'bg-[#2A0A0A]/95 border-[#4A2521]' : 'bg-[#F9F9F7]/95 border-stone-200'
             }`}
           >
             <div className={`flex justify-between items-center p-6 md:p-8 border-b ${isDark ? 'border-[#4A2521]' : 'border-stone-200'}`}>
                 <div className="flex flex-col">
-                    <span className={`text-2xl md:text-3xl font-serif font-bold tracking-widest ${isDark ? 'text-[#fdfdfc]' : 'text-stone-800'}`}>TREASURE</span>
-                    <span className={`text-[10px] tracking-[0.3em] uppercase ${isDark ? 'text-[#D4AF37]/60' : 'text-stone-500'}`}>Menu</span>
+                    {/* TYPOGRAPHY: Oswald for Brand */}
+                    <span className={`text-2xl md:text-3xl font-['Oswald'] font-bold tracking-widest ${isDark ? 'text-[#fdfdfc]' : 'text-stone-800'}`}>TREASURE</span>
+                    <span className={`text-[10px] tracking-[0.3em] uppercase font-['Oswald'] ${isDark ? 'text-[#D4AF37]/60' : 'text-stone-500'}`}>Menu</span>
                 </div>
                 <button 
                   onClick={onClose} 
@@ -65,11 +65,12 @@ const NavigationSidebar = React.memo(({ isOpen, onClose }: { isOpen: boolean; on
             
             <div className="flex-1 flex flex-col justify-center px-8 md:px-12 space-y-6">
                 {MENU_ITEMS.map(item => (
+                    // TYPOGRAPHY: Playfair Display for Menu Items (Elegant)
                     <Link 
                       key={item.label} 
                       to={item.href} 
                       onClick={onClose} 
-                      className={`group flex items-center justify-between text-xl md:text-3xl font-serif transition-colors ${isDark ? 'text-[#EBEBE6]/60 hover:text-[#D4AF37]' : 'text-stone-400 hover:text-stone-800'}`}
+                      className={`group flex items-center justify-between text-xl md:text-3xl font-['Playfair_Display'] italic transition-colors ${isDark ? 'text-[#EBEBE6]/60 hover:text-[#D4AF37]' : 'text-stone-400 hover:text-stone-800'}`}
                     >
                         {item.label} 
                         <ArrowRight className="opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-500 text-[#D4AF37]" size={20} />
@@ -83,7 +84,6 @@ const NavigationSidebar = React.memo(({ isOpen, onClose }: { isOpen: boolean; on
   );
 });
 
-// Added 'hidden md:flex' to hide sidebar on mobile
 const FixedSidebar = React.memo(({ onOpenMenu }: { onOpenMenu: () => void }) => {
   const { isDark } = useTheme();
   return (
@@ -113,7 +113,6 @@ const FixedSidebar = React.memo(({ onOpenMenu }: { onOpenMenu: () => void }) => 
             <img 
               src="/assets/images/katewa-logo.png" 
               alt="Secondary Logo" 
-              // Changed w-8 to w-10 for increased size
               className={`w-12 h-auto object-contain ${isDark ? 'brightness-0 invert' : ''}`} 
             />
           </div>
@@ -121,7 +120,8 @@ const FixedSidebar = React.memo(({ onOpenMenu }: { onOpenMenu: () => void }) => 
             to="/contact" 
             className="w-full h-48 bg-[#3E2723] text-white flex items-center justify-center hover:bg-[#2C1A16] transition-colors"
           >
-              <span className="text-xs font-bold tracking-[0.25em] uppercase [writing-mode:vertical-lr] rotate-180">Make an Enquiry</span>
+              {/* TYPOGRAPHY: Oswald for vertical text */}
+              <span className="text-xs font-['Oswald'] font-bold tracking-[0.25em] uppercase [writing-mode:vertical-lr] rotate-180">Make an Enquiry</span>
           </Link>
       </div>
     </aside>
@@ -138,7 +138,6 @@ const Footer = () => {
   return (
     <footer className="w-full bg-[#2C1A16] text-[#EBEBE6] relative font-sans border-t border-white/10">
       
-      {/* --- BACKGROUND PATTERN --- */}
       <div className="absolute inset-0 z-0 opacity-5 pointer-events-none">
         <img 
           src="/assets/images/dpattern.jpg" 
@@ -149,14 +148,15 @@ const Footer = () => {
       
       <div className="absolute inset-0 bg-gradient-to-b from-[#2C1A16]/95 to-[#1A0B09]/98 z-0" />
 
-      {/* --- MAIN CONTENT --- */}
       <div className="relative z-10 max-w-7xl mx-auto px-6 py-10 lg:py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10">
           
           {/* COLUMN 1: ABOUT */}
           <div className="space-y-4">
-            <h3 className="text-base font-bold uppercase tracking-widest font-oswald text-white">About</h3>
-            <p className="text-sm text-[#EBEBE6]/60 leading-relaxed font-light max-w-xs">
+            {/* TYPOGRAPHY: Oswald for Headings */}
+            <h3 className="text-base font-bold uppercase tracking-widest font-['Oswald'] text-white">About</h3>
+            {/* TYPOGRAPHY: Playfair Display for Body */}
+            <p className="text-sm text-[#EBEBE6]/60 leading-relaxed font-['Playfair_Display'] font-light max-w-xs">
               This is property showcase done in a clean and
 contemporary manner. We built Treasure to provide you with a trouble-free website setup and managing, and to let you have fun along the way.
             </p>
@@ -164,8 +164,8 @@ contemporary manner. We built Treasure to provide you with a trouble-free websit
 
           {/* COLUMN 2: CONTACT */}
           <div className="space-y-4">
-            <h3 className="text-base font-bold uppercase tracking-widest font-oswald text-white">Contact</h3>
-            <ul className="space-y-2 text-sm text-[#EBEBE6]/60 font-light">
+            <h3 className="text-base font-bold uppercase tracking-widest font-['Oswald'] text-white">Contact</h3>
+            <ul className="space-y-2 text-sm text-[#EBEBE6]/60 font-['Playfair_Display'] font-light">
               <li className="flex items-center gap-3">
                 <Phone size={14} className="text-white/40" />
                 <span>+91 73782 55255</span>
@@ -183,8 +183,8 @@ contemporary manner. We built Treasure to provide you with a trouble-free websit
 
           {/* COLUMN 3: USEFUL LINKS */}
           <div className="space-y-4">
-            <h3 className="text-base font-bold uppercase tracking-widest font-oswald text-white">Links</h3>
-            <ul className="space-y-2 text-sm text-[#EBEBE6]/60 font-light">
+            <h3 className="text-base font-bold uppercase tracking-widest font-['Oswald'] text-white">Links</h3>
+            <ul className="space-y-2 text-sm text-[#EBEBE6]/60 font-['Playfair_Display'] font-light">
               <li>
                 <Link to="/about" className="flex items-center gap-2 hover:text-white transition-colors group">
                   <span className="w-1 h-1 bg-white/40 rounded-full group-hover:bg-white transition-colors" />
@@ -208,7 +208,7 @@ contemporary manner. We built Treasure to provide you with a trouble-free websit
 
           {/* COLUMN 4: NEWSLETTER */}
           <div className="space-y-4">
-            <h3 className="text-base font-bold uppercase tracking-widest font-oswald text-white">Newsletter</h3>
+            <h3 className="text-base font-bold uppercase tracking-widest font-['Oswald'] text-white">Newsletter</h3>
             
             <div className="space-y-3">
               <div className="relative border-b border-[#EBEBE6]/20">
@@ -216,10 +216,10 @@ contemporary manner. We built Treasure to provide you with a trouble-free websit
                 <input 
                   type="email" 
                   placeholder="Email Address" 
-                  className="w-full bg-transparent py-2 pl-6 text-sm focus:outline-none placeholder:text-[#EBEBE6]/30 text-white"
+                  className="w-full bg-transparent py-2 pl-6 text-sm focus:outline-none placeholder:text-[#EBEBE6]/30 text-white font-['Playfair_Display']"
                 />
               </div>
-              <button className="w-full py-2 border border-[#EBEBE6]/20 text-xs uppercase tracking-widest hover:bg-[#EBEBE6] hover:text-[#2C1A16] transition-colors font-oswald">
+              <button className="w-full py-2 border border-[#EBEBE6]/20 text-xs uppercase tracking-widest hover:bg-[#EBEBE6] hover:text-[#2C1A16] transition-colors font-['Oswald']">
                 Subscribe
               </button>
             </div>
@@ -235,7 +235,6 @@ contemporary manner. We built Treasure to provide you with a trouble-free websit
         </div>
       </div>
 
-      {/* --- BOTTOM BAR --- */}
       <div className="bg-[#1A0B09] py-4 border-t border-[#EBEBE6]/5 relative z-10">
         <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4">
           
@@ -245,10 +244,10 @@ contemporary manner. We built Treasure to provide you with a trouble-free websit
                alt="Treasure" 
                className="h-6 w-auto object-contain brightness-0 invert opacity-70" 
              />
-             <span className="text-xs text-[#EBEBE6]/30 uppercase tracking-wider">© 2025 Treasure</span>
+             <span className="text-xs text-[#EBEBE6]/30 uppercase tracking-wider font-['Oswald']">© 2025 Treasure</span>
           </div>
 
-          <div className="flex gap-6 text-xs text-[#EBEBE6]/40">
+          <div className="flex gap-6 text-xs text-[#EBEBE6]/40 font-['Oswald']">
              <Link to="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>
              <Link to="/terms" className="hover:text-white transition-colors">Terms of Use</Link>
           </div>
@@ -266,123 +265,136 @@ const OurProjectsPage = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <div className={`min-h-screen w-full font-sans overflow-x-hidden relative transition-colors duration-700 ease-in-out ${
-      isDark ? 'bg-[#2A0A0A] text-[#D4AF37]' : 'bg-[#F2F5F5] text-[#4A342B]'
-    }`}>
-      
-      <NavigationSidebar isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
-      <FixedSidebar onOpenMenu={() => setIsMenuOpen(true)} />
+    <>
+      {/* 1. IMPORT FONTS */}
+      <style>
+        {`
+          @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap');
+        `}
+      </style>
 
-      {/* Main Container: pl-0 on mobile, pl-24 on desktop */}
-      <main className="relative w-full pl-0 md:pl-24">
+      <div className={`min-h-screen w-full font-sans overflow-x-hidden relative transition-colors duration-700 ease-in-out ${
+        isDark ? 'bg-[#2A0A0A] text-[#D4AF37]' : 'bg-[#F2F5F5] text-[#4A342B]'
+      }`}>
         
-        {/* Decorative Background */}
-        <div className={`absolute top-0 right-0 w-1/2 h-screen z-0 pointer-events-none transition-opacity duration-700 ${
-            isDark ? 'opacity-10 bg-[#4A2521]' : 'opacity-10 bg-[#D4AF37]'
-        }`} style={{ clipPath: 'polygon(20% 0, 100% 0, 100% 100%, 0% 100%)' }} />
+        <NavigationSidebar isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
+        <FixedSidebar onOpenMenu={() => setIsMenuOpen(true)} />
 
-        {/* --- MOBILE HEADER (Visible only on mobile) --- */}
-        <div className="md:hidden flex justify-between items-center px-6 py-4 border-b border-gray-200 dark:border-white/10 relative z-30">
-             <div className="flex items-center gap-4">
-                 <button onClick={() => setIsMenuOpen(true)} className={`p-1 ${isDark ? 'text-[#D4AF37]' : 'text-gray-800'}`}>
-                    <Menu size={24} />
-                 </button>
-                 <img src={LOCAL_ASSETS.logo} alt="Logo" className="h-8 w-auto object-contain" />
-             </div>
-             <button 
-                onClick={toggleTheme} 
-                className={`p-2 rounded-full border transition-all duration-300 ${
-                    isDark ? 'border-[#D4AF37] text-[#D4AF37]' : 'border-gray-300 text-gray-600'
-                }`}
-             >
-                {isDark ? <Sun size={18} /> : <Moon size={18} />}
-             </button>
-        </div>
+        {/* Main Container */}
+        <main className="relative w-full pl-0 md:pl-24">
+          
+          {/* Decorative Background */}
+          <div className={`absolute top-0 right-0 w-1/2 h-screen z-0 pointer-events-none transition-opacity duration-700 ${
+              isDark ? 'opacity-10 bg-[#4A2521]' : 'opacity-10 bg-[#D4AF37]'
+          }`} style={{ clipPath: 'polygon(20% 0, 100% 0, 100% 100%, 0% 100%)' }} />
 
-        {/* --- DESKTOP HEADER (Theme Toggle Only) --- */}
-        <header className="hidden md:flex absolute top-0 left-0 w-full z-20 pl-36 pr-12 py-6 justify-end items-center">
-          <button 
-            onClick={toggleTheme} 
-            aria-label="Toggle Dark Mode" 
-            className={`p-3 rounded-full border transition-all duration-300 backdrop-blur-md shadow-sm ${
-              isDark 
-                ? 'bg-black/40 border-[#fbfafa] text-[#fcfcfb] hover:bg-[#D4AF37]/20' 
-                : 'bg-white/20 border-white text-white hover:bg-white/30'
-            }`}
-          >
-            {isDark ? <Sun size={20} /> : <Moon size={20} />}
-          </button>
-        </header>
+          {/* --- MOBILE HEADER --- */}
+          <div className="md:hidden flex justify-between items-center px-6 py-4 border-b border-gray-200 dark:border-white/10 relative z-30">
+              <div className="flex items-center gap-4">
+                  <button onClick={() => setIsMenuOpen(true)} className={`p-1 ${isDark ? 'text-[#D4AF37]' : 'text-gray-800'}`}>
+                      <Menu size={24} />
+                  </button>
+                  <img src={LOCAL_ASSETS.logo} alt="Logo" className="h-8 w-auto object-contain" />
+              </div>
+              <button 
+                  onClick={toggleTheme} 
+                  className={`p-2 rounded-full border transition-all duration-300 ${
+                      isDark ? 'border-[#D4AF37] text-[#D4AF37]' : 'border-gray-300 text-gray-600'
+                  }`}
+              >
+                  {isDark ? <Sun size={18} /> : <Moon size={18} />}
+              </button>
+          </div>
 
-        {/* --- HERO SECTION --- */}
-        <div className="relative w-full h-[50vh] md:h-[70vh] overflow-hidden group mb-12">
-            <img
-                src={LOCAL_ASSETS.hero}
-                alt="Modern architectural building"
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
-            <div className="absolute bottom-10 left-6 md:bottom-20 md:left-24 max-w-2xl text-white pr-4">
-                <div className="w-12 h-[2px] bg-white mb-6"></div>
-                <p className="font-serif text-2xl md:text-4xl leading-snug drop-shadow-md">
-                    We craft environments that blend modern elegance with functional clarity.
-                </p>
-            </div>
-        </div>
+          {/* --- DESKTOP HEADER --- */}
+          <header className="hidden md:flex absolute top-0 left-0 w-full z-20 pl-36 pr-12 py-6 justify-end items-center">
+            <button 
+              onClick={toggleTheme} 
+              aria-label="Toggle Dark Mode" 
+              className={`p-3 rounded-full border transition-all duration-300 backdrop-blur-md shadow-sm ${
+                isDark 
+                  ? 'bg-black/40 border-[#fbfafa] text-[#fcfcfb] hover:bg-[#D4AF37]/20' 
+                  : 'bg-white/20 border-white text-white hover:bg-white/30'
+              }`}
+            >
+              {isDark ? <Sun size={20} /> : <Moon size={20} />}
+            </button>
+          </header>
 
-        {/* Page Title / Header Text */}
-        <div className="pt-8 md:pt-12 pb-12 text-center">
-            <p className={`text-xs font-bold tracking-[0.3em] uppercase mb-4 ${isDark ? 'text-[#EBEBE6]/60' : 'text-gray-500'}`}>
-                Residentials
-            </p>
-        </div>
+          {/* --- HERO SECTION --- */}
+          <div className="relative w-full h-[50vh] md:h-[70vh] overflow-hidden group mb-12">
+              <img
+                  src={LOCAL_ASSETS.hero}
+                  alt="Modern architectural building"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+              <div className="absolute bottom-10 left-6 md:bottom-20 md:left-24 max-w-2xl text-white pr-4">
+                  <div className="w-12 h-[2px] bg-white mb-6"></div>
+                  {/* TYPOGRAPHY: Playfair Display for Quote */}
+                  <p className="font-['Oswald'] text-2xl md:text-4xl leading-snug drop-shadow-md">
+                      We craft environments that blend modern elegance with functional clarity.
+                  </p>
+              </div>
+          </div>
 
-        {/* --- FEATURED PROJECTS STACK --- */}
-        <div className="px-6 md:px-12 lg:px-24 pb-24 md:pb-40 flex flex-col gap-6 md:gap-8">
-            
-            {/* Project 1: TREASURE */}
-            <Link to="/projects/treasure" className="group relative w-full h-[50vh] md:h-[70vh] overflow-hidden block">
-                <img 
-                    src={LOCAL_ASSETS.treasure} 
-                    alt="Treasure Residences Exterior" 
-                    className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105 brightness-75 group-hover:brightness-90"
-                />
-                
-                {/* Center Content Overlay */}
-                <div className="absolute inset-0 flex flex-col items-center justify-center z-10">
-                    <div className="w-12 h-12 md:w-16 md:h-16 rounded-full border border-white/60 flex items-center justify-center mb-4 backdrop-blur-sm transition-transform duration-500 group-hover:scale-110 group-hover:bg-white/10">
-                        <ArrowUpRight className="text-white w-5 h-5 md:w-6 md:h-6" />
-                    </div>
-                    <h2 className="text-3xl md:text-5xl font-playfair text-white tracking-widest uppercase drop-shadow-lg">
-                        Treasure
-                    </h2>
-                </div>
-            </Link>
+          {/* Page Title / Header Text */}
+          <div className="pt-8 md:pt-12 pb-12 text-center">
+              {/* TYPOGRAPHY: Oswald */}
+              <p className={`text-xs font-['Oswald'] font-bold tracking-[0.3em] uppercase mb-4 ${isDark ? 'text-[#EBEBE6]/60' : 'text-gray-500'}`}>
+                  Residentials
+              </p>
+          </div>
 
-            {/* Project 2: TREASURE LIMITED EDITION */}
-            <Link to="/projects/treasure" className="group relative w-full h-[50vh] md:h-[70vh] overflow-hidden block">
-                <img 
-                    src={LOCAL_ASSETS.limited} 
-                    alt="Treasure Limited Edition Exterior" 
-                    className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105 brightness-75 group-hover:brightness-90"
-                />
-                
-                {/* Center Content Overlay */}
-                <div className="absolute inset-0 flex flex-col items-center justify-center z-10">
-                    <div className="w-12 h-12 md:w-16 md:h-16 rounded-full border border-white/60 flex items-center justify-center mb-4 backdrop-blur-sm transition-transform duration-500 group-hover:scale-110 group-hover:bg-white/10">
-                        <ArrowUpRight className="text-white w-5 h-5 md:w-6 md:h-6" />
-                    </div>
-                    <h2 className="text-3xl md:text-5xl font-playfair text-white tracking-widest uppercase drop-shadow-lg text-center">
-                        Treasure <span className="font-light opacity-90 block text-lg md:text-2xl mt-2 tracking-[0.15em]">Limited Edition</span>
-                    </h2>
-                </div>
-            </Link>
+          {/* --- FEATURED PROJECTS STACK --- */}
+          <div className="px-6 md:px-12 lg:px-24 pb-24 md:pb-40 flex flex-col gap-6 md:gap-8">
+              
+              {/* Project 1: TREASURE */}
+              <Link to="/projects/treasure" className="group relative w-full h-[50vh] md:h-[70vh] overflow-hidden block">
+                  <img 
+                      src={LOCAL_ASSETS.treasure} 
+                      alt="Treasure Residences Exterior" 
+                      className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105 brightness-75 group-hover:brightness-90"
+                  />
+                  
+                  {/* Center Content Overlay */}
+                  <div className="absolute inset-0 flex flex-col items-center justify-center z-10">
+                      <div className="w-12 h-12 md:w-16 md:h-16 rounded-full border border-white/60 flex items-center justify-center mb-4 backdrop-blur-sm transition-transform duration-500 group-hover:scale-110 group-hover:bg-white/10">
+                          <ArrowUpRight className="text-white w-5 h-5 md:w-6 md:h-6" />
+                      </div>
+                      {/* TYPOGRAPHY: Oswald for Main Title */}
+                      <h2 className="text-3xl md:text-5xl font-['Oswald'] text-white tracking-widest uppercase drop-shadow-lg">
+                          Treasure
+                      </h2>
+                  </div>
+              </Link>
 
-        </div>
+              {/* Project 2: TREASURE LIMITED EDITION */}
+              <Link to="/projects/treasure" className="group relative w-full h-[50vh] md:h-[70vh] overflow-hidden block">
+                  <img 
+                      src={LOCAL_ASSETS.limited} 
+                      alt="Treasure Limited Edition Exterior" 
+                      className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105 brightness-75 group-hover:brightness-90"
+                  />
+                  
+                  {/* Center Content Overlay */}
+                  <div className="absolute inset-0 flex flex-col items-center justify-center z-10">
+                      <div className="w-12 h-12 md:w-16 md:h-16 rounded-full border border-white/60 flex items-center justify-center mb-4 backdrop-blur-sm transition-transform duration-500 group-hover:scale-110 group-hover:bg-white/10">
+                          <ArrowUpRight className="text-white w-5 h-5 md:w-6 md:h-6" />
+                      </div>
+                      {/* TYPOGRAPHY: Oswald for Main Title, Playfair for Subtitle */}
+                      <h2 className="text-3xl md:text-5xl font-['Oswald'] text-white tracking-widest uppercase drop-shadow-lg text-center">
+                          Treasure <span className="font-['Playfair_Display'] italic font-light opacity-90 block text-lg md:text-2xl mt-2 tracking-[0.15em]">Limited Edition</span>
+                      </h2>
+                  </div>
+              </Link>
 
-        <Footer />
-      </main>
-    </div>
+          </div>
+
+          <Footer />
+        </main>
+      </div>
+    </>
   );
 };
 
