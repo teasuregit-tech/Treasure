@@ -184,7 +184,7 @@ const FeaturesSection = ({ isDark }: { isDark: boolean }) => (
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            src="/assets/images/guestbedroom.jpg" 
+            src="/assets/images/daughtersroom.jpg" 
             className="absolute left-0 top-0 w-[55%] h-[80%] object-cover shadow-2xl z-10" 
           />
           
@@ -193,7 +193,7 @@ const FeaturesSection = ({ isDark }: { isDark: boolean }) => (
             initial={{ opacity: 0, y: -50 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            src="/assets/images/vdn4.jpg" 
+            src="/assets/images/newimg7.jpg" 
             className={`absolute right-0 bottom-0 w-[55%] h-[75%] object-cover shadow-xl z-0 border-8 ${isDark ? 'border-[#2A0A0A]' : 'border-[#F9F9F7]'}`} 
           />
        </div>
@@ -388,7 +388,7 @@ const GallerySection = () => {
 const BlogSection = () => {
   const posts = [
     { id: 1, category: "Design", date: "June 10, 2024", title: "WARM LUXURY", image: "/assets/images/masterbed2.jpg", excerpt: "Exploring the nuances of warm tones in modern interiors." },
-    { id: 2, category: "Lifestyle", date: "June 9, 2024", title: "A GUIDE TO ELEGANCE", image: "/assets/images/living4.jpg", excerpt: "How to curate a lifestyle that reflects architectural beauty." },
+    { id: 2, category: "Lifestyle", date: "June 9, 2024", title: "A GUIDE TO ELEGANCE", image: "/assets/images/newimg3.jpg", excerpt: "How to curate a lifestyle that reflects architectural beauty." },
     { id: 3, category: "Architecture", date: "June 8, 2024", title: "A CALM AFTERNOON", image: "/assets/images/image2.png", excerpt: "The importance of natural light in creating calming spaces." },
   ];
 
@@ -536,7 +536,7 @@ const LocationSection = () => {
           
           {/* HEADING: Oswald */}
           <h2 className="text-3xl md:text-4xl font-['Oswald'] text-[#4A2521] dark:text-white uppercase tracking-widest mb-8 leading-tight">
-            Prime Location at <br/> Vidhyadhar Nagar, Jaipur
+            Located at <br/> Vidhyadhar Nagar, Jaipur
           </h2>
           
           <div className="w-12 h-px bg-[#4A2521]/40 dark:bg-white/40 mb-8" />

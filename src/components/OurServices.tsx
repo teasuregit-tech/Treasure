@@ -27,10 +27,10 @@ const services = [
 ];
 
 const galleryImages = [
-  { src: "/assets/images/daughtersroom1.jpg", alt: "Modern Interior Kitchen Detail" },
+  { src: "/assets/images/newimg4.jpg", alt: "Modern Interior Kitchen Detail" },
   { src: "/assets/images/living3.jpg", alt: "Unique Architectural Balconies" },
   { src: "/assets/images/image2.png", alt: "Textured Interior Wall Feature" },
-  { src: "/assets/images/living.jpg", alt: "Exterior Apartment Building at Dusk" }
+  { src: "/assets/images/newimg8.jpg", alt: "Exterior Apartment Building at Dusk" }
 ];
 
 const testimonials = [
@@ -111,7 +111,7 @@ const NavigationSidebar = React.memo(({ isOpen, onClose }: { isOpen: boolean; on
                       to={item.href} 
                       onClick={onClose} 
                       // TYPOGRAPHY: Playfair for Menu Items (Luxury feel)
-                      className={`group flex items-center justify-between text-xl md:text-3xl font-['Playfair_Display'] italic transition-colors ${isDark ? 'text-[#EBEBE6]/60 hover:text-white' : 'text-stone-400 hover:text-stone-800'}`}
+                      className={`group flex items-center justify-between text-xl md:text-3xl font-['Playfair_Display'] transition-colors ${isDark ? 'text-[#EBEBE6]/60 hover:text-white' : 'text-stone-400 hover:text-stone-800'}`}
                     >
                         {item.label} 
                         <ArrowRight className={`opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-500 ${isDark ? 'text-white' : 'text-[#D4AF37]'}`} size={20} />

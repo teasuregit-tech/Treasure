@@ -11,7 +11,7 @@ import { useTheme } from './ThemeContext';
 const LOCAL_ASSETS = {
   logo: "/assets/images/logo.png",
   footerPattern: "/assets/images/dpattern.jpg",
-  building: "/assets/images/vdn2.jpg" 
+  building: "/assets/images/vdn3.jpg" 
 };
 
 // --- SHARED COMPONENTS ---
@@ -49,7 +49,6 @@ const NavigationSidebar = React.memo(({ isOpen, onClose }: { isOpen: boolean; on
           >
             <div className={`flex justify-between items-center p-6 md:p-8 border-b ${isDark ? 'border-[#4A2521]' : 'border-stone-200'}`}>
                 <div className="flex flex-col">
-                    {/* TYPOGRAPHY: Oswald */}
                     <span className={`text-2xl md:text-3xl font-['Oswald'] font-bold tracking-widest ${isDark ? 'text-white' : 'text-stone-800'}`}>TREASURE</span>
                     <span className={`text-[10px] tracking-[0.3em] uppercase font-['Oswald'] ${isDark ? 'text-white/60' : 'text-stone-500'}`}>Menu</span>
                 </div>
@@ -67,8 +66,7 @@ const NavigationSidebar = React.memo(({ isOpen, onClose }: { isOpen: boolean; on
                       key={item.label} 
                       to={item.href} 
                       onClick={onClose} 
-                      // TYPOGRAPHY: Playfair Display Italic
-                      className={`group flex items-center justify-between text-xl md:text-3xl font-['Playfair_Display'] italic transition-colors ${isDark ? 'text-[#EBEBE6]/60 hover:text-white' : 'text-stone-400 hover:text-stone-800'}`}
+                      className={`group flex items-center justify-between text-xl md:text-3xl font-['Playfair_Display'] transition-colors ${isDark ? 'text-[#EBEBE6]/60 hover:text-white' : 'text-stone-400 hover:text-stone-800'}`}
                     >
                         {item.label} 
                         <ArrowRight className={`opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-500 ${isDark ? 'text-white' : 'text-[#D4AF37]'}`} size={20} />
@@ -117,7 +115,6 @@ const FixedSidebar = ({ isDark, onOpenMenu }: { isDark: boolean, onOpenMenu: () 
             to="/contact" 
             className="w-full h-48 bg-[#3E2723] text-white flex items-center justify-center hover:bg-[#2C1A16] transition-colors"
           >
-              {/* TYPOGRAPHY: Oswald */}
               <span className="text-xs font-bold font-['Oswald'] tracking-[0.25em] uppercase [writing-mode:vertical-lr] rotate-180">
                 Make an Enquiry
               </span>
@@ -150,20 +147,16 @@ const Footer = () => {
       <div className="relative z-10 max-w-7xl mx-auto px-6 py-10 lg:py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10">
           
-          {/* COLUMN 1: ABOUT */}
           <div className="space-y-4">
             <h3 className="text-base font-bold uppercase tracking-widest font-['Oswald'] text-white">About</h3>
-            {/* TYPOGRAPHY: Playfair */}
             <p className="text-sm text-[#EBEBE6]/60 leading-relaxed font-['Playfair_Display'] font-light max-w-xs">
               This is property showcase done in a clean and
 contemporary manner. We built Treasure to provide you with a trouble-free website setup and managing, and to let you have fun along the way.
             </p>
           </div>
 
-          {/* COLUMN 2: CONTACT */}
           <div className="space-y-4">
             <h3 className="text-base font-bold uppercase tracking-widest font-['Oswald'] text-white">Contact</h3>
-            {/* TYPOGRAPHY: Playfair */}
             <ul className="space-y-2 text-sm text-[#EBEBE6]/60 font-['Playfair_Display'] font-light">
               <li className="flex items-center gap-3">
                 <Phone size={14} className="text-white/40" />
@@ -180,10 +173,8 @@ contemporary manner. We built Treasure to provide you with a trouble-free websit
             </ul>
           </div>
 
-          {/* COLUMN 3: USEFUL LINKS */}
           <div className="space-y-4">
             <h3 className="text-base font-bold uppercase tracking-widest font-['Oswald'] text-white">Links</h3>
-            {/* TYPOGRAPHY: Playfair */}
             <ul className="space-y-2 text-sm text-[#EBEBE6]/60 font-['Playfair_Display'] font-light">
               <li>
                 <Link to="/about" className="flex items-center gap-2 hover:text-white transition-colors group">
@@ -206,14 +197,12 @@ contemporary manner. We built Treasure to provide you with a trouble-free websit
             </ul>
           </div>
 
-          {/* COLUMN 4: NEWSLETTER */}
           <div className="space-y-4">
             <h3 className="text-base font-bold uppercase tracking-widest font-['Oswald'] text-white">Newsletter</h3>
             
             <div className="space-y-3">
               <div className="relative border-b border-[#EBEBE6]/20">
                 <Mail size={14} className="absolute left-0 top-2.5 text-white/40" />
-                {/* TYPOGRAPHY: Playfair */}
                 <input 
                   type="email" 
                   placeholder="Email Address" 
@@ -342,11 +331,9 @@ const ContactPage = () => {
                   isDark ? 'bg-[#2A0A0A]' : 'bg-[#EEF2F3]'
               }`}>
                   <div>
-                      {/* TYPOGRAPHY: Oswald for Labels */}
                       <h2 className={`text-sm font-['Oswald'] font-medium uppercase tracking-wide mb-1 opacity-80 ${
                           isDark ? 'text-white/80' : 'text-[#4A3B32]/80'
                       }`}>Contact form</h2>
-                      {/* TYPOGRAPHY: Oswald for Heading */}
                       <h1 className={`text-3xl md:text-5xl font-['Oswald'] font-bold tracking-tight ${
                           isDark ? 'text-white' : 'text-[#4A3B32]'
                       }`}>
@@ -355,10 +342,10 @@ const ContactPage = () => {
                   </div>
               </div>
 
-              {/* Map Container */}
+              {/* Map Container - UPDATED WITH SPECIFIC LOCATION */}
               <div className="w-full h-[300px] md:h-[500px] relative bg-gray-200 overflow-hidden group border-y border-white/10">
               <iframe 
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d227748.3825624477!2d75.65046970685324!3d26.88544791796718!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396c4adf4c57e281%3A0xce1c63a0cf22e09!2sJaipur%2C%20Rajasthan!5e0!3m2!1sen!2sin!4v1684489245621!5m2!1sen!2sin" 
+                  src="https://maps.google.com/maps?q=Sector-5,%20Vidhyadhar%20Nagar,%20Jaipur&t=&z=15&ie=UTF8&iwloc=&output=embed" 
                   width="100%" 
                   height="100%" 
                   style={{ border: 0, filter: isDark ? 'grayscale(100%) invert(90%) contrast(0.8)' : 'grayscale(100%) contrast(1.1) opacity(0.85)' }} 
@@ -396,7 +383,6 @@ const ContactPage = () => {
               <div className="w-full lg:w-1/2 relative pt-8 lg:pt-0">
                   
                   <div className="absolute -top-10 right-0 select-none pointer-events-none overflow-hidden z-0">
-                  {/* TYPOGRAPHY: Playfair for Big Background Text */}
                   <span className={`text-[100px] md:text-[180px] font-['Playfair_Display'] leading-none transition-opacity duration-500 ${
                       isDark ? 'text-white opacity-10' : 'text-[#E3E8EA] opacity-60'
                   }`}>
@@ -405,7 +391,6 @@ const ContactPage = () => {
                   </div>
 
                   <div className="relative z-10">
-                  {/* TYPOGRAPHY: Oswald for Heading */}
                   <h2 className={`text-2xl md:text-4xl font-['Oswald'] font-bold mb-6 tracking-tight transition-colors duration-500 ${
                       isDark ? 'text-white' : 'text-[#4A3B32]'
                   }`}>
@@ -416,7 +401,6 @@ const ContactPage = () => {
                       isDark ? 'bg-white' : 'bg-[#4A3B32]'
                   }`}></div>
 
-                  {/* TYPOGRAPHY: Playfair for Body Text */}
                   <p className={`mb-12 max-w-md leading-relaxed font-['Playfair_Display'] transition-colors duration-500 ${
                       isDark ? 'text-[#EBEBE6]/70' : 'text-gray-600'
                   }`}>
@@ -426,13 +410,11 @@ const ContactPage = () => {
                   <form onSubmit={handleSubmit} className="space-y-10 max-w-md">
                       
                       <div className="group">
-                      {/* TYPOGRAPHY: Oswald for Form Label */}
                       <label htmlFor="email" className={`block text-sm font-['Oswald'] font-semibold mb-1 transition-colors duration-500 ${
                           isDark ? 'text-white' : 'text-[#4A3B32]'
                       }`}>
                           Email*
                       </label>
-                      {/* TYPOGRAPHY: Playfair for Input */}
                       <input
                           type="email"
                           id="email"
@@ -489,7 +471,6 @@ const ContactPage = () => {
                       />
                       </div>
 
-                      {/* TYPOGRAPHY: Oswald for Button */}
                       <button 
                       type="submit" 
                       className={`mt-8 flex items-center justify-center px-8 py-4 border text-sm font-['Oswald'] font-medium transition-all duration-300 shadow-sm ${

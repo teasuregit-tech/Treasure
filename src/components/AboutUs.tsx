@@ -10,9 +10,9 @@ import { useTheme } from './ThemeContext';
 
 // --- CONFIGURATION: LOCAL IMAGE PATHS ---
 const LOCAL_ASSETS = {
-  hero: "/assets/images/aptnght.jpg",
-  aboutExterior: "/assets/images/20-2.jpg",
-  aboutInterior: "/assets/images/17-2.jpg",
+  hero: "/assets/images/newimg10.jpg",
+  aboutExterior: "/assets/images/newimg11.png",
+  aboutInterior: "/assets/images/newimg1.jpg",
   banner: "/assets/images/vdn4.jpg", 
   founder: "/assets/images/founder.jpg",
   logo: "/assets/images/logo.png",
@@ -76,7 +76,7 @@ const NavigationSidebar = React.memo(({ isOpen, onClose }: { isOpen: boolean; on
                       key={item.label} 
                       to={item.href} 
                       onClick={onClose} 
-                      className={`group flex items-center justify-between text-xl md:text-3xl font-['Oswald'] uppercase tracking-wide transition-colors ${isDark ? 'text-white/60 hover:text-white' : 'text-stone-400 hover:text-stone-800'}`}
+                      className={`group flex items-center justify-between text-xl md:text-3xl font-['Playfair_Display'] uppercase tracking-wide transition-colors ${isDark ? 'text-white/60 hover:text-white' : 'text-stone-400 hover:text-stone-800'}`}
                     >
                         {item.label} 
                         <ArrowRight className={`opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-500 ${isDark ? 'text-white' : 'text-[#D4AF37]'}`} size={20} />
@@ -338,7 +338,7 @@ const AboutUsPage: React.FC = () => {
   const values = [
     {
       id: "01",
-      title: "INTELLIGENT CONCEPTS",
+      title: "Design",
       desc: "Designs shaped by clarity, research, and purpose-driven thinking.",
     },
     {
@@ -513,7 +513,7 @@ const AboutUsPage: React.FC = () => {
                     <img 
                       src={LOCAL_ASSETS.aboutInterior} 
                       alt="Interior"
-                      className={`absolute right-8 bottom-12 w-[55%] md:w-[55%] aspect-[3/4] object-cover shadow-xl z-0 border-8 ${isDark ? 'border-[#2A0A0A]' : 'border-[#F9F9F7]'}`} 
+                      className={`absolute right-0 bottom-12 w-[55%] md:w-[55%] aspect-[3/4] object-cover shadow-xl z-0 border-8 ${isDark ? 'border-[#2A0A0A]' : 'border-[#F9F9F7]'}`} 
                     />
                   </div>
 

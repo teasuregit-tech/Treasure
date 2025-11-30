@@ -13,10 +13,10 @@ import { useTheme } from './ThemeContext';
 const treasureData = [
   { id: 1, title: "GUEST BEDROOM", subtitle: "Treasure", src: "/assets/images/guestbedroom.jpg" },
   { id: 2, title: "MASTER BEDROOM", subtitle: "Treasure", src: "/assets/images/masterbed2.jpg" },
-  { id: 3, title: "LIVING DINING", subtitle: "Treasure", src: "/assets/images/living.jpg" },
+  { id: 3, title: "LIVING DINING", subtitle: "Treasure", src: "/assets/images/newimg3.jpg" },
   { id: 4, title: "LIVING DINING", subtitle: "Treasure", src: "/assets/images/living3.jpg" },
   { id: 5, title: "DAUGHTER'S ROOM", subtitle: "Treasure", src: "/assets/images/daughtersroom.jpg" },
-  { id: 6, title: "LIVING DINING", subtitle: "Treasure", src: "/assets/images/living4.jpg" },
+  { id: 6, title: "LIVING DINING", subtitle: "Treasure", src: "/assets/images/newimg8.jpg" },
 ];
 
 const limitedData = [
@@ -67,7 +67,7 @@ const NavigationSidebar = React.memo(({ isOpen, onClose }: { isOpen: boolean; on
             <div className="flex-1 flex flex-col justify-center px-8 md:px-12 space-y-6">
                 {MENU_ITEMS.map(item => (
                     // TYPOGRAPHY: Playfair for Menu Items
-                    <Link key={item.label} to={item.href} onClick={onClose} className={`group flex items-center justify-between text-xl md:text-3xl font-['Playfair_Display'] italic transition-colors ${isDark ? 'text-[#EBEBE6]/60 hover:text-white' : 'text-stone-400 hover:text-stone-800'}`}>
+                    <Link key={item.label} to={item.href} onClick={onClose} className={`group flex items-center justify-between text-xl md:text-3xl font-['Playfair_Display'] transition-colors ${isDark ? 'text-[#EBEBE6]/60 hover:text-white' : 'text-stone-400 hover:text-stone-800'}`}>
                         {item.label} 
                         <ArrowRight className={`opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-500 ${isDark ? 'text-white' : 'text-[#D4AF37]'}`} size={20} />
                     </Link>
