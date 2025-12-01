@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 const SLIDES = [
   {
     id: 1,
-    url: "/assets/images/newimg5.jpg", 
+    url: "/assets/images/newimg8.png", 
     alt: "Exterior Facade"
   },
   {
