@@ -30,7 +30,7 @@ const galleryImages = [
   { src: "/assets/images/newimg4.jpg", alt: "Modern Interior Kitchen Detail" },
   { src: "/assets/images/living3.jpg", alt: "Unique Architectural Balconies" },
   { src: "/assets/images/image2.png", alt: "Textured Interior Wall Feature" },
-  { src: "/assets/images/newimg8.jpg", alt: "Exterior Apartment Building at Dusk" }
+  { src: "/assets/images/a.png", alt: "Exterior Apartment Building at Dusk" }
 ];
 
 const testimonials = [
@@ -476,11 +476,6 @@ const OurServicesPage = () => {
             </div>
           </div>
           
-          
-
-
-
-
           {/* Top Content Container */}
           <div className="relative z-10 px-6 md:px-12 max-w-7xl mx-auto">
               <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8 pb-16 md:pb-24">

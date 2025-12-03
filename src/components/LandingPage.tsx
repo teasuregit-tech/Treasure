@@ -280,10 +280,6 @@ const StatsSection = ({ isDark }: { isDark: boolean }) => {
   );
 };
 
-// 
-// 
-// 
-// 
 
 const GALLERY_ITEMS = [
   {
@@ -366,7 +362,7 @@ const GallerySection = () => {
          </h2>
          <div className="w-24 h-[1px] bg-stone-400 mx-auto mb-6"></div>
          {/* Body Text: Playfair */}
-         <p className="font-playfair text-stone-600 dark:text-stone-300 italic text-base md:text-lg">
+         <p className="font-playfair text-stone-600 dark:text-stone-300 text-base md:text-lg">
            A curated collection of renders showcasing the architectural brilliance of Treasure.
          </p>
       </div>
