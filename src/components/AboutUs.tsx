@@ -268,6 +268,7 @@ contemporary manner. We built Treasure to provide you with a trouble-free websit
   );
 };
 
+// --- UPDATED STATS SECTION ---
 const StatsSection = () => {
   const STATS_DATA = [
     { val: '78%', label: 'Climate Responsive Architecture' },
@@ -276,7 +277,12 @@ const StatsSection = () => {
     { val: '0', label: 'AQI' },
   ];
   
-  const circumference = 2 * Math.PI * 63;
+  // Standardized SVG Geometry for clean scaling
+  // We use a viewBox of 0 0 100 100.
+  // Center (cx, cy) is 50, 50.
+  // Radius (r) is 45 (leaving 5 units for the stroke width to not get cut off).
+  const radius = 45;
+  const circumference = 2 * Math.PI * radius;
 
   return (
     <section className="relative py-12 md:py-20 overflow-hidden">
@@ -299,28 +305,50 @@ const StatsSection = () => {
                 transition={{ delay: idx * 0.1 }}
                 className="flex flex-col items-center"
              >
-                <div className="w-24 h-24 md:w-32 md:h-32 rounded-full border border-stone-300 dark:border-stone-600 flex items-center justify-center mb-4 md:mb-6 relative">
-                   {/* TYPE: OSWALD (Headings/Numbers) */}
-                   <span className="font-['Oswald'] text-xl md:text-3xl font-bold dark:text-white tracking-wider">{stat.val}</span>
-                   <svg className="absolute inset-0 w-full h-full -rotate-90" aria-hidden="true">
-                      <circle cx="50%" cy="50%" r="48%" fill="none" stroke="currentColor" strokeWidth="1" className="text-stone-800/10 dark:text-white/10" />
-                      <motion.circle 
-                        cx="50%" 
-                        cy="50%" 
-                        r="48%" 
+                {/* UPDATED SIZE CLASSES: 
+                  - Mobile: w-32 h-32 (was w-24 h-24)
+                  - Desktop: md:w-48 md:h-48 (was md:w-32 md:h-32)
+                */}
+                <div className="w-32 h-32 md:w-48 md:h-48 rounded-full border border-stone-300 dark:border-stone-600 flex items-center justify-center mb-6 relative">
+                   
+                   {/* UPDATED FONT SIZE for the larger circle */}
+                   <span className="font-['Oswald'] text-3xl md:text-5xl font-bold dark:text-white tracking-wider">
+                     {stat.val}
+                   </span>
+                   
+                   {/* UPDATED SVG with viewBox for perfect scaling */}
+                   <svg className="absolute inset-0 w-full h-full -rotate-90" viewBox="0 0 100 100" aria-hidden="true">
+                      {/* Background Circle */}
+                      <circle 
+                        cx="50" 
+                        cy="50" 
+                        r={radius} 
                         fill="none" 
                         stroke="currentColor" 
-                        strokeWidth="1" 
+                        strokeWidth="0.5" 
+                        className="text-stone-800/10 dark:text-white/10" 
+                      />
+                      {/* Animated Foreground Circle */}
+                      <motion.circle 
+                        cx="50" 
+                        cy="50" 
+                        r={radius} 
+                        fill="none" 
+                        stroke="currentColor" 
+                        strokeWidth="0.5" 
                         strokeDasharray={circumference}
                         initial={{ strokeDashoffset: circumference }}
                         whileInView={{ strokeDashoffset: circumference * (1 - parseInt(stat.val) / 100) }}
                         viewport={{ once: true }}
                         transition={{ duration: 1.5, delay: 0.2 + idx * 0.1 }}
-                        className="text-stone-800 dark:text-white" />
+                        className="text-stone-800 dark:text-white" 
+                      />
                    </svg>
                 </div>
-                {/* TYPE: PLAYFAIR (Subtext) */}
-                <h3 className="text-[10px] md:text-xs uppercase tracking-widest max-w-[150px] dark:text-white/80 font-['Playfair_Display']">{stat.label}</h3>
+                {/* SUBTEXT */}
+                <h3 className="text-[10px] md:text-xs uppercase tracking-widest max-w-[180px] dark:text-white/80 font-['Playfair_Display']">
+                  {stat.label}
+                </h3>
              </motion.div>
           ))}
        </div>
@@ -507,13 +535,13 @@ const AboutUsPage: React.FC = () => {
                     <img 
                       src={LOCAL_ASSETS.aboutExterior} 
                       alt="Exterior"
-                      className="absolute left-0 top-0 w-[55%] md:w-[55%] aspect-[3/4] object-cover shadow-2xl z-10" 
+                      className="absolute left-0 top-0 w-[55%] md:w-[55%] aspect-[3/4] object-cover  z-10" 
                     />
                     {/* Bottom Right Image */}
                     <img 
                       src={LOCAL_ASSETS.aboutInterior} 
                       alt="Interior"
-                      className={`absolute right-0 bottom-12 w-[55%] md:w-[55%] aspect-[3/4] object-cover shadow-xl z-0 border-8 ${isDark ? 'border-[#2A0A0A]' : 'border-[#F9F9F7]'}`} 
+                      className={`absolute right-0 bottom-12 w-[55%] md:w-[55%] aspect-[3/4] object-cover  z-0 `} 
                     />
                   </div>
 
@@ -585,10 +613,10 @@ const AboutUsPage: React.FC = () => {
                   <div className="flex flex-col items-center">
                       <div className={`p-2 border inline-block mb-6 shadow-lg transition-colors duration-700 ${isDark ? 'bg-[#4A2521] border-white/50' : 'bg-white border-[#927B5B]'}`}>
                           <img 
-                              src={LOCAL_ASSETS.founder} 
-                              alt="Founder" 
-                              className="w-72 h-72 md:w-96 md:h-96 object-cover grayscale hover:grayscale-0 transition-all duration-500" 
-                          />
+  src={LOCAL_ASSETS.founder} 
+  alt="Founder" 
+  className="w-80 h-48 md:w-[600px] md:h-[350px] object-cover grayscale hover:grayscale-0 transition-all duration-500" 
+/>
                       </div>
                       {/* Name: Oswald */}
                       <h3 className={`text-sm font-['Oswald'] font-bold tracking-[0.15em] uppercase mb-1 ${isDark ? 'text-white' : 'text-gray-800'}`}>Robin Katewa</h3>
