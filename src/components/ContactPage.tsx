@@ -11,7 +11,7 @@ import { useTheme } from './ThemeContext';
 const LOCAL_ASSETS = {
   logo: "/assets/images/logo.png",
   footerPattern: "/assets/images/dpattern.jpg",
-  building: "/assets/images/vdn3.jpg" 
+  building: "/assets/images/five.png" 
 };
 
 // --- SHARED COMPONENTS ---

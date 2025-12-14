@@ -27,10 +27,10 @@ const services = [
 ];
 
 const galleryImages = [
-  { src: "/assets/images/newimg4.jpg", alt: "Modern Interior Kitchen Detail" },
-  { src: "/assets/images/living3.jpg", alt: "Unique Architectural Balconies" },
-  { src: "/assets/images/image2.png", alt: "Textured Interior Wall Feature" },
-  { src: "/assets/images/a.png", alt: "Exterior Apartment Building at Dusk" }
+  { src: "/assets/images/twentytwo.png", alt: "Modern Interior Kitchen Detail" },
+  { src: "/assets/images/twentythree.png", alt: "Unique Architectural Balconies" },
+  { src: "/assets/images/twentyfour.png", alt: "Textured Interior Wall Feature" },
+  { src: "/assets/images/twentyfive.png", alt: "Exterior Apartment Building at Dusk" }
 ];
 
 const testimonials = [
@@ -460,7 +460,7 @@ const OurServicesPage = () => {
           {/* Hero Section */}
           <div className="relative w-full h-[50vh] md:h-[500px] overflow-hidden group mb-12">
             <img 
-              src="/assets/images/vdn.jpg" 
+              src="/assets/images/twenty.png" 
               alt="Services" 
               className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 brightness-75 will-change-transform" 
               decoding="async" 
@@ -487,7 +487,7 @@ const OurServicesPage = () => {
                           </div>
                           <div className="relative z-10 pt-20 pl-4">
                               {/* TYPOGRAPHY: Oswald for Service Title */}
-                              <h3 className={`font-bold font-['Oswald'] tracking-[0.15em] uppercase text-sm md:text-base mb-6 leading-relaxed max-w-[80%] transition-colors duration-500 ${isDark ? 'text-white' : 'text-[#5D4037]'}`}>{service.title}</h3>
+                              <h3 className={`font-semibold font-['Oswald'] tracking-[0.15em] uppercase text-sm md:text-base mb-6 leading-relaxed max-w-[80%] transition-colors duration-500 ${isDark ? 'text-white' : 'text-[#5D4037]'}`}>{service.title}</h3>
                               {/* TYPOGRAPHY: Playfair for Description */}
                               <p className={`text-sm leading-relaxed font-['Playfair_Display'] max-w-xs transition-colors duration-500 ${isDark ? 'text-[#EBEBE6]/70' : 'text-gray-600'}`}>{service.description}</p>
                           </div>
@@ -499,7 +499,7 @@ const OurServicesPage = () => {
                   <div className="relative">
                       <div className={`border p-1 transition-colors duration-500 ${isDark ? 'border-white' : 'border-[#5D4037]'}`}>
                       <img 
-                          src="/assets/images/living3.jpg"
+                          src="/assets/images/twentyone.png"
                           alt="Interior" 
                           className="w-full h-[300px] md:h-[500px] object-cover" 
                           loading="lazy" 
@@ -509,7 +509,7 @@ const OurServicesPage = () => {
                   </div>
                   <div className="flex flex-col justify-center pl-2 md:pl-8">
                       {/* TYPOGRAPHY: Oswald for Section Heading */}
-                      <h2 className={`text-2xl md:text-4xl font-semibold font-['Oswald'] tracking-widest uppercase mb-6 leading-tight transition-colors duration-500 ${isDark ? 'text-white' : 'text-[#5D4037]'}`}>Material & Brands <br /> </h2>
+                      <h2 className={`text-2xl md:text-4xl font-['Oswald'] tracking-widest uppercase mb-6 leading-tight transition-colors duration-500 ${isDark ? 'text-white' : 'text-[#5D4037]'}`}>Material & Brands <br /> </h2>
                       <div className={`w-12 h-[2px] mb-8 transition-colors duration-500 ${isDark ? 'bg-white/50' : 'bg-[#DCCFC5]'}`}></div>
                       {/* TYPOGRAPHY: Playfair for Body Text */}
                       <p className={`text-base md:text-lg font-['Playfair_Display'] leading-relaxed mb-10 max-w-md transition-colors duration-500 ${isDark ? 'text-[#EBEBE6]/80' : 'text-gray-600'}`}>Materials shape a home’s soul. We choose them the way curators choose art, for truth, texture, and reliability.

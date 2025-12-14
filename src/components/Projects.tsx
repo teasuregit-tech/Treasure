@@ -10,39 +10,39 @@ import { useTheme } from './ThemeContext';
 
 // --- DATASETS ---
 const treasureData = [
-  { id: 1, title: "GUEST BEDROOM", subtitle: "Treasure", src: "/assets/images/guestbedroom.jpg" },
-  { id: 2, title: "MASTER BEDROOM", subtitle: "Treasure", src: "/assets/images/masterbed2.jpg" },
-  { id: 3, title: "LIVING DINING", subtitle: "Treasure", src: "/assets/images/newimg3.jpg" },
-  { id: 4, title: "LIVING DINING", subtitle: "Treasure", src: "/assets/images/living3.jpg" },
-  { id: 5, title: "DAUGHTER'S ROOM", subtitle: "Treasure", src: "/assets/images/daughtersroom.jpg" },
-  { id: 6, title: "LIVING DINING", subtitle: "Treasure", src: "/assets/images/newimg7.jpg" },
-  { id: 7, title: "GUEST BEDROOM", subtitle: "Treasure", src: "/assets/images/guestbedroom.jpg" },
-  { id: 8, title: "MASTER BEDROOM", subtitle: "Treasure", src: "/assets/images/masterbed2.jpg" },
-  { id: 9, title: "LIVING DINING", subtitle: "Treasure", src: "/assets/images/newimg3.jpg" },
-  { id: 10, title: "LIVING DINING", subtitle: "Treasure", src: "/assets/images/living3.jpg" },
-  { id: 11, title: "DAUGHTER'S ROOM", subtitle: "Treasure", src: "/assets/images/daughtersroom.jpg" },
-  { id: 12, title: "LIVING DINING", subtitle: "Treasure", src: "/assets/images/newimg7.jpg" },
+  { id: 1, title: "GUEST BEDROOM", subtitle: "Treasure", src: "/assets/images/twentynine.png" },
+  { id: 2, title: "MASTER BEDROOM", subtitle: "Treasure", src: "/assets/images/thirty.png" },
+  { id: 3, title: "LIVING DINING", subtitle: "Treasure", src: "/assets/images/thirtyone.png" },
+  { id: 4, title: "LIVING DINING", subtitle: "Treasure", src: "/assets/images/thirtytwo.png" },
+  { id: 5, title: "DAUGHTER'S ROOM", subtitle: "Treasure", src: "/assets/images/thirtythree.png" },
+  { id: 6, title: "LIVING DINING", subtitle: "Treasure", src: "/assets/images/thirtyfour.png" },
+  { id: 7, title: "GUEST BEDROOM", subtitle: "Treasure", src: "/assets/images/thirtyfive.png" },
+  { id: 8, title: "MASTER BEDROOM", subtitle: "Treasure", src: "/assets/images/thirtysix.png" },
+  { id: 9, title: "LIVING DINING", subtitle: "Treasure", src: "/assets/images/thirtyseven.png" },
+  { id: 10, title: "LIVING DINING", subtitle: "Treasure", src: "/assets/images/thirtyeight.png" },
+  { id: 11, title: "DAUGHTER'S ROOM", subtitle: "Treasure", src: "/assets/images/thirtynine.png" },
+  { id: 12, title: "LIVING DINING", subtitle: "Treasure", src: "/assets/images/forty.png" },
 ];
 
 const limitedData = [
-  { id: 13, title: "PENTHOUSE SUITE", subtitle: "Limited Edition", src: "/assets/images/masterbed3.jpg" },
-  { id: 14, title: "PRIVATE LOUNGE", subtitle: "Limited Edition", src: "/assets/images/living2.jpg" },
-  { id: 15, title: "SKY TERRACE", subtitle: "Limited Edition", src: "/assets/images/daughtersroom1.jpg" },
-  { id: 16, title: "MASTER BATH", subtitle: "Limited Edition", src: "/assets/images/living5.jpg" },
-  { id: 17, title: "WALK-IN CLOSET", subtitle: "Limited Edition", src: "/assets/images/son.jpg" },
-  { id: 18, title: "GRAND FOYER", subtitle: "Limited Edition", src: "/assets/images/newimg8.png" },
-  { id: 19, title: "PENTHOUSE SUITE", subtitle: "Limited Edition", src: "/assets/images/masterbed3.jpg" },
-  { id: 20, title: "PRIVATE LOUNGE", subtitle: "Limited Edition", src: "/assets/images/living2.jpg" },
-  { id: 21, title: "SKY TERRACE", subtitle: "Limited Edition", src: "/assets/images/daughtersroom1.jpg" },
-  { id: 22, title: "MASTER BATH", subtitle: "Limited Edition", src: "/assets/images/living5.jpg" },
-  { id: 23, title: "WALK-IN CLOSET", subtitle: "Limited Edition", src: "/assets/images/son.jpg" },
-  { id: 24, title: "GRAND FOYER", subtitle: "Limited Edition", src: "/assets/images/newimg8.png" },
-  { id: 25, title: "PENTHOUSE SUITE", subtitle: "Limited Edition", src: "/assets/images/masterbed3.jpg" },
-  { id: 26, title: "PRIVATE LOUNGE", subtitle: "Limited Edition", src: "/assets/images/living2.jpg" },
-  { id: 27, title: "SKY TERRACE", subtitle: "Limited Edition", src: "/assets/images/daughtersroom1.jpg" },
-  { id: 28, title: "MASTER BATH", subtitle: "Limited Edition", src: "/assets/images/living5.jpg" },
-  { id: 29, title: "WALK-IN CLOSET", subtitle: "Limited Edition", src: "/assets/images/son.jpg" },
-  { id: 30, title: "GRAND FOYER", subtitle: "Limited Edition", src: "/assets/images/newimg8.png" },
+  { id: 13, title: "PENTHOUSE SUITE", subtitle: "Limited Edition", src: "/assets/images/fortyone.png" },
+  { id: 14, title: "PRIVATE LOUNGE", subtitle: "Limited Edition", src: "/assets/images/fortytwo.png" },
+  { id: 15, title: "SKY TERRACE", subtitle: "Limited Edition", src: "/assets/images/fortythree.png" },
+  { id: 16, title: "MASTER BATH", subtitle: "Limited Edition", src: "/assets/images/fortyfour.png" },
+  { id: 17, title: "WALK-IN CLOSET", subtitle: "Limited Edition", src: "/assets/images/fortyfive.png" },
+  { id: 18, title: "GRAND FOYER", subtitle: "Limited Edition", src: "/assets/images/fortysix.png" },
+  { id: 19, title: "PENTHOUSE SUITE", subtitle: "Limited Edition", src: "/assets/images/fortyseven.png" },
+  { id: 20, title: "PRIVATE LOUNGE", subtitle: "Limited Edition", src: "/assets/images/fortyeight.png" },
+  { id: 21, title: "SKY TERRACE", subtitle: "Limited Edition", src: "/assets/images/fortynine.png" },
+  { id: 22, title: "MASTER BATH", subtitle: "Limited Edition", src: "/assets/images/fifty.png" },
+  { id: 23, title: "WALK-IN CLOSET", subtitle: "Limited Edition", src: "/assets/images/fiftyone.png" },
+  { id: 24, title: "GRAND FOYER", subtitle: "Limited Edition", src: "/assets/images/fiftytwo.png" },
+  { id: 25, title: "PENTHOUSE SUITE", subtitle: "Limited Edition", src: "/assets/images/fiftythree.png" },
+  { id: 26, title: "PRIVATE LOUNGE", subtitle: "Limited Edition", src: "/assets/images/fiftyfour.png" },
+  { id: 27, title: "SKY TERRACE", subtitle: "Limited Edition", src: "/assets/images/fiftyfive.png" },
+  { id: 28, title: "MASTER BATH", subtitle: "Limited Edition", src: "/assets/images/fiftysix.png" },
+  { id: 29, title: "WALK-IN CLOSET", subtitle: "Limited Edition", src: "/assets/images/fiftyseven.png" },
+  { id: 30, title: "GRAND FOYER", subtitle: "Limited Edition", src: "/assets/images/fiftyeight.png" },
 ];
 
 // --- INTERNAL COMPONENTS ---
@@ -354,7 +354,7 @@ const Projects = () => {
           {/* HERO */}
           <div className="px-6 md:px-12 mb-16 md:mb-24">
               <div className="relative w-full h-[50vh] md:h-[70vh] overflow-hidden shadow-lg">
-                  <img src="/assets/images/son2.jpg" alt="Luxury Bedroom Interior" className="w-full h-full object-cover" />
+                  <img src="/assets/images/twentysix.png" alt="Luxury Bedroom Interior" className="w-full h-full object-cover" />
                   <div className="absolute bottom-8 left-6 md:bottom-20 md:left-16 max-w-2xl pr-4">
                       <div className="w-12 h-0.5 bg-white mb-4 md:mb-6" />
                       <p className="text-white font-['Oswald'] text-xl md:text-3xl leading-snug drop-shadow-md">
@@ -380,7 +380,7 @@ const Projects = () => {
                           : 'border-white dark:border-[#2A0A0A] opacity-70 hover:opacity-100'
                       } shadow-xl`}
                   >
-                      <img src="/assets/images/vdn3.jpg" alt="Treasure" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 brightness-75" />
+                      <img src="/assets/images/twentyeight.png" alt="Treasure" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 brightness-75" />
                       <div className="absolute inset-0 flex items-center justify-center">
                           <span className="text-white font-['Oswald'] font-bold tracking-[0.15em] uppercase text-xl md:text-2xl drop-shadow-lg">Treasure</span>
                       </div>
@@ -395,7 +395,7 @@ const Projects = () => {
                           : 'border-white dark:border-[#2A0A0A] opacity-70 hover:opacity-100'
                       } shadow-xl`}
                   >
-                      <img src="/assets/images/aptnght.jpg" alt="Treasure Limited" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 brightness-75" />
+                      <img src="/assets/images/twentyseven.png" alt="Treasure Limited" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 brightness-75" />
                       <div className="absolute inset-0 flex items-center justify-center">
                           <span className="text-white font-['Oswald'] font-bold tracking-[0.15em] uppercase text-xl md:text-2xl drop-shadow-lg">Treasure - Limited Edition</span>
                       </div>

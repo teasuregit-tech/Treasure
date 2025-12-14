@@ -156,7 +156,7 @@ const FixedSidebar = ({ isDark, onOpenMenu }: { isDark: boolean, onOpenMenu: () 
 const VideoSection = () => (
   <section className="w-full h-[40vh] md:h-screen relative group overflow-hidden">
     <img 
-      src="/assets/images/vdn3.jpg" 
+      src="/assets/images/five.png" 
       alt="Property Showcase" 
       className="w-full h-full object-cover transition-transform duration-[1.5s] group-hover:scale-105" 
     />
@@ -190,7 +190,7 @@ const FeaturesSection = ({ isDark }: { isDark: boolean }) => (
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            src="/assets/images/daughtersroom.jpg" 
+            src="/assets/images/seven.png" 
             className="absolute left-0 top-0 w-[70%] md:w-[55%] h-[80%] object-cover z-10 shadow-lg" 
           />
           
@@ -198,7 +198,7 @@ const FeaturesSection = ({ isDark }: { isDark: boolean }) => (
             initial={{ opacity: 0, y: -50 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            src="/assets/images/newimg7.jpg" 
+            src="/assets/images/six.png" 
             className="absolute right-0 bottom-0 w-[70%] md:w-[55%] h-[75%] object-cover z-0" 
           />
        </div>
@@ -306,25 +306,25 @@ const StatsSection = ({ isDark }: { isDark: boolean }) => {
 const GALLERY_ITEMS = [
   {
     id: 1,
-    src: "/assets/images/masterbed2.jpg",
+    src: "/assets/images/eight.png",
     title: "Master Bedroom",
     colSpan: "md:col-span-5" 
   },
   {
     id: 2,
-    src: "/assets/images/guestbedroom.jpg",
+    src: "/assets/images/nine.png",
     title: "Guest Bedroom",
     colSpan: "md:col-span-7" 
   },
   {
     id: 3,
-    src: "/assets/images/living4.jpg",
+    src: "/assets/images/ten.png",
     title: "Living Dining",
     colSpan: "md:col-span-7" 
   },
   {
     id: 4,
-    src: "/assets/images/living.jpg",
+    src: "/assets/images/eleven.png",
     title: "Living Dining",
     colSpan: "md:col-span-5" 
   }
@@ -441,9 +441,9 @@ const GallerySection = () => {
 
 const BlogSection = () => {
   const posts = [
-    { id: 1, category: "Design", date: "June 10, 2024", title: "WARM LUXURY", image: "/assets/images/masterbed2.jpg", excerpt: "Exploring the nuances of warm tones in modern interiors." },
-    { id: 2, category: "Lifestyle", date: "June 9, 2024", title: "A GUIDE TO ELEGANCE", image: "/assets/images/newimg3.jpg", excerpt: "How to curate a lifestyle that reflects architectural beauty." },
-    { id: 3, category: "Architecture", date: "June 8, 2024", title: "A CALM AFTERNOON", image: "/assets/images/image2.png", excerpt: "The importance of natural light in creating calming spaces." },
+    { id: 1, category: "Design", date: "June 10, 2024", title: "WARM LUXURY", image: "/assets/images/twelve.png", excerpt: "Exploring the nuances of warm tones in modern interiors." },
+    { id: 2, category: "Lifestyle", date: "June 9, 2024", title: "A GUIDE TO ELEGANCE", image: "/assets/images/thirteen.png", excerpt: "How to curate a lifestyle that reflects architectural beauty." },
+    { id: 3, category: "Architecture", date: "June 8, 2024", title: "A CALM AFTERNOON", image: "/assets/images/fourteen.png", excerpt: "The importance of natural light in creating calming spaces." },
   ];
 
   return (
@@ -510,7 +510,7 @@ const ContactHero = () => {
         {/* --- Hero Background Image --- */}
         <div className="w-full h-[50vh] md:h-[90vh]">
           <img 
-            src="/assets/images/living3.jpg" // Ensure this path is correct in your project
+            src="/assets/images/fourteen.png" // Ensure this path is correct in your project
             alt="Modern building exterior" 
             className="w-full h-full object-cover"
           />
@@ -520,24 +520,18 @@ const ContactHero = () => {
         <div className="relative md:absolute md:top-1/2 md:left-12 md:-translate-y-1/2 z-10 max-w-md w-full -mt-20 md:mt-0 mx-auto px-4 md:px-0 pb-12 md:pb-0">
           <div className="bg-[#4A2521] dark:bg-[#1a0505] text-[#EBEBE6] p-8 md:p-12 shadow-2xl relative overflow-hidden">
               
-              {/* --- VINTAGE KEY BACKGROUND --- */}
-              <div className="absolute -right-10 top-0 h-full w-32 opacity-10 pointer-events-none flex items-center justify-center text-white">
-                
-                {/* OPTION 1: If using your specific SVG file, uncomment the line below and remove the <svg> block */}
-                {/* <img src="/path/to/your/key.svg" alt="" className="h-[120%] w-auto" /> */}
-
-                {/* OPTION 2: Inline SVG (Current Placeholder) */}
-                {/* */}
-                <svg
-                  viewBox="0 0 55 160"
-                  fill="currentColor"
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-[120%] w-auto" 
-                >
-                  <path d="M27.5 0C22.5 0 18.2 2.8 16 7.1C13.8 2.8 9.5 0 4.5 0C2 0 0 2 0 4.5C0 9 4.5 13.5 9 13.5C10.5 13.5 12 13 13.2 12.2C12.5 14 12 16 12 18C12 25 18 29 24 29.8V33C22 34 21 36 21 38C21 41 23 43 25 43V130H18V136H25V140H18V146H25V154C25 157.3 27.7 160 31 160C34.3 160 37 157.3 37 154V146H44V140H37V136H44V130H37V43C39 43 41 41 41 38C41 36 40 34 38 33V29.8C44 29 50 25 50 18C50 16 49.5 14 48.8 12.2C50 13 51.5 13.5 53 13.5C57.5 13.5 62 9 62 4.5C62 2 60 0 57.5 0C52.5 0 48.2 2.8 46 7.1C43.8 2.8 39.5 0 34.5 0C32 0 29.8 1 27.5 2C25.2 1 23 0 20.5 0H27.5ZM27.5 7C29 7 30.5 8 31 9.5C31.5 8 33 7 34.5 7C37 7 39 9 39 11.5C39 14 37 16 34.5 16C33 16 31.5 15 31 13.5C30.5 15 29 16 27.5 16C26 16 24.5 15 24 13.5C23.5 15 22 16 20.5 16C18 16 16 14 16 11.5C16 9 18 7 20.5 7C22 7 23.5 8 24 9.5C24.5 8 26 7 27.5 7Z" />
-                </svg>
-                {/* ------------------------------------- */}
-
+              {/* --- BACKGROUND IMAGE ICON (TRANSPARENT) --- */}
+              {/* The 'opacity-10' class on this container creates the transparent effect.
+                  Ensure your image itself is a transparent PNG or WebP.
+              */}
+              <div className="absolute -right-10 top-0 h-full w-40 opacity-40 pointer-events-none flex items-center justify-center select-none">
+                 <img
+                   // TODO: Replace with your actual transparent image path
+                   src="/assets/images/fifteen.png" 
+                   alt=""
+                   // object-contain ensures it fits within the area without distorting
+                   className="h-[120%] w-auto object-contain pointer-events-none" 
+                 />
               </div>
 
               {/* --- Header --- */}
@@ -582,7 +576,6 @@ const ContactHero = () => {
     </section>
   );
 };
-
 
 const LocationSection = () => {
   return (

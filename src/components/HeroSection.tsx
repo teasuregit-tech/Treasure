@@ -6,17 +6,17 @@ import { Link } from "react-router-dom";
 const SLIDES = [
   {
     id: 1,
-    url: "/assets/images/newimg8.png", 
+    url: "/assets/images/three.png", 
     alt: "Exterior Facade"
   },
   {
     id: 2,
-    url: "/assets/images/vdn2.jpg", 
+    url: "/assets/images/two.png", 
     alt: "Luxury Interior"
   },
   {
     id: 3,
-    url: "/assets/images/vdn5.png", 
+    url: "/assets/images/one.png", 
     alt: "Evening Ambience"
   }
 ];

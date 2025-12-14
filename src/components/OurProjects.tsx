@@ -9,9 +9,9 @@ import { useTheme } from './ThemeContext';
 
 // --- CONFIGURATION: LOCAL IMAGE PATHS ---
 const LOCAL_ASSETS = {
-  hero: "/assets/images/son2.jpg", 
-  treasure: "/assets/images/vdn3.jpg",
-  limited: "/assets/images/aptnght.jpg",
+  hero: "/assets/images/twentysix.png", 
+  treasure: "/assets/images/twentyeight.png",
+  limited: "/assets/images/twentyseven.png",
   logo: "/assets/images/logo.png",
   footerPattern: "/assets/images/dpattern.jpg"
 };

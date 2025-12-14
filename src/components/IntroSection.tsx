@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 
 const INTRO_IMAGES = [
-  "/assets/images/image.jpg",
+  "/assets/images/four.png",
   // Add more images here if needed
 ];
 

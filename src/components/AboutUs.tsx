@@ -10,10 +10,10 @@ import { useTheme } from './ThemeContext';
 
 // --- CONFIGURATION: LOCAL IMAGE PATHS ---
 const LOCAL_ASSETS = {
-  hero: "/assets/images/image2.png",
-  aboutExterior: "/assets/images/newimg11.png",
-  aboutInterior: "/assets/images/newimg1.jpg",
-  banner: "/assets/images/vdn4.jpg", 
+  hero: "/assets/images/sixteen.png",
+  aboutExterior: "/assets/images/seventeen.png",
+  aboutInterior: "/assets/images/eighteen.png",
+  banner: "/assets/images/six.png", 
   founder: "/assets/images/founder.jpg",
   logo: "/assets/images/logo.png",
   footerPattern: "/assets/images/dpattern.jpg"
