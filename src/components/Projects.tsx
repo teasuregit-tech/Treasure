@@ -175,11 +175,11 @@ contemporary manner. We built Treasure to provide you with a trouble-free websit
             <ul className="space-y-2 text-sm text-[#EBEBE6]/60 font-['Playfair_Display'] font-light">
               <li className="flex items-center gap-3">
                 <Phone size={14} className="text-white/40" />
-                <span>+91 73782 55255</span>
+                <span>+91 9353181818</span>
               </li>
               <li className="flex items-center gap-3">
                 <Mail size={14} className="text-white/40" />
-                <span className="break-all">katewacompanies@gmail.com</span>
+                <span className="break-all">Treasure@katewacompanies.in</span>
               </li>
               <li className="flex items-start gap-3">
                 <MapPin size={14} className="text-white/40 mt-1" />

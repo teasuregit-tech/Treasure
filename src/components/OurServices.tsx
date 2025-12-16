@@ -207,11 +207,11 @@ contemporary manner. We built Treasure to provide you with a trouble-free websit
             <ul className="space-y-2 text-sm text-[#EBEBE6]/60 font-['Playfair_Display'] font-light">
               <li className="flex items-center gap-3">
                 <Phone size={14} className="text-white/40" />
-                <span>+91 73782 55255</span>
+                <span>+91 9353181818</span>
               </li>
               <li className="flex items-center gap-3">
                 <Mail size={14} className="text-white/40" />
-                <span className="break-all">katewacompanies@gmail.com</span>
+                <span className="break-all">Treasure@katewacompanies.in</span>
               </li>
               <li className="flex items-start gap-3">
                 <MapPin size={14} className="text-white/40 mt-1" />
@@ -513,8 +513,7 @@ const OurServicesPage = () => {
                       <div className={`w-12 h-[2px] mb-8 transition-colors duration-500 ${isDark ? 'bg-white/50' : 'bg-[#DCCFC5]'}`}></div>
                       {/* TYPOGRAPHY: Playfair for Body Text */}
                       <p className={`text-base md:text-lg font-['Playfair_Display'] leading-relaxed mb-10 max-w-md transition-colors duration-500 ${isDark ? 'text-[#EBEBE6]/80' : 'text-gray-600'}`}>Materials shape a home’s soul. We choose them the way curators choose art, for truth, texture, and reliability.
-  From Jaquar and Kohler fittings to Kajaria stone, Saint-Gobain glass, Asian Paints, Havells, and UltraTech, each brand reflects our commitment to quality.
-  Every surface tells a story of intention.Every choice is made to ensure that your home feels as good as it looks, years after it is built.</p>
+  At Treasure, every surface tells a story of intention. Every choice is made to ensure that your home feels as good as it looks, years after it is built.</p>
                       <div>
                       <button className={`group flex items-center gap-4 px-8 py-4 border bg-transparent transition-all duration-300 ${isDark ? 'border-white/50 hover:border-white hover:bg-white/10' : 'border-gray-300 hover:border-[#5D4037] hover:bg-white'}`}>
                           {/* TYPOGRAPHY: Playfair for Italic 'i' */}
