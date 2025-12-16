@@ -363,7 +363,7 @@ const GalleryItem = React.memo(({ image, isDark, onClick }: { image: any, isDark
         className="w-full h-[300px] md:h-[450px] object-cover block transition-transform duration-700 group-hover:scale-105" 
         loading="lazy" 
         decoding="async"
-        style={{ contentVisibility: 'auto' }} 
+       
       />
   </div>
 ));
@@ -527,7 +527,7 @@ const OurServicesPage = () => {
           </div>
 
           {/* FULL WIDTH GALLERY SECTION */}
-          <div className="w-full mt-0 pb-12">
+          <div className="relative z-10 w-full mt-0 pb-12">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
                   {galleryImages.map((image, index) => (
                       <GalleryItem key={index} image={image} isDark={isDark} onClick={() => setExpandedImageSrc(image.src)} />
