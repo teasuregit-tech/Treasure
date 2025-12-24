@@ -11,7 +11,7 @@ import { useTheme } from './ThemeContext';
 const LOCAL_ASSETS = {
   logo: "/assets/images/logo.png",
   footerPattern: "/assets/images/dpattern.jpg",
-  building: "/assets/images/five.png" 
+  building: "/assets/images/twentyseven.png" 
 };
 
 // --- SHARED COMPONENTS ---
@@ -150,8 +150,8 @@ const Footer = () => {
           <div className="space-y-4">
             <h3 className="text-base font-bold uppercase tracking-widest font-['Oswald'] text-white">About</h3>
             <p className="text-sm text-[#EBEBE6]/60 leading-relaxed font-['Playfair_Display'] font-light max-w-xs">
-              This is property showcase done in a clean and
-contemporary manner. We built Treasure to provide you with a trouble-free website setup and managing, and to let you have fun along the way.
+              Katewa Companies is a visionary real estate and development firm committed to exceptional residential and commercial environments, grounded in quality
+              thoughtful design, and sustainable excellence, shaping places people are proud to call their own. 
             </p>
           </div>
 
@@ -168,7 +168,7 @@ contemporary manner. We built Treasure to provide you with a trouble-free websit
               </li>
               <li className="flex items-start gap-3">
                 <MapPin size={14} className="text-white/40 mt-1" />
-                <span>Sector-5, Vidhyadhar Nagar, Jaipur</span>
+                <span>Vidhyadhar Nagar, Jaipur</span>
               </li>
             </ul>
           </div>
@@ -345,7 +345,7 @@ const ContactPage = () => {
               {/* Map Container - UPDATED WITH SPECIFIC LOCATION */}
               <div className="w-full h-[300px] md:h-[500px] relative bg-gray-200 overflow-hidden group border-y border-white/10">
               <iframe 
-                  src="https://maps.google.com/maps?q=Sector-5,%20Vidhyadhar%20Nagar,%20Jaipur&t=&z=15&ie=UTF8&iwloc=&output=embed" 
+                  src="https://maps.google.com/maps?q=,%20Vidhyadhar%20Nagar,%20Jaipur&t=&z=15&ie=UTF8&iwloc=&output=embed" 
                   width="100%" 
                   height="100%" 
                   style={{ border: 0, filter: isDark ? 'grayscale(100%) invert(90%) contrast(0.8)' : 'grayscale(100%) contrast(1.1) opacity(0.85)' }} 
@@ -404,7 +404,7 @@ const ContactPage = () => {
                   <p className={`mb-12 max-w-md leading-relaxed font-['Playfair_Display'] transition-colors duration-500 ${
                       isDark ? 'text-[#EBEBE6]/70' : 'text-gray-600'
                   }`}>
-                      Share a few details about your project, and our team will get back to you shortly.
+                      Every meaningful conversation begins with intention. If you're exploring a home, an opportunity or simply wish to understand our way of building, we'd be glad to hear from you. Share a few details and our team will contact with you thoughtfully to answer questions offer clarity and guide you at your pace.
                   </p>
 
                   <form onSubmit={handleSubmit} className="space-y-10 max-w-md">

@@ -91,7 +91,7 @@ const HeroSection = () => {
           transition={{ delay: 0.6, duration: 0.8 }}
           className="font-playfair text-2xl md:text-2xl lg:text-3xl text-white font-normal tracking-wide mb-6"
         >
-          Build to Last, Design to Inspire
+          Built to Last, Designed to Inspire
         </motion.h2>
 
         {/* 4. DESCRIPTION TEXT */}
@@ -101,7 +101,7 @@ const HeroSection = () => {
           transition={{ delay: 0.8, duration: 0.8 }}
           className="font-playfair text-sm md:text-base text-gray-200 max-w-lg md:max-w-2xl leading-relaxed opacity-90 mx-auto"
         >
-          Premium residences designed for those who desire superior architecture <br className="hidden md:block"/> and sophisticated living.
+          You'll always know what goes into your home, <br className="hidden md:block"/> no secrets, just execptional standards.
         </motion.p>
         
         {/* 5. CTA BUTTON */}
@@ -124,7 +124,7 @@ const HeroSection = () => {
       {/* --- BOTTOM ELEMENTS --- */}
 
       {/* Left: Location Text (New Element) */}
-      <motion.div 
+      {/* <motion.div 
         initial={{ opacity: 0, x: -20 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ delay: 1.2 }}
@@ -133,7 +133,7 @@ const HeroSection = () => {
         <p className="font-playfair text-white text-xs md:text-sm tracking-wide opacity-90">
           Sector-5, Vidhyadhar Nagar, Jaipur
         </p>
-      </motion.div>
+      </motion.div> */}
 
       {/* Right: Numeric Slider Control (Updated Element) */}
       <motion.div 

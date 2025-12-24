@@ -28,7 +28,7 @@ const services = [
 
 const galleryImages = [
   { src: "/assets/images/twentytwo.png", alt: "Modern Interior Kitchen Detail" },
-  { src: "/assets/images/twentythree.png", alt: "Unique Architectural Balconies" },
+  { src: "/assets/images/sixtyone.png", alt: "Unique Architectural Balconies" },
   { src: "/assets/images/twentyfour.png", alt: "Textured Interior Wall Feature" },
   { src: "/assets/images/twentyfive.png", alt: "Exterior Apartment Building at Dusk" }
 ];
@@ -197,8 +197,8 @@ const Footer = () => {
             <h3 className="text-base font-bold uppercase tracking-widest font-['Oswald'] text-white">About</h3>
             {/* TYPOGRAPHY: Playfair for Body */}
             <p className="text-sm text-[#EBEBE6]/60 leading-relaxed font-['Playfair_Display'] font-light max-w-xs">
-             This is property showcase done in a clean and
-contemporary manner. We built Treasure to provide you with a trouble-free website setup and managing, and to let you have fun along the way.
+             Katewa Companies is a visionary real estate and development firm committed to exceptional residential and commercial environments, grounded in quality
+              thoughtful design, and sustainable excellence, shaping places people are proud to call their own. 
             </p>
           </div>
 
@@ -499,7 +499,7 @@ const OurServicesPage = () => {
                   <div className="relative">
                       <div className={`border p-1 transition-colors duration-500 ${isDark ? 'border-white' : 'border-[#5D4037]'}`}>
                       <img 
-                          src="/assets/images/twentyone.png"
+                          src="/assets/images/sixtytwo.png"
                           alt="Interior" 
                           className="w-full h-[300px] md:h-[500px] object-cover" 
                           loading="lazy" 

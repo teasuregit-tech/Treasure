@@ -163,7 +163,7 @@ const VideoSection = () => (
   </section>
 );
 
-const UNIT_FEATURES = ['+ Premium Units', '+ Balconies with Plantation Areas', '+ Smart Spatial Planning'];
+const UNIT_FEATURES = [''];
 
 const FeaturesSection = ({ isDark }: { isDark: boolean }) => (
   <section className="relative py-16 md:py-32 px-6 md:px-24 max-w-[1600px] mx-auto overflow-hidden">
@@ -203,7 +203,8 @@ const FeaturesSection = ({ isDark }: { isDark: boolean }) => (
           />
        </div>
 
-       <div className="lg:col-span-5 lg:pl-12 mt-4 lg:mt-0 text-left">
+       {/* Added lg:pt-24 to shift text content down on desktop */}
+       <div className="lg:col-span-5 lg:pl-12 mt-4 lg:mt-0 lg:pt-24 text-left">
           <h2 className="font-['Oswald'] text-3xl sm:text-4xl md:text-5xl mb-6 uppercase tracking-wide leading-tight dark:text-white">
              Refined Residences <br className="hidden md:block"/> Designed for your Comfort
           </h2>
@@ -306,27 +307,27 @@ const StatsSection = ({ isDark }: { isDark: boolean }) => {
 const GALLERY_ITEMS = [
   {
     id: 1,
-    src: "/assets/images/eight.png",
+    src: "/assets/images/sixty.png",
     title: "Master Bedroom",
-    colSpan: "md:col-span-5" 
+    colSpan: "md:col-span-7" 
   },
   {
     id: 2,
-    src: "/assets/images/nine.png",
-    title: "Guest Bedroom",
-    colSpan: "md:col-span-7" 
+    src: "/assets/images/eight.png",
+    title: "GuestBedroom",
+    colSpan: "md:col-span-5" 
   },
   {
     id: 3,
     src: "/assets/images/ten.png",
-    title: "Living Dining",
-    colSpan: "md:col-span-7" 
+    title: "Dining",
+    colSpan: "md:col-span-5" 
   },
   {
     id: 4,
     src: "/assets/images/eleven.png",
-    title: "Living Dining",
-    colSpan: "md:col-span-5" 
+    title: "Living",
+    colSpan: "md:col-span-7" 
   }
 ];
 
@@ -684,8 +685,8 @@ const Footer = () => {
           <div className="space-y-4">
             <h3 className="text-base font-bold uppercase tracking-widest font-['Oswald'] text-white">About</h3>
             <p className="text-sm text-[#EBEBE6]/60 leading-relaxed font-['Playfair_Display'] max-w-xs ">
-              This is property showcase done in a clean and
-contemporary manner. We built Treasure to provide you with a trouble-free website setup and managing, and to let you have fun along the way.
+              Katewa Companies is a visionary real estate and development firm committed to exceptional residential and commercial environments, grounded in quality
+              thoughtful design, and sustainable excellence, shaping places people are proud to call their own. 
             </p>
           </div>
 
@@ -702,7 +703,7 @@ contemporary manner. We built Treasure to provide you with a trouble-free websit
               </li>
               <li className="flex items-start gap-3">
                 <MapPin size={14} className="text-white/40 mt-1" />
-                <span>Sector-5, Vidhyadhar Nagar, Jaipur</span>
+                <span> Vidhyadhar Nagar, Jaipur</span>
               </li>
             </ul>
           </div>

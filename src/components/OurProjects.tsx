@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { 
-  Menu, ChevronLeft, ArrowRight, ArrowUpRight, Sun, Moon, X, 
-  Mail, Facebook, Twitter, Linkedin, Youtube, Phone, MapPin 
+  Menu, Sun, Moon, X, 
+  Mail, Facebook, Twitter, Linkedin, Youtube, Phone, MapPin, ArrowRight 
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
@@ -51,7 +51,6 @@ const NavigationSidebar = React.memo(({ isOpen, onClose }: { isOpen: boolean; on
           >
             <div className={`flex justify-between items-center p-6 md:p-8 border-b ${isDark ? 'border-[#4A2521]' : 'border-stone-200'}`}>
                 <div className="flex flex-col">
-                    {/* TYPOGRAPHY: Oswald for Brand */}
                     <span className={`text-2xl md:text-3xl font-['Oswald'] font-bold tracking-widest ${isDark ? 'text-[#fdfdfc]' : 'text-stone-800'}`}>TREASURE</span>
                     <span className={`text-[10px] tracking-[0.3em] uppercase font-['Oswald'] ${isDark ? 'text-[#D4AF37]/60' : 'text-stone-500'}`}>Menu</span>
                 </div>
@@ -65,7 +64,6 @@ const NavigationSidebar = React.memo(({ isOpen, onClose }: { isOpen: boolean; on
             
             <div className="flex-1 flex flex-col justify-center px-8 md:px-12 space-y-6">
                 {MENU_ITEMS.map(item => (
-                    // TYPOGRAPHY: Playfair Display for Menu Items (Elegant)
                     <Link 
                       key={item.label} 
                       to={item.href} 
@@ -89,7 +87,6 @@ const FixedSidebar = React.memo(({ onOpenMenu }: { onOpenMenu: () => void }) => 
   return (
     <aside className={`hidden md:flex fixed top-0 left-0 h-screen w-24 z-50 flex-col justify-between items-center border-r shadow-sm transition-colors duration-500 ${isDark ? 'bg-[#2A0A0A] border-[#4A2521]' : 'bg-white border-gray-100'}`}>
       
-      {/* Top: Menu, Logo */}
       <div className="flex flex-col items-center w-full pt-8 gap-10">
         <button onClick={onOpenMenu} aria-label="Open Menu" className="group p-2">
             <div className="space-y-1.5">
@@ -107,7 +104,6 @@ const FixedSidebar = React.memo(({ onOpenMenu }: { onOpenMenu: () => void }) => 
         </Link>
       </div>
 
-      {/* Bottom: Enquiry */}
       <div className="w-full flex flex-col items-center">
         <div className="mb-6 opacity-80 hover:opacity-100 transition-opacity">
             <img 
@@ -120,7 +116,6 @@ const FixedSidebar = React.memo(({ onOpenMenu }: { onOpenMenu: () => void }) => 
             to="/contact" 
             className="w-full h-48 bg-[#3E2723] text-white flex items-center justify-center hover:bg-[#2C1A16] transition-colors"
           >
-              {/* TYPOGRAPHY: Oswald for vertical text */}
               <span className="text-xs font-['Oswald'] font-bold tracking-[0.25em] uppercase [writing-mode:vertical-lr] rotate-180">Make an Enquiry</span>
           </Link>
       </div>
@@ -151,18 +146,14 @@ const Footer = () => {
       <div className="relative z-10 max-w-7xl mx-auto px-6 py-10 lg:py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10">
           
-          {/* COLUMN 1: ABOUT */}
           <div className="space-y-4">
-            {/* TYPOGRAPHY: Oswald for Headings */}
             <h3 className="text-base font-bold uppercase tracking-widest font-['Oswald'] text-white">About</h3>
-            {/* TYPOGRAPHY: Playfair Display for Body */}
             <p className="text-sm text-[#EBEBE6]/60 leading-relaxed font-['Playfair_Display'] font-light max-w-xs">
-              This is property showcase done in a clean and
-contemporary manner. We built Treasure to provide you with a trouble-free website setup and managing, and to let you have fun along the way.
+              Katewa Companies is a visionary real estate and development firm committed to exceptional residential and commercial environments, grounded in quality
+              thoughtful design, and sustainable excellence, shaping places people are proud to call their own. 
             </p>
           </div>
 
-          {/* COLUMN 2: CONTACT */}
           <div className="space-y-4">
             <h3 className="text-base font-bold uppercase tracking-widest font-['Oswald'] text-white">Contact</h3>
             <ul className="space-y-2 text-sm text-[#EBEBE6]/60 font-['Playfair_Display'] font-light">
@@ -181,7 +172,6 @@ contemporary manner. We built Treasure to provide you with a trouble-free websit
             </ul>
           </div>
 
-          {/* COLUMN 3: USEFUL LINKS */}
           <div className="space-y-4">
             <h3 className="text-base font-bold uppercase tracking-widest font-['Oswald'] text-white">Links</h3>
             <ul className="space-y-2 text-sm text-[#EBEBE6]/60 font-['Playfair_Display'] font-light">
@@ -206,7 +196,6 @@ contemporary manner. We built Treasure to provide you with a trouble-free websit
             </ul>
           </div>
 
-          {/* COLUMN 4: NEWSLETTER */}
           <div className="space-y-4">
             <h3 className="text-base font-bold uppercase tracking-widest font-['Oswald'] text-white">Newsletter</h3>
             
@@ -266,7 +255,6 @@ const OurProjectsPage = () => {
 
   return (
     <>
-      {/* 1. IMPORT FONTS */}
       <style>
         {`
           @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap');
@@ -280,10 +268,8 @@ const OurProjectsPage = () => {
         <NavigationSidebar isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
         <FixedSidebar onOpenMenu={() => setIsMenuOpen(true)} />
 
-        {/* Main Container */}
         <main className="relative w-full pl-0 md:pl-24">
           
-          {/* Decorative Background */}
           <div className={`absolute top-0 right-0 w-1/2 h-screen z-0 pointer-events-none transition-opacity duration-700 ${
               isDark ? 'opacity-10 bg-[#4A2521]' : 'opacity-10 bg-[#D4AF37]'
           }`} style={{ clipPath: 'polygon(20% 0, 100% 0, 100% 100%, 0% 100%)' }} />
@@ -331,16 +317,13 @@ const OurProjectsPage = () => {
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
               <div className="absolute bottom-10 left-6 md:bottom-20 md:left-24 max-w-2xl text-white pr-4">
                   <div className="w-12 h-[2px] bg-white mb-6"></div>
-                  {/* TYPOGRAPHY: Playfair Display for Quote */}
                   <p className="font-['Oswald'] text-2xl md:text-4xl leading-snug drop-shadow-md">
                       We craft environments that blend modern elegance with functional clarity.
                   </p>
               </div>
           </div>
 
-          {/* Page Title / Header Text */}
           <div className="pt-8 md:pt-12 pb-12 text-center">
-              {/* TYPOGRAPHY: Oswald */}
               <p className={`text-xs font-['Oswald'] font-bold tracking-[0.3em] uppercase mb-4 ${isDark ? 'text-[#EBEBE6]/60' : 'text-gray-500'}`}>
                   Residentials
               </p>
@@ -358,14 +341,15 @@ const OurProjectsPage = () => {
                   />
                   
                   {/* Center Content Overlay */}
-                  <div className="absolute inset-0 flex flex-col items-center justify-center z-10">
-                      <div className="w-12 h-12 md:w-16 md:h-16 rounded-full border border-white/60 flex items-center justify-center mb-4 backdrop-blur-sm transition-transform duration-500 group-hover:scale-110 group-hover:bg-white/10">
-                          <ArrowUpRight className="text-white w-5 h-5 md:w-6 md:h-6" />
-                      </div>
-                      {/* TYPOGRAPHY: Oswald for Main Title */}
+                  <div className="absolute inset-0 flex flex-col items-center justify-center z-10 p-4 text-center">
                       <h2 className="text-3xl md:text-5xl font-['Oswald'] text-white tracking-widest uppercase drop-shadow-lg">
                           Treasure
                       </h2>
+                      
+                      {/* View Property Button (Replaced Arrow) */}
+                      <span className="mt-8 px-6 md:px-8 py-3 border border-white/80 text-white font-['Oswald'] text-xs md:text-sm tracking-[0.2em] uppercase hover:bg-white hover:text-[#2C1A16] transition-all duration-300 backdrop-blur-sm group-hover:border-white">
+                          View Property
+                      </span>
                   </div>
               </Link>
 
@@ -378,14 +362,15 @@ const OurProjectsPage = () => {
                   />
                   
                   {/* Center Content Overlay */}
-                  <div className="absolute inset-0 flex flex-col items-center justify-center z-10">
-                      <div className="w-12 h-12 md:w-16 md:h-16 rounded-full border border-white/60 flex items-center justify-center mb-4 backdrop-blur-sm transition-transform duration-500 group-hover:scale-110 group-hover:bg-white/10">
-                          <ArrowUpRight className="text-white w-5 h-5 md:w-6 md:h-6" />
-                      </div>
-                      {/* TYPOGRAPHY: Oswald for Main Title, Playfair for Subtitle */}
-                      <h2 className="text-3xl md:text-5xl font-['Oswald'] text-white tracking-widest uppercase drop-shadow-lg text-center">
-                          Treasure <span className="font-['Playfair_Display'] italic font-light opacity-90 block text-lg md:text-2xl mt-2 tracking-[0.15em]">Limited Edition</span>
+                  <div className="absolute inset-0 flex flex-col items-center justify-center z-10 p-4 text-center">
+                      <h2 className="text-3xl md:text-5xl font-['Oswald'] text-white tracking-widest uppercase drop-shadow-lg">
+                          Treasure <span className="font-['Playfair_Display'] italic font-light opacity-90 block text-lg md:text-2xl mt-2 tracking-[0.15em] lowercase">Limited Edition</span>
                       </h2>
+
+                      {/* View Property Button (Replaced Arrow) */}
+                      <span className="mt-8 px-6 md:px-8 py-3 border border-white/80 text-white font-['Oswald'] text-xs md:text-sm tracking-[0.2em] uppercase hover:bg-white hover:text-[#2C1A16] transition-all duration-300 backdrop-blur-sm group-hover:border-white">
+                          View Property
+                      </span>
                   </div>
               </Link>
 

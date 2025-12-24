@@ -32,8 +32,8 @@ const IntroSection = () => {
         <div className="
           absolute
           bottom-[-30px] lg:bottom-[-60px]
-          left-1/2 -translate-x-1/2
-          text-[5rem] sm:text-[9rem] lg:text-[13rem]
+          left-1/2 -translate-x-1/4
+          text-[4rem] sm:text-[7rem] lg:text-[11rem]
           text-stone-900/5 dark:text-white/5 
           pointer-events-none 
           font-['Playfair_Display'] font-bold whitespace-nowrap

@@ -172,8 +172,8 @@ const Footer = () => {
           <div className="space-y-4">
             <h3 className="text-base font-bold uppercase tracking-widest font-['Oswald'] text-white">About</h3>
             <p className="text-sm text-[#EBEBE6]/60 leading-relaxed font-['Playfair_Display'] max-w-xs ">
-              This is property showcase done in a clean and
-contemporary manner. We built Treasure to provide you with a trouble-free website setup and managing, and to let you have fun along the way.
+              Katewa Companies is a visionary real estate and development firm committed to exceptional residential and commercial environments, grounded in quality
+              thoughtful design, and sustainable excellence, shaping places people are proud to call their own. 
             </p>
           </div>
 
@@ -377,7 +377,7 @@ const AboutUsPage: React.FC = () => {
     {
       id: "03",
       title: "CREATIVE EXCELLENCE",
-      desc: "Ideas that balance imagination with practicality and restraint.",
+      desc: " Ideas shaped by imagination, grounded in practicality.",
     },
   ];
 
@@ -478,7 +478,8 @@ const AboutUsPage: React.FC = () => {
                     <div className={`font-['Playfair_Display'] text-sm md:text-lg leading-loose transition-colors duration-500 ${isDark ? 'text-[#EBEBE6]/80' : 'text-gray-600'}`}>
                         <p className="mb-4">
                             There is a rare honesty in homes built with intention.
-                            Treasure, the residential arm of Katewa Companies, celebrates this belief through architecture that feels personal, grounded, and quietly extraordinary.
+Treasure, the residential arm of Katewa Companies, celebrates this belief through architecture that feels personal, grounded, and quietly extraordinary.
+
                         </p>
 
                         <AnimatePresence>
@@ -491,15 +492,19 @@ const AboutUsPage: React.FC = () => {
                                 className="overflow-hidden"
                             >
                                 <p className="mb-4">
-                                Every home is shaped by Jaipur’s design heritage, its courtyards, its measured proportions, its love for natural materials. But Treasure reinterprets that heritage with a modern calm: softer lines, warmer textures, and spaces that feel lived in from the moment you step inside.
+                                Every home is shaped by measured proportions, its love for natural materials. 
+                                Treasure reinterprets luxury with a modern calm: softer lines, warmer textures, 
+                                and spaces that feel lived in from the moment you step inside.
+
                                 </p>
                                 <p className="mb-4">
                                 Here, design isn't a spectacle. It’s sincerity.
                                 Walls feel warm, rooms breathe easily, and materials carry the comfort of things made to last.
+
                                 </p>
                                 <p className="mb-4">
-                                Treasure is not built to impress the world, it is built to belong to you.
-                                A place where craftsmanship becomes emotion, and where home becomes a feeling you can return to, again and again.
+                                Treasure is not built to impress the world; it is built to belong to you.
+A place where craftsmanship becomes emotion, and where home becomes a feeling you can return to, again and again.
                                 </p>
                             </motion.div>
                             )}
