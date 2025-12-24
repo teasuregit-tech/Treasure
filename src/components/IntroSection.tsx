@@ -104,7 +104,7 @@ const IntroSection = () => {
             </p>
             
             <p className="font-['Playfair_Display'] text-stone-600 dark:text-stone-300 leading-loose text-base lg:text-lg max-w-lg">
-              We design to endure, thoughtfully, gracefully, and with restraint. The result is a home that feels timeless from the day it is finished.
+              We design to endure, thoughtfully, gracefully, and without restraint. The result is a home that feels timeless from the day it is finished.
             </p>
 
           </motion.div>
