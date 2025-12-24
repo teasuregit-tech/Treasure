@@ -314,7 +314,7 @@ const GALLERY_ITEMS = [
   {
     id: 2,
     src: "/assets/images/eight.png",
-    title: "GuestBedroom",
+    title: "Guest Bedroom",
     colSpan: "md:col-span-5" 
   },
   {
