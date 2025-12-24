@@ -4,11 +4,7 @@ import { Link } from "react-router-dom";
 
 // --- CONFIGURATION ---
 const SLIDES = [
-  {
-    id: 1,
-    url: "/assets/images/three.png", 
-    alt: "Exterior Facade"
-  },
+  
   {
     id: 2,
     url: "/assets/images/two.png", 
