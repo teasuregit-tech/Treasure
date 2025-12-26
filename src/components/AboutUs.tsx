@@ -274,13 +274,10 @@ const StatsSection = () => {
     { val: '78%', label: 'Climate Responsive Architecture' },
     { val: '92%', label: 'Premium Material Selection' },
     { val: '88%', label: 'Optimal Layout Efficiency' },
-    { val: '0', label: 'AQI' },
+    { val: '45', label: 'AQI' }, // Set a numeric value for the demo
   ];
   
-  // Standardized SVG Geometry for clean scaling
-  // We use a viewBox of 0 0 100 100.
-  // Center (cx, cy) is 50, 50.
-  // Radius (r) is 45 (leaving 5 units for the stroke width to not get cut off).
+  // Standardized SVG Geometry
   const radius = 45;
   const circumference = 2 * Math.PI * radius;
 
@@ -296,61 +293,92 @@ const StatsSection = () => {
        <div className="absolute inset-0 z-0 pointer-events-none hidden dark:block bg-gradient-to-br from-transparent via-transparent to-white/5" />
 
        <div className="relative z-10 max-w-[1400px] mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 text-center">
-          {STATS_DATA.map((stat, idx) => (
-             <motion.div 
-                key={idx}
-                initial={{ scale: 0.8, opacity: 0 }}
-                whileInView={{ scale: 1, opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: idx * 0.1 }}
-                className="flex flex-col items-center"
-             >
-                {/* UPDATED SIZE CLASSES: 
-                  - Mobile: w-32 h-32 (was w-24 h-24)
-                  - Desktop: md:w-48 md:h-48 (was md:w-32 md:h-32)
-                */}
-                <div className="w-32 h-32 md:w-48 md:h-48 rounded-full border border-stone-300 dark:border-stone-600 flex items-center justify-center mb-6 relative">
-                   
-                   {/* UPDATED FONT SIZE for the larger circle */}
-                   <span className="font-['Oswald'] text-3xl md:text-5xl font-bold dark:text-white tracking-wider">
-                     {stat.val}
-                   </span>
-                   
-                   {/* UPDATED SVG with viewBox for perfect scaling */}
-                   <svg className="absolute inset-0 w-full h-full -rotate-90" viewBox="0 0 100 100" aria-hidden="true">
-                      {/* Background Circle */}
-                      <circle 
-                        cx="50" 
-                        cy="50" 
-                        r={radius} 
-                        fill="none" 
-                        stroke="currentColor" 
-                        strokeWidth="0.5" 
-                        className="text-stone-800/10 dark:text-white/10" 
-                      />
-                      {/* Animated Foreground Circle */}
-                      <motion.circle 
-                        cx="50" 
-                        cy="50" 
-                        r={radius} 
-                        fill="none" 
-                        stroke="currentColor" 
-                        strokeWidth="0.5" 
-                        strokeDasharray={circumference}
-                        initial={{ strokeDashoffset: circumference }}
-                        whileInView={{ strokeDashoffset: circumference * (1 - parseInt(stat.val) / 100) }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 1.5, delay: 0.2 + idx * 0.1 }}
-                        className="text-stone-800 dark:text-white" 
-                      />
-                   </svg>
-                </div>
-                {/* SUBTEXT */}
-                <h3 className="text-[10px] md:text-xs uppercase tracking-widest max-w-[180px] dark:text-white/80 font-['Playfair_Display']">
-                  {stat.label}
-                </h3>
-             </motion.div>
-          ))}
+          {STATS_DATA.map((stat, idx) => {
+             const isAQI = stat.label === 'AQI';
+             const numericVal = parseInt(stat.val) || 0;
+
+             return (
+               <motion.div 
+                  key={idx}
+                  initial={{ scale: 0.8, opacity: 0 }}
+                  whileInView={{ scale: 1, opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: idx * 0.1 }}
+                  className="flex flex-col items-center"
+               >
+                  {/* CIRCLE CONTAINER */}
+                  <div className="w-32 h-32 md:w-48 md:h-48 rounded-full border border-stone-300 dark:border-stone-600 flex flex-col items-center justify-center mb-6 relative overflow-hidden">
+                     
+                     {/* CONTENT INSIDE CIRCLE */}
+                     <div className="z-10 flex flex-col items-center justify-center">
+                        <span className="font-['Oswald'] text-3xl md:text-5xl font-bold dark:text-white tracking-wider">
+                          {stat.val}
+                        </span>
+
+                        {/* CONDITIONAL: Render Bar if AQI, otherwise nothing (circular stroke handles it) */}
+                        {isAQI && (
+                          <div className="mt-2 flex flex-col items-center">
+                             {/* The Bar */}
+                             <div className="relative w-16 md:w-20 h-1 md:h-1.5 bg-stone-200 dark:bg-stone-700 rounded-full overflow-hidden">
+                                <div className="absolute inset-0 bg-gradient-to-r from-emerald-400 via-yellow-400 to-rose-500 opacity-80" />
+                                {/* Marker */}
+                                <motion.div 
+                                  className="absolute top-0 bottom-0 w-0.5 bg-stone-900 dark:bg-white shadow-[0_0_4px_rgba(0,0,0,0.5)]"
+                                  initial={{ left: 0 }}
+                                  whileInView={{ left: `${Math.min(numericVal, 100)}%` }}
+                                  viewport={{ once: true }}
+                                  transition={{ duration: 1.5, delay: 0.5, ease: "easeOut" }}
+                                />
+                             </div>
+                             {/* Micro Labels */}
+                             <div className="flex justify-between w-16 md:w-20 text-[8px] md:text-[9px] uppercase tracking-widest mt-1 font-medium text-stone-400 dark:text-stone-500 font-['Oswald']">
+                                <span>Good</span>
+                                <span>Poor</span>
+                             </div>
+                          </div>
+                        )}
+                     </div>
+                     
+                     {/* SVG GRAPHICS */}
+                     <svg className="absolute inset-0 w-full h-full -rotate-90 pointer-events-none" viewBox="0 0 100 100" aria-hidden="true">
+                        {/* Static Background Track (Always visible) */}
+                        <circle 
+                          cx="50" 
+                          cy="50" 
+                          r={radius} 
+                          fill="none" 
+                          stroke="currentColor" 
+                          strokeWidth="0.5" 
+                          className="text-stone-800/5 dark:text-white/5" 
+                        />
+                        
+                        {/* Animated Percentage Stroke (Only if NOT AQI) */}
+                        {!isAQI && (
+                          <motion.circle 
+                            cx="50" 
+                            cy="50" 
+                            r={radius} 
+                            fill="none" 
+                            stroke="currentColor" 
+                            strokeWidth="0.5" 
+                            strokeDasharray={circumference}
+                            initial={{ strokeDashoffset: circumference }}
+                            whileInView={{ strokeDashoffset: circumference * (1 - numericVal / 100) }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 1.5, delay: 0.2 + idx * 0.1 }}
+                            className="text-stone-800 dark:text-white" 
+                          />
+                        )}
+                     </svg>
+                  </div>
+
+                  {/* SUBTEXT LABEL */}
+                  <h3 className="text-[10px] md:text-xs uppercase tracking-widest max-w-[180px] text-stone-600 dark:text-white/80 font-['Playfair_Display']">
+                    {stat.label}
+                  </h3>
+               </motion.div>
+             );
+          })}
        </div>
     </section>
   );

@@ -229,77 +229,130 @@ const STATS_DATA = [
   { val: '78%', label: 'Climate Responsive Architecture' },
   { val: '92%', label: 'Premium Material Selection' },
   { val: '88%', label: 'Optimal Layout Efficiency' },
-  { val: '0%', label: 'AQI' }, 
-]; 
+  { val: '45', label: 'AQI' }, 
+];
 
 const StatsSection = ({ isDark }: { isDark: boolean }) => {
-  const radius = 45; 
+  const radius = 45;
   const circumference = 2 * Math.PI * radius;
 
   return (
     <section className="py-12 md:py-20 relative overflow-hidden">
-       
-       <div className="relative z-10 max-w-[1400px] mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-12 md:gap-12 text-center">
-          {STATS_DATA.map((stat, idx) => {
-             const numericVal = parseInt(stat.val) || 0;
-             
-             return (
-               <motion.div 
-                  key={idx}
-                  initial={{ scale: 0.8, opacity: 0 }}
-                  whileInView={{ scale: 1, opacity: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: idx * 0.1 }}
-                  className="flex flex-col items-center"
-               >
-                  <div className={`
-                    w-24 h-24 sm:w-36 sm:h-36 md:w-48 md:h-48
+      <div className="relative z-10 max-w-[1400px] mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-12 md:gap-12 text-center">
+        {STATS_DATA.map((stat, idx) => {
+          // Extract number for calculation
+          const numericVal = parseInt(stat.val.replace(/\D/g, '')) || 0;
+          const isAQI = stat.label === 'AQI';
+
+          return (
+            <motion.div
+              key={idx}
+              initial={{ scale: 0.8, opacity: 0 }}
+              whileInView={{ scale: 1, opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: idx * 0.1 }}
+              className="flex flex-col items-center"
+            >
+              <div
+                className={`
+                    w-32 h-32 md:w-48 md:h-48
                     rounded-full 
-                    flex items-center justify-center 
-                    mb-4 md:mb-6 
+                    border ${isDark ? 'border-stone-600' : 'border-stone-300'}
+                    flex flex-col items-center justify-center 
+                    mb-6 
                     relative 
-                  `}>
-                     
-                     <span className={`font-playfair text-xl sm:text-3xl md:text-5xl font-bold ${isDark ? 'text-white' : 'text-stone-800'}`}>
-                       {stat.val}
-                     </span>
-                     
-                     <svg className="absolute inset-0 w-full h-full -rotate-90" viewBox="0 0 100 100" aria-hidden="true">
-                        <circle 
-                          cx="50" 
-                          cy="50" 
-                          r={radius} 
-                          fill="none" 
-                          stroke="currentColor" 
-                          strokeWidth="0.5" 
-                          className={`${isDark ? 'text-white/20' : 'text-stone-300'}`} 
-                        />
-                        <motion.circle 
-                          cx="50" 
-                          cy="50" 
-                          r={radius} 
-                          fill="none" 
-                          stroke="currentColor" 
-                          strokeWidth="0.5" 
-                          strokeDasharray={circumference}
-                          initial={{ strokeDashoffset: circumference }}
-                          whileInView={{ 
-                            strokeDashoffset: circumference * ((100 - numericVal) / 100) 
-                          }}
-                          viewport={{ once: true }}
-                          transition={{ duration: 1.5, delay: 0.2 + idx * 0.1, ease: "easeOut" }}
-                          className={`${isDark ? 'text-white' : 'text-stone-800'}`} 
-                        />
-                     </svg>
+                    overflow-hidden
+                  `}
+              >
+                {/* Value Text - Using Oswald for distinct numbering */}
+                <span
+                  className={`font-['Oswald'] text-3xl md:text-5xl font-bold z-10 tracking-wider ${
+                    isDark ? 'text-white' : 'text-stone-800'
+                  }`}
+                >
+                  {stat.val}
+                </span>
+
+                {/* --- AQI BAR --- */}
+                {isAQI && (
+                  <div className="mt-2 flex flex-col items-center z-10 w-full px-4">
+                    {/* The Gradient Bar */}
+                    <div className={`w-16 md:w-20 h-1 md:h-1.5 rounded-full relative overflow-hidden ${isDark ? 'bg-stone-700' : 'bg-stone-200'}`}>
+                      <div className="absolute inset-0 bg-gradient-to-r from-emerald-400 via-yellow-400 to-orange-500 opacity-90" />
+                      
+                      {/* Marker */}
+                      <motion.div 
+                        className={`absolute top-0 bottom-0 w-0.5 shadow-sm z-20 ${isDark ? 'bg-white' : 'bg-stone-900'}`}
+                        initial={{ left: 0 }}
+                        whileInView={{ left: `${Math.min(numericVal, 100)}%` }} 
+                        transition={{ duration: 1.5, delay: 0.5, ease: "easeOut" }}
+                      />
+                    </div>
+                    
+                    {/* Micro Labels */}
+                    <div className={`flex justify-between w-16 md:w-20 text-[8px] md:text-[9px] uppercase tracking-widest mt-1 font-medium font-['Oswald'] ${isDark ? 'text-white/60' : 'text-stone-500'}`}>
+                        <span>Good</span>
+                        <span>Poor</span>
+                    </div>
                   </div>
+                )}
+
+                {/* SVG Circle Logic */}
+                <svg
+                  className="absolute inset-0 w-full h-full -rotate-90 pointer-events-none"
+                  viewBox="0 0 100 100"
+                  aria-hidden="true"
+                >
+                  {/* Background Track */}
+                  <circle
+                    cx="50"
+                    cy="50"
+                    r={radius}
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="0.5"
+                    className={`${isDark ? 'text-white/10' : 'text-stone-800/10'}`}
+                  />
                   
-                  <h3 className={`text-[10px] sm:text-xs md:text-sm uppercase tracking-widest max-w-[120px] sm:max-w-[160px] leading-relaxed ${isDark ? 'text-white/90' : 'text-stone-600'}`}>
-                    {stat.label}
-                  </h3>
-               </motion.div>
-             );
-          })}
-       </div>
+                  {/* Progress Stroke (Only if NOT AQI) */}
+                  {!isAQI && (
+                    <motion.circle
+                      cx="50"
+                      cy="50"
+                      r={radius}
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="0.5"
+                      strokeDasharray={circumference}
+                      initial={{ strokeDashoffset: circumference }}
+                      whileInView={{
+                        strokeDashoffset:
+                          circumference * ((100 - numericVal) / 100),
+                      }}
+                      viewport={{ once: true }}
+                      transition={{
+                        duration: 1.5,
+                        delay: 0.2 + idx * 0.1,
+                        ease: 'easeOut',
+                      }}
+                      className={`${isDark ? 'text-white' : 'text-stone-800'}`}
+                    />
+                  )}
+                </svg>
+              </div>
+
+              {/* Label */}
+              <h3
+                className={`text-[10px] md:text-xs uppercase tracking-widest max-w-[160px] leading-relaxed font-['Playfair_Display'] ${
+                  isDark ? 'text-white/80' : 'text-stone-600'
+                }`}
+              >
+                {stat.label}
+              </h3>
+            </motion.div>
+          );
+        })}
+      </div>
     </section>
   );
 };
